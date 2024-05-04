@@ -13,31 +13,26 @@ With all this in mind, why should anyone play the official in their original amo
 This script fixes that, all content by the authors past, present and future to the Master Levels is now brought together in a single WAD file for your enjoyment. All 45 relevant (plus 1 bonus) map are now fully playable as 5 separate, organized episodes.
 
 Episodes include:
-	* John "Dr. Sleep" Anderson's Inferno, 9 maps
-	* Jim Flynn's Titan series, 6 maps
-	* Sverre "Cranium" Kvernmo's Cabal episode, 12 maps
-	* Chris Klie's fatigued techbase, 12 levels
-	* The Lost Levels, by Tom Mustaine, Theresa Chasar and Tim WIllits, 6 maps
+	- John "Dr. Sleep" Anderson's Inferno, 9 maps
+	- Jim Flynn's Titan series, 6 maps
+	- Sverre "Cranium" Kvernmo's Cabal episode, 12 maps
+	- Chris Klie's fatigued techbase, 12 levels
+	- The Lost Levels, by Tom Mustaine, Theresa Chasar and Tim WIllits, 6 maps
 
 # Legalese
 
-Project: 'Master Level Masterpack'
-Files: '*'
-Copyright:
-	(C) 2024 Guilherme Marques Miranda
+Project:   Master Level Masterpack
+Files:     *
+Copyright: (C) 2024 Guilherme Marques Miranda
 
-Project: 'WadSmoosh'
-Files: 'build.py, wadsmoosh/wadsmoosh.py, wadsmoosh/wadsmoosh_data.py'
-Copyright:
-	(C) 2018-2023 Jean-Paul LeBreton
+Project:   WadSmoosh
+Files:     build.py, wadsmoosh/wadsmoosh.py, wadsmoosh/wadsmoosh_data.py
+Copyright: (C) 2018 Jean-Paul LeBreton
 
-Project: 'Works of the Masters'
-Files: 'wad/master.wad'
-Copyright:
-	(C) 2020-2021 Jean-Paul LeBreton
+Project:   Works of the Masters
+Files:     wad/master.wad
+Copyright: (C) 2020 Jean-Paul LeBreton
 
-Project: 'Omgifol'
-Files: 'omg/*'
-Copyright:
-	(C) 2005 Fredrik Johansson
-	(C) 2017 Devin Acker
+Project:   Omgifol
+Files:     omg/*
+Copyright: (C) 2005 Fredrik Johansson, 2017 Devin Acker
