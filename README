@@ -21,21 +21,21 @@ Episodes include:
 
 # Legalese
 
-Project: `Master Level Masterpack`
-Files: `*`
+Project: 'Master Level Masterpack'
+Files: '*'
 Copyright:
 	(C) 2024 Guilherme Marques Miranda
 
-Project: `WadSmoosh`
-Files: `build.py, wadsmoosh/wadsmoosh.py, wadsmoosh/wadsmoosh_data.py`
+Project: 'WadSmoosh'
+Files: 'build.py, wadsmoosh/wadsmoosh.py, wadsmoosh/wadsmoosh_data.py'
 	(C) 2018-2023 Jean-Paul LeBreton
 
-Project: `Works of the Masters`
-Files: `wad/master.wad`
+Project: 'Works of the Masters'
+Files: 'wad/master.wad'
 	(C) 2020-2021 Jean-Paul LeBreton
 
-Project: `Omgifol`
-Files: `omg/*`
+Project: 'Omgifol'
+Files: 'omg/*'
 Copyright:
 	(C) 2005 Fredrik Johansson
 	(C) 2017 Devin Acker
