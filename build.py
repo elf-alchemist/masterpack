@@ -70,18 +70,25 @@ MASTER_LEVELS_WADS_LUMPS = {
 }
 
 def log(line: str):
-    global logfile
-    if not logfile:
-        logfile = open(LOG_FILE, 'w')
-    print(line)
-    logfile.write(line + '\n')
+	global logfile
+	if not logfile:
+		logfile = open(LOG_FILE, 'w')
+	print(line)
+	logfile.write(line + '\n')
 
 def get_wad_filename(wad_name: str):
-    wad_name += '.wad'
-    for filename in listdir(DIR_SOURCE):
-        if wad_name.lower() == filename.lower():
-            return DIR_SOURCE + filename
-    return None
+	wad_name += '.wad'
+	for filename in listdir(DIR_SOURCE):
+		if wad_name.lower() == filename.lower():
+			return DIR_SOURCE + filename
+	return None
+
+def get_report_found():
+	found_wads = []
+	for wadname in MASTER_LEVELS_WADS:
+		if get_wad_filename(wadname):
+			found_wads.append(wadname)
+	return found_wads
 
 def main() -> None :
 	raise NotImplementedError(
