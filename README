@@ -27,7 +27,7 @@ Copyright:
 	(C) 2024 Guilherme Marques Miranda
 
 Project: `WadSmoosh`
-Files: `build.py`
+Files: `build.py, wadsmoosh/wadsmoosh.py, wadsmoosh/wadsmoosh_data.py`
 	(C) 2018-2023 Jean-Paul LeBreton
 
 Project: `Works of the Masters`
