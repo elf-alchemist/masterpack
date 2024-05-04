@@ -18,3 +18,24 @@ Episodes include:
 	* Sverre "Cranium" Kvernmo's Cabal episode, 12 maps
 	* Chris Klie's fatigued techbase, 12 levels
 	* The Lost Levels, by Tom Mustaine, Theresa Chasar and Tim WIllits, 6 maps
+
+# Legalese
+
+Project: `Master Level Masterpack`
+Files: `*`
+Copyright:
+	(C) 2024 Guilherme Marques Miranda
+
+Project: `WadSmoosh`
+Files: `build.py`
+	(C) 2018-2023 Jean-Paul LeBreton
+
+Project: `Works of the Masters`
+Files: `wad/master.wad`
+	(C) 2020-2021 Jean-Paul LeBreton
+
+Project: `Omgifol`
+Files: `omg/*`
+Copyright:
+	(C) 2005 Fredrik Johansson
+	(C) 2017 Devin Acker
