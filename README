@@ -28,10 +28,12 @@ Copyright:
 
 Project: 'WadSmoosh'
 Files: 'build.py, wadsmoosh/wadsmoosh.py, wadsmoosh/wadsmoosh_data.py'
+Copyright:
 	(C) 2018-2023 Jean-Paul LeBreton
 
 Project: 'Works of the Masters'
 Files: 'wad/master.wad'
+Copyright:
 	(C) 2020-2021 Jean-Paul LeBreton
 
 Project: 'Omgifol'
