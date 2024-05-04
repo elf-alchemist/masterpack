@@ -1,12 +1,42 @@
 #!/usr/bin/env python3
 
+from os import listdir
+
 VERSION = '0.1'
+
+logfile = None
+LOG_FILE = 'masterpack.log'
 
 DIR_DATA = 'data/'
 DIR_SOURCE = 'source_wads/'
 DIR_DEST = 'build/'
 
-MASTER_LEVELS_WADS = []
+MASTER_LEVELS_WADS = [
+	# Inferno
+	'VIRGIL.WAD',
+	'MINOS.WAD',
+	'NESSUS.WAD',
+	'GERYON.WAD',
+	'VESPERAS.WAD',
+	# Titan
+	'MANOR.WAD',
+	'TTRAP.WAD',
+	# Cabal
+	'BLOODSEA.WAD',
+	'BLACKTWR.WAD',
+	'MEPHISTO.WAD',
+	'TEETH.WAD',
+	# Klietech
+	'SUBSPACE.WAD',
+	'COMBINE.WAD',
+	'FISTULA.WAD',
+	'SUBTERRA.WAD',
+	'CATWALK.WAD' ,
+	'GARRISON.WAD',
+	# Lost Levels
+	'ATTACK.WAD',
+	'CANYON.WAD',
+]
 
 MASTER_LEVELS_WADS_LUMPS = {
 	# Ultimate Doom
@@ -38,6 +68,20 @@ MASTER_LEVELS_WADS_LUMPS = {
 	'ATTACK.WAD': 'attack.txt',
 	'CANYON.WAD': 'canyon.txt',
 }
+
+def log(line: str):
+    global logfile
+    if not logfile:
+        logfile = open(LOG_FILE, 'w')
+    print(line)
+    logfile.write(line + '\n')
+
+def get_wad_filename(wad_name: str):
+    wad_name += '.wad'
+    for filename in listdir(DIR_SOURCE):
+        if wad_name.lower() == filename.lower():
+            return DIR_SOURCE + filename
+    return None
 
 def main() -> None :
 	raise NotImplementedError(
