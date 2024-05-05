@@ -107,6 +107,20 @@ ML_WADS_SHA256SUM = {
     'CANYON.WAD': 'a2dd18d174d25a5d31046114bf73d87e9e13e49e9e6b509b2c9942e77d4c9ecf',
 }
 
+MASTERPACK_WADS = [
+    'master.wad',     # empty base
+    'master_p1.wad',  # special lumps, graphics and midi
+    'master_p2.wad',  # pacthes
+    'master_p3.wad',  # maps
+]
+
+MASTERPACK_SHA256SUM = {
+    'master.wad': 'eb90ad49c63db42e7bc87eb290d80c24752dc47026f709c5cd0c8acb9de8d0fe',
+    'master_p1.wad': 'cfa9f5877ccdfe6998c8fc6e764325babf4500f8a86fb7b75036b12397edec3e',
+    'master_p2.wad': 'cabfa36f20a6506db9f7bf21854c5317a01698b71a7068819f46735a10202ec2',
+    'master_p3.wad': '863faaef816d46822eefc9993fbadf815ec34847ccf3912380a8d775eb6e7de9',
+}
+
 MASTERPACK_MAPS = [
     # Inferno
     'MAP01',
@@ -201,13 +215,16 @@ def get_wad_hash(wad_name: str) -> str | None:
             break
         sha256hash.update(data)
 
-    print('    SHA-256: {0}'.format(sha256hash.hexdigest()))
-
-    return wad_name
+    return sha256hash.hexdigest()
 
 
 def validate_wad_by_hash(wad_name: str) -> str | None:
-    return None
+    if wad_name not in ML_WADS:
+        return None
+    if get_wad_hash(wad_name) != get_wad_pre_hash(wad_name):
+        return None
+    if get_wad_hash(wad_name) == get_wad_pre_hash(wad_name):
+        return wad_name
 
 
 def get_found_wads() -> bool:
@@ -216,12 +233,14 @@ def get_found_wads() -> bool:
 
     for wad in ML_WADS:
         if get_wad_filename(wad):
-            # if validate_wad_by_hash(wad):
-            #     log(f'  {wad.upper()} is missing. Failed SHA256SUM')
-            #     missing_wads.append(wad)
+            if validate_wad_by_hash(wad) == None:
+                log(f'  {wad.upper()} failed SHA256 checksum!')
+                missing_wads.append(wad)
+
             wad_name = wad.upper().split(f".")[0]
             log(f'  {wad_name} found!')
             found_wads.append(wad)
+
         else:
             log(f'  {wad.upper()} is missing.')
             missing_wads.append(wad)
@@ -232,16 +251,26 @@ def get_found_wads() -> bool:
     return True
 
 
-def main() -> None:
-    log('Checking wads...')
+def master_build() -> None:
+    raise NotImplementedError('lazy ass')
 
-    if get_found_wads():
-        log('Found all Master Levels WADs!')
-    else:
-        log('Did not found all Master Levels! Are you missing something?')
+
+def main() -> None:
+    log('Welcome to Master Levels Masterpack build script.')
+    log('Checking ML source wads...')
+
+    if get_found_wads() == None:
+        log('Did not find all Master Levels! Check missing files and failed checksums!')
+        log('Build failed. Exiting...')
+        exit(1)
+    log('Found all Master Levels WADs!')
+
+    log('Starting to build WAD!')
+    master_build()
+    log('Finished build.')
 
     log('Done. Exiting...')
-    return None
+    exit(0)
 
 
 if __name__ == '__main__':
