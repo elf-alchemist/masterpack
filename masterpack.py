@@ -296,33 +296,78 @@ def get_found_ml_wads() -> bool:
 
 def extract_p1_lumps():
     log('First part extraction begins.')
-    master_build_part1_wad = WAD()
-    master_build_part1_wad.from_file(DIR_BASE + 'master_p1.wad')
+    master_build_part1_wad = WAD(DIR_BASE + 'master_p1.wad')
     log('First extraction done. Moving on..')
-    return master_build_part1_wad.data
+    return master_build_part1_wad
 
 
 def extract_p2_lumps():
     log('Second part of the extraction begins.')
-    master_build_part2_wad = WAD()
-    master_build_part2_wad.from_file(DIR_BASE + 'master_p2.wad')
 
-    doom_wad = WAD()
-    doom_wad.from_file(DIR_SOURCE + 'DOOM.WAD')
+    master_build_part2_wad = WAD(DIR_BASE + 'master_p2.wad')
+    doom_wad = WAD(DIR_SOURCE + 'DOOM.WAD')
 
     for doom_patch in DOOM_PATCHES:
         master_build_part2_wad.patches[doom_patch] = doom_wad.patches[doom_patch]
 
     log('Second part of extraction done. Moving on..')
-    return master_build_part2_wad.patches
+    return master_build_part2_wad
+
+
+def extract_p3_lumps():
+    log('At last, starting the final extraction')
+    master3_wad = WAD(DIR_BASE + 'master_p3.wad')
+
+    master3_wad.maps['MAP08'] = WAD(DIR_SOURCE + 'DOOM.WAD').maps['E4M7']
+
+    master3_wad.maps['MAP40'] = WAD(DIR_SOURCE + 'TNT.WAD').maps['MAP01']
+    master3_wad.maps['MAP41'] = WAD(DIR_SOURCE + 'TNT.WAD').maps['MAP17']
+
+    master3_wad.maps['MAP03'] = WAD(DIR_SOURCE + 'VIRGIL.WAD').maps['MAP03']
+    master3_wad.maps['MAP04'] = WAD(DIR_SOURCE + 'MINOS.WAD').maps['MAP05']
+    master3_wad.maps['MAP05'] = WAD(DIR_SOURCE + 'NESSUS.WAD').maps['MAP07']
+    master3_wad.maps['MAP06'] = WAD(DIR_SOURCE + 'GERYON.WAD').maps['MAP08']
+    master3_wad.maps['MAP07'] = WAD(DIR_SOURCE + 'VESPERAS.WAD').maps['MAP09']
+
+    master3_wad.maps['MAP13'] = WAD(DIR_SOURCE + 'MANOR.WAD').maps['MAP01']
+    master3_wad.maps['MAP14'] = WAD(DIR_SOURCE + 'TTRAP.WAD').maps['MAP01']
+
+    master3_wad.maps['MAP19'] = WAD(DIR_SOURCE + 'BLOODSEA.WAD').maps['MAP07']
+    master3_wad.maps['MAP22'] = WAD(DIR_SOURCE + 'BLACKTWR.WAD').maps['MAP25']
+    master3_wad.maps['MAP23'] = WAD(DIR_SOURCE + 'MEPHISTO.WAD').maps['MAP07']
+    master3_wad.maps['MAP25'] = WAD(DIR_SOURCE + 'TEETH.WAD').maps['MAP31']
+    master3_wad.maps['MAP27'] = WAD(DIR_SOURCE + 'TEETH.WAD').maps['MAP32']
+
+    master3_wad.maps['MAP29'] = WAD(DIR_SOURCE + 'SUBSPACE.WAD').maps['MAP01']
+    master3_wad.maps['MAP30'] = WAD(DIR_SOURCE + 'COMBINE.WAD').maps['MAP01']
+    master3_wad.maps['MAP32'] = WAD(DIR_SOURCE + 'FISTULA.WAD').maps['MAP01']
+    master3_wad.maps['MAP33'] = WAD(DIR_SOURCE + 'SUBTERRA.WAD').maps['MAP01']
+    master3_wad.maps['MAP35'] = WAD(DIR_SOURCE + 'CATWALK.WAD').maps['MAP01']
+    master3_wad.maps['MAP37'] = WAD(DIR_SOURCE + 'GARRISON.WAD').maps['MAP01']
+
+    master3_wad.maps['MAP43'] = WAD(DIR_SOURCE + 'PARADOX.WAD').maps['MAP01']
+    master3_wad.maps['MAP44'] = WAD(DIR_SOURCE + 'ATTACK.WAD').maps['MAP01']
+    master3_wad.maps['MAP45'] = WAD(DIR_SOURCE + 'CANYON.WAD').maps['MAP01']
+
+    log('Final extraction complete.')
+    return master3_wad
 
 
 def masterpack_build() -> None:
     master_wad = WAD()
     master_wad.from_file(DIR_BASE + 'master.wad')
 
-    master_wad.data += extract_p1_lumps()
-    master_wad.patches += extract_p2_lumps()
+    master_p1_wad = extract_p1_lumps()
+    master_wad.data += master_p1_wad.data
+    master_wad.music += master_p1_wad.music
+    master_wad.txdefs += master_p1_wad.txdefs
+
+    master_p2_wad = extract_p2_lumps()
+    master_wad.patches += master_p2_wad.patches
+
+    master_p3_wad = extract_p3_lumps()
+    for map in MASTERPACK_MAPS:
+        master_wad.maps[map] = master_p3_wad.maps[map]
 
     if not path.exists(DIR_DEST):
         mkdir(DIR_DEST)
