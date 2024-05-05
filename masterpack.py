@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 
 from os import listdir
+from hashlib import sha256
 
 VERSION = '0.1-proto'
 
 logfile = None
 LOG_FILE = 'masterpack.log'
+
+BUFFER_SIZE = 16384
 
 DIR_DATA = 'data/'
 DIR_SOURCE = 'source/'
@@ -176,9 +179,36 @@ def get_wad_filename(wad_name: str) -> str | None:
 
     return None
 
-def get_wad_hash(wad_name: str):
 
-    return False
+def get_wad_pre_hash(wad_name: str) -> str | None:
+    if wad_name not in ML_WADS:
+        return None
+
+    return ML_WADS_SHA256SUM[wad_name]
+
+
+def get_wad_hash(wad_name: str) -> str | None:
+    sha256hash = sha256()
+
+    if wad_name not in ML_WADS:
+        return None
+
+    file_handler = open(DIR_SOURCE + wad_name, 'rb')
+
+    while True:
+        data = file_handler.read(BUFFER_SIZE)
+        if not data:
+            break
+        sha256hash.update(data)
+
+    print('    SHA-256: {0}'.format(sha256hash.hexdigest()))
+
+    return wad_name
+
+
+def validate_wad_by_hash(wad_name: str) -> str | None:
+    return None
+
 
 def get_found_wads() -> bool:
     found_wads: list[str] = []
@@ -186,6 +216,9 @@ def get_found_wads() -> bool:
 
     for wad in ML_WADS:
         if get_wad_filename(wad):
+            # if validate_wad_by_hash(wad):
+            #     log(f'  {wad.upper()} is missing. Failed SHA256SUM')
+            #     missing_wads.append(wad)
             wad_name = wad.upper().split(f".")[0]
             log(f'  {wad_name} found!')
             found_wads.append(wad)
@@ -197,6 +230,7 @@ def get_found_wads() -> bool:
         return False
 
     return True
+
 
 def main() -> None:
     log('Checking wads...')
