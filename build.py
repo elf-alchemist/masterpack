@@ -4,12 +4,13 @@ from os import listdir
 
 VERSION = '0.1'
 
-logfile = None
+logfile  = None
 LOG_FILE = 'masterpack.log'
 
-DIR_DATA = 'data/'
+DIR_DATA   = 'data/'
 DIR_SOURCE = 'source_wads/'
-DIR_DEST = 'build/'
+DIR_WAD    = 'wad/'
+DIR_DEST   = 'build/'
 
 MASTER_LEVELS_WADS = [
 	# Inferno
@@ -69,7 +70,61 @@ MASTER_LEVELS_WADS_LUMPS = {
 	'CANYON.WAD': 'canyon.txt',
 }
 
-def log(line: str):
+MASTERPACK_MAPS = [
+  # Inferno
+	'MAP01',
+	'MAP02',
+	'MAP03',
+	'MAP04',
+	'MAP05',
+	'MAP06',
+	'MAP07',
+	'MAP08',
+	'MAP09',
+	# Titan
+	'MAP10',
+	'MAP11',
+	'MAP12',
+	'MAP13',
+	'MAP14',
+	'MAP15',
+	# Cabal
+	'MAP16',
+	'MAP17',
+	'MAP18',
+	'MAP19',
+	'MAP20',
+	'MAP21',
+	'MAP22',
+	'MAP23',
+	'MAP24',
+	'MAP25',
+	'MAP26',
+	'MAP27',
+	# Klietech
+	'MAP28',
+	'MAP29',
+	'MAP30',
+	'MAP31',
+	'MAP32',
+	'MAP33',
+	'MAP34',
+	'MAP35',
+	'MAP36',
+	'MAP37',
+	'MAP38',
+	'MAP39',
+	# Lost Levels
+	'MAP40',
+	'MAP41',
+	'MAP42',
+	'MAP43',
+	'MAP44',
+	'MAP45',
+	'MAP46',
+]
+
+def log(line: str) -> None:
 	global logfile
 	if not logfile:
 		logfile = open(LOG_FILE, 'w')
@@ -83,14 +138,14 @@ def get_wad_filename(wad_name: str):
 			return DIR_SOURCE + filename
 	return None
 
-def get_report_found():
-	found_wads = []
+def get_report_found() -> list[str]:
+	found_wads: list[str] = []
 	for wadname in MASTER_LEVELS_WADS:
 		if get_wad_filename(wadname):
 			found_wads.append(wadname)
 	return found_wads
 
-def main() -> None :
+def main() -> None:
 	raise NotImplementedError(
 	"""
 	>:(
