@@ -2,17 +2,17 @@
 
 from os import listdir
 
-VERSION = '0.1'
+VERSION = '0.1-proto'
 
 logfile = None
 LOG_FILE = 'masterpack.log'
 
 DIR_DATA = 'data/'
-DIR_SOURCE = 'source_wads/'
-DIR_WAD = 'wad/'
-DIR_DEST = 'build/'
+DIR_SOURCE = 'source/'
+DIR_BASE = 'base/'
+DIR_DEST = 'dest/'
 
-MASTER_LEVELS_WADS = [
+ML_WADS = [
     # Inferno
     'VIRGIL.WAD',
     'MINOS.WAD',
@@ -40,7 +40,7 @@ MASTER_LEVELS_WADS = [
     'CANYON.WAD',
 ]
 
-MASTER_LEVELS_WADS_LUMPS = {
+ML_WAD_LUMPS = {
     # Ultimate Doom
     'DOOM.WAD': 'doom.txt',
     # Final Doom, TNT: Evilution
@@ -72,7 +72,7 @@ MASTER_LEVELS_WADS_LUMPS = {
     'CANYON.WAD': 'canyon.txt',
 }
 
-MASTER_LEVELS_WADS_SHA256_CHECK_SUM = {
+ML_WADS_SHA256SUM = {
     # Ultimate Doom
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
     # Final Doom, TNT: Evilution
@@ -161,35 +161,53 @@ MASTERPACK_MAPS = [
 
 def log(line: str) -> None:
     global logfile
+
     if not logfile:
         logfile = open(LOG_FILE, 'w')
+
     print(line)
     logfile.write(line + '\n')
 
 
-def get_wad_filename(wad_name: str):
-    wad_name += '.wad'
+def get_wad_filename(wad_name: str) -> str | None:
     for filename in listdir(DIR_SOURCE):
         if wad_name.lower() == filename.lower():
             return DIR_SOURCE + filename
+
     return None
 
+def get_wad_hash(wad_name: str):
 
-def get_report_found() -> list[str]:
+    return False
+
+def get_found_wads() -> bool:
     found_wads: list[str] = []
-    for wadname in MASTER_LEVELS_WADS:
-        if get_wad_filename(wadname):
-            found_wads.append(wadname)
-    return found_wads
+    missing_wads: list[str] = []
 
+    for wad in ML_WADS:
+        if get_wad_filename(wad):
+            wad_name = wad.upper().split(f".")[0]
+            log(f'  {wad_name} found!')
+            found_wads.append(wad)
+        else:
+            log(f'  {wad.upper()} is missing.')
+            missing_wads.append(wad)
+
+    if sorted(found_wads) != sorted(ML_WADS):
+        return False
+
+    return True
 
 def main() -> None:
-    raise NotImplementedError(
-        """
-	>:(
-	Not implemented yet.
-	Get to writing, lazy ass."""
-    )
+    log('Checking wads...')
+
+    if get_found_wads():
+        log('Found all Master Levels WADs!')
+    else:
+        log('Did not found all Master Levels! Are you missing something?')
+
+    log('Done. Exiting...')
+    return None
 
 
 if __name__ == '__main__':
