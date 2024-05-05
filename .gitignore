@@ -247,3 +247,33 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,python
+
+# Inferno
+VIRGIL.WAD
+MINOS.WAD
+NESSUS.WAD
+GERYON.WAD
+VESPERAS.WAD
+
+# Titan
+MANOR.WAD
+TTRAP.WAD
+
+# Cabal
+BLACKTWR.WAD
+BLOODSEA.WAD
+MEPHISTO.WAD
+TEETH.WAD
+
+# Klietech
+SUBSPACE.WAD
+COMBINE.WAD
+FISTULA.WAD
+SUBTERRA.WAD
+CATWALK.WAD
+GARRISON.WAD
+
+# Lost Levels
+PARADOX.WAD
+ATTACK.WAD
+CANYON.WAD
