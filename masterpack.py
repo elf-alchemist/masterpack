@@ -48,7 +48,7 @@ ML_WADS = [
 
 ML_WAD_LUMPS = {
     # Ultimate Doom
-    'DOOM.WAD': 'doom.txt',
+    'DOOM.WAD': 'doom_maps.txt',
     # Final Doom, TNT: Evilution
     'TNT.WAD': 'tnt.txt',
     # Inferno
