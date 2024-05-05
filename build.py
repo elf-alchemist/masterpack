@@ -35,6 +35,7 @@ MASTER_LEVELS_WADS = [
 	'CATWALK.WAD' ,
 	'GARRISON.WAD',
 	# Lost Levels
+	'PARADOX.WAD',
 	'ATTACK.WAD',
 	'CANYON.WAD',
 ]
@@ -66,8 +67,41 @@ MASTER_LEVELS_WADS_LUMPS = {
 	'CATWALK.WAD' : 'catwalk.txt',
 	'GARRISON.WAD': 'garrison.txt',
 	# Lost Levels
-	'ATTACK.WAD': 'attack.txt',
-	'CANYON.WAD': 'canyon.txt',
+	'PARADOX.WAD': 'paradox.wad',
+	'ATTACK.WAD' : 'attack.txt',
+	'CANYON.WAD' : 'canyon.txt',
+}
+
+MASTER_LEVELS_WADS_SHA256SUM = {
+	# Ultimate Doom
+	'DOOM.WAD'    : '',
+	# Final Doom, TNT: Evilution
+	'TNT.WAD'     : '',
+	# Inferno
+	'VIRGIL.WAD'  : '',
+	'MINOS.WAD'   : '',
+	'NESSUS.WAD'  : '',
+	'GERYON.WAD'  : '',
+	'VESPERAS.WAD': '',
+	# Titan
+	'MANOR.WAD'   : '',
+	'TTRAP.WAD'   : '',
+	# Cabal
+	'BLOODSEA.WAD': '',
+	'BLACKTWR.WAD': '',
+	'MEPHISTO.WAD': '',
+	'TEETH.WAD'   : '',
+	# Klietech
+	'SUBSPACE.WAD': '',
+	'COMBINE.WAD' : '',
+	'FISTULA.WAD' : '',
+	'SUBTERRA.WAD': '',
+	'CATWALK.WAD' : '',
+	'GARRISON.WAD': '',
+	# Lost Levels
+	'PARADOX.WAD': '',
+	'ATTACK.WAD' : '',
+	'CANYON.WAD' : '',
 }
 
 MASTERPACK_MAPS = [
