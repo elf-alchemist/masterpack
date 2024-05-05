@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from os import listdir
+from os import listdir, mkdir, path
 from hashlib import sha256
 from pprint import pprint
 
@@ -17,6 +17,30 @@ DIR_DATA = 'data/'
 DIR_SOURCE = 'source/'
 DIR_BASE = 'base/'
 DIR_DEST = 'dest/'
+
+IWADS = [
+    'DOOM.WAD',
+    'TNT.WAD'
+]
+
+IWADS_SHA256SUM = {
+    'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
+    'TNT.WAD': 'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353',
+}
+
+DOOM_PATCHES = [
+    'SW2_3',
+    'W15_6',
+    'WALL40_1',
+    'WALL63_2',
+    'WALL76_1',
+    'W109_1',
+    'W109_2',
+    'W110_1',
+    'W113_1',
+    'W113_2',
+    'W113_3',
+]
 
 ML_WADS = [
     # Inferno
@@ -202,7 +226,7 @@ def get_wad_filename(wad_name: str) -> str | None:
 
 
 #
-# Check data
+# Check Master Levels WAD data
 #
 
 def get_ml_wad_pre_hash(wad_name: str) -> str | None:
@@ -262,14 +286,35 @@ def get_found_ml_wads() -> bool:
     return True
 
 #
+# Check IWAD data
+#
+
+#
 # Actual lump to wad extraction
 #
 
 
 def extract_p1_lumps():
+    log('First part extraction begins.')
     master_build_part1_wad = WAD()
     master_build_part1_wad.from_file(DIR_BASE + 'master_p1.wad')
+    log('First extraction done. Moving on..')
     return master_build_part1_wad.data
+
+
+def extract_p2_lumps():
+    log('Second part of the extraction begins.')
+    master_build_part2_wad = WAD()
+    master_build_part2_wad.from_file(DIR_BASE + 'master_p2.wad')
+
+    doom_wad = WAD()
+    doom_wad.from_file(DIR_SOURCE + 'DOOM.WAD')
+
+    for doom_patch in DOOM_PATCHES:
+        master_build_part2_wad.patches[doom_patch] = doom_wad.patches[doom_patch]
+
+    log('Second part of extraction done. Moving on..')
+    return master_build_part2_wad.patches
 
 
 def masterpack_build() -> None:
@@ -277,8 +322,11 @@ def masterpack_build() -> None:
     master_wad.from_file(DIR_BASE + 'master.wad')
 
     master_wad.data += extract_p1_lumps()
-    pprint(master_wad.data)
+    master_wad.patches += extract_p2_lumps()
 
+    if not path.exists(DIR_DEST):
+        mkdir(DIR_DEST)
+    master_wad.to_file(DIR_DEST + 'master.wad')
     return None
 
 

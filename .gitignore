@@ -248,6 +248,10 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,python
 
+# IWADs
+DOOM.WAD
+TNT.WAD
+
 # Inferno
 VIRGIL.WAD
 MINOS.WAD
@@ -277,3 +281,5 @@ GARRISON.WAD
 PARADOX.WAD
 ATTACK.WAD
 CANYON.WAD
+
+dest/
