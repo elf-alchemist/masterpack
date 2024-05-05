@@ -2,6 +2,9 @@
 
 from os import listdir
 from hashlib import sha256
+from pprint import pprint
+
+from omg.wad import WAD
 
 VERSION = '0.1-proto'
 
@@ -175,6 +178,10 @@ MASTERPACK_MAPS = [
     'MAP46',
 ]
 
+#
+# Utils
+#
+
 
 def log(line: str) -> None:
     global logfile
@@ -194,14 +201,18 @@ def get_wad_filename(wad_name: str) -> str | None:
     return None
 
 
-def get_wad_pre_hash(wad_name: str) -> str | None:
+#
+# Check data
+#
+
+def get_ml_wad_pre_hash(wad_name: str) -> str | None:
     if wad_name not in ML_WADS:
         return None
 
     return ML_WADS_SHA256SUM[wad_name]
 
 
-def get_wad_hash(wad_name: str) -> str | None:
+def get_ml_wad_hash(wad_name: str) -> str | None:
     sha256hash = sha256()
 
     if wad_name not in ML_WADS:
@@ -218,22 +229,22 @@ def get_wad_hash(wad_name: str) -> str | None:
     return sha256hash.hexdigest()
 
 
-def validate_wad_by_hash(wad_name: str) -> str | None:
+def validate_ml_wad_by_hash(wad_name: str) -> str | None:
     if wad_name not in ML_WADS:
         return None
-    if get_wad_hash(wad_name) != get_wad_pre_hash(wad_name):
+    if get_ml_wad_hash(wad_name) != get_ml_wad_pre_hash(wad_name):
         return None
-    if get_wad_hash(wad_name) == get_wad_pre_hash(wad_name):
+    if get_ml_wad_hash(wad_name) == get_ml_wad_pre_hash(wad_name):
         return wad_name
 
 
-def get_found_wads() -> bool:
+def get_found_ml_wads() -> bool:
     found_wads: list[str] = []
     missing_wads: list[str] = []
 
     for wad in ML_WADS:
         if get_wad_filename(wad):
-            if validate_wad_by_hash(wad) == None:
+            if validate_ml_wad_by_hash(wad) == None:
                 log(f'  {wad.upper()} failed SHA256 checksum!')
                 missing_wads.append(wad)
 
@@ -250,23 +261,39 @@ def get_found_wads() -> bool:
 
     return True
 
+#
+# Actual lump to wad extraction
+#
 
-def master_build() -> None:
-    raise NotImplementedError('lazy ass')
+
+def extract_p1_lumps():
+    master_build_part1_wad = WAD()
+    master_build_part1_wad.from_file(DIR_BASE + 'master_p1.wad')
+    return master_build_part1_wad.data
+
+
+def masterpack_build() -> None:
+    master_wad = WAD()
+    master_wad.from_file(DIR_BASE + 'master.wad')
+
+    master_wad.data += extract_p1_lumps()
+    pprint(master_wad.data)
+
+    return None
 
 
 def main() -> None:
     log('Welcome to Master Levels Masterpack build script.')
     log('Checking ML source wads...')
 
-    if get_found_wads() == None:
+    if get_found_ml_wads() == None:
         log('Did not find all Master Levels! Check missing files and failed checksums!')
         log('Build failed. Exiting...')
         exit(1)
     log('Found all Master Levels WADs!')
 
     log('Starting to build WAD!')
-    master_build()
+    masterpack_build()
     log('Finished build.')
 
     log('Done. Exiting...')
