@@ -2,18 +2,16 @@
 
 from os import listdir, mkdir, path
 from hashlib import sha256
-from pprint import pprint
 
 from omg.wad import WAD
 
-VERSION = '0.1-proto'
+VERSION = '0.1'
 
 logfile = None
 LOG_FILE = 'masterpack.log'
 
 BUFFER_SIZE = 16384
 
-DIR_DATA = 'data/'
 DIR_SOURCE = 'source/'
 DIR_BASE = 'base/'
 DIR_DEST = 'dest/'
@@ -70,38 +68,6 @@ ML_WADS = [
     'CANYON.WAD',
 ]
 
-ML_WAD_LUMPS = {
-    # Ultimate Doom
-    'DOOM.WAD': 'doom_maps.txt',
-    # Final Doom, TNT: Evilution
-    'TNT.WAD': 'tnt.txt',
-    # Inferno
-    'VIRGIL.WAD': 'virgil.wad',
-    'MINOS.WAD': 'minos.txt',
-    'NESSUS.WAD': 'nessus.txt',
-    'GERYON.WAD': 'geryon.txt',
-    'VESPERAS.WAD': 'vesperas.txt',
-    # Titan
-    'MANOR.WAD': 'manor.txt',
-    'TTRAP.WAD': 'ttrap.txt',
-    # Cabal
-    'BLOODSEA.WAD': 'bloodsea.txt',
-    'BLACKTWR.WAD': 'blacktwr.txt',
-    'MEPHISTO.WAD': 'mephisto.txt',
-    'TEETH.WAD': 'teeth.txt',
-    # Klietech
-    'SUBSPACE.WAD': 'subspace.txt',
-    'COMBINE.WAD': 'combine.txt',
-    'FISTULA.WAD': 'fistula.txt',
-    'SUBTERRA.WAD': 'subterra.txt',
-    'CATWALK.WAD': 'catwalk.txt',
-    'GARRISON.WAD': 'garrison.txt',
-    # Lost Levels
-    'PARADOX.WAD': 'paradox.wad',
-    'ATTACK.WAD': 'attack.txt',
-    'CANYON.WAD': 'canyon.txt',
-}
-
 ML_WADS_SHA256SUM = {
     # Ultimate Doom
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
@@ -133,6 +99,38 @@ ML_WADS_SHA256SUM = {
     'ATTACK.WAD': '4b9a404a4ee43ed33f7c2e208269b84b58ccfec5823afa1fe50e3dd08e927622',
     'CANYON.WAD': 'a2dd18d174d25a5d31046114bf73d87e9e13e49e9e6b509b2c9942e77d4c9ecf',
 }
+
+ML_MASTERPACK = [
+    # Inferno
+    ['MAP03', 'VIRGIL.WAD', 'MAP03'],
+    ['MAP04', 'MINOS.WAD', 'MAP05'],
+    ['MAP05', 'NESSUS.WAD', 'MAP07'],
+    ['MAP06', 'GERYON.WAD', 'MAP08'],
+    ['MAP07', 'VESPERAS.WAD', 'MAP09'],
+    ['MAP08', 'DOOM.WAD', 'E4M7'],
+    # Titan
+    ['MAP13', 'MANOR.WAD', 'MAP01'],
+    ['MAP14', 'TTRAP.WAD', 'MAP01'],
+    # Cabal
+    ['MAP19', 'BLOODSEA.WAD', 'MAP07'],
+    ['MAP22', 'BLACKTWR.WAD', 'MAP25'],
+    ['MAP23', 'MEPHISTO.WAD', 'MAP07'],
+    ['MAP25', 'TEETH.WAD', 'MAP31'],
+    ['MAP27', 'TEETH.WAD', 'MAP32'],
+    # Klietech
+    ['MAP29', 'SUBSPACE.WAD', 'MAP01'],
+    ['MAP30', 'COMBINE.WAD', 'MAP01'],
+    ['MAP32', 'FISTULA.WAD', 'MAP01'],
+    ['MAP33', 'SUBTERRA.WAD', 'MAP01'],
+    ['MAP35', 'CATWALK.WAD', 'MAP01'],
+    ['MAP37', 'GARRISON.WAD', 'MAP01'],
+    # Lost Levels
+    ['MAP40', 'TNT.WAD', 'MAP01'],
+    ['MAP41', 'TNT.WAD', 'MAP17'],
+    ['MAP43', 'PARADOX.WAD', 'MAP01'],
+    ['MAP44', 'ATTACK.WAD', 'MAP01'],
+    ['MAP45', 'CANYON.WAD', 'MAP01'],
+]
 
 MASTERPACK_WADS = [
     'master.wad',     # empty base
@@ -226,7 +224,7 @@ def get_wad_filename(wad_name: str) -> str | None:
 
 
 #
-# Check Master Levels WAD data
+# Check ML WAD data
 #
 
 def get_ml_wad_pre_hash(wad_name: str) -> str | None:
@@ -290,19 +288,23 @@ def get_found_ml_wads() -> bool:
 #
 
 #
-# Actual lump to wad extraction
+# Check base PWAD data
+#
+
+#
+# Actual lump-to-wad extraction
 #
 
 
 def extract_p1_lumps():
-    log('First part extraction begins.')
+    log('  Base fiels extraction begins.')
     master_build_part1_wad = WAD(DIR_BASE + 'master_p1.wad')
-    log('First extraction done. Moving on..')
+    log('    First extraction done.')
     return master_build_part1_wad
 
 
 def extract_p2_lumps():
-    log('Second part of the extraction begins.')
+    log('  Patch extraction begins.')
 
     master_build_part2_wad = WAD(DIR_BASE + 'master_p2.wad')
     doom_wad = WAD(DIR_SOURCE + 'DOOM.WAD')
@@ -310,46 +312,18 @@ def extract_p2_lumps():
     for doom_patch in DOOM_PATCHES:
         master_build_part2_wad.patches[doom_patch] = doom_wad.patches[doom_patch]
 
-    log('Second part of extraction done. Moving on..')
+    log('    Second part of extraction done.')
     return master_build_part2_wad
 
 
 def extract_p3_lumps():
-    log('At last, starting the final extraction')
+    log('  Extracting maps.')
     master3_wad = WAD(DIR_BASE + 'master_p3.wad')
 
-    master3_wad.maps['MAP08'] = WAD(DIR_SOURCE + 'DOOM.WAD').maps['E4M7']
+    for map in ML_MASTERPACK:
+        master3_wad.maps[map[0]] = WAD(DIR_SOURCE + map[1]).maps[map[2]]
 
-    master3_wad.maps['MAP40'] = WAD(DIR_SOURCE + 'TNT.WAD').maps['MAP01']
-    master3_wad.maps['MAP41'] = WAD(DIR_SOURCE + 'TNT.WAD').maps['MAP17']
-
-    master3_wad.maps['MAP03'] = WAD(DIR_SOURCE + 'VIRGIL.WAD').maps['MAP03']
-    master3_wad.maps['MAP04'] = WAD(DIR_SOURCE + 'MINOS.WAD').maps['MAP05']
-    master3_wad.maps['MAP05'] = WAD(DIR_SOURCE + 'NESSUS.WAD').maps['MAP07']
-    master3_wad.maps['MAP06'] = WAD(DIR_SOURCE + 'GERYON.WAD').maps['MAP08']
-    master3_wad.maps['MAP07'] = WAD(DIR_SOURCE + 'VESPERAS.WAD').maps['MAP09']
-
-    master3_wad.maps['MAP13'] = WAD(DIR_SOURCE + 'MANOR.WAD').maps['MAP01']
-    master3_wad.maps['MAP14'] = WAD(DIR_SOURCE + 'TTRAP.WAD').maps['MAP01']
-
-    master3_wad.maps['MAP19'] = WAD(DIR_SOURCE + 'BLOODSEA.WAD').maps['MAP07']
-    master3_wad.maps['MAP22'] = WAD(DIR_SOURCE + 'BLACKTWR.WAD').maps['MAP25']
-    master3_wad.maps['MAP23'] = WAD(DIR_SOURCE + 'MEPHISTO.WAD').maps['MAP07']
-    master3_wad.maps['MAP25'] = WAD(DIR_SOURCE + 'TEETH.WAD').maps['MAP31']
-    master3_wad.maps['MAP27'] = WAD(DIR_SOURCE + 'TEETH.WAD').maps['MAP32']
-
-    master3_wad.maps['MAP29'] = WAD(DIR_SOURCE + 'SUBSPACE.WAD').maps['MAP01']
-    master3_wad.maps['MAP30'] = WAD(DIR_SOURCE + 'COMBINE.WAD').maps['MAP01']
-    master3_wad.maps['MAP32'] = WAD(DIR_SOURCE + 'FISTULA.WAD').maps['MAP01']
-    master3_wad.maps['MAP33'] = WAD(DIR_SOURCE + 'SUBTERRA.WAD').maps['MAP01']
-    master3_wad.maps['MAP35'] = WAD(DIR_SOURCE + 'CATWALK.WAD').maps['MAP01']
-    master3_wad.maps['MAP37'] = WAD(DIR_SOURCE + 'GARRISON.WAD').maps['MAP01']
-
-    master3_wad.maps['MAP43'] = WAD(DIR_SOURCE + 'PARADOX.WAD').maps['MAP01']
-    master3_wad.maps['MAP44'] = WAD(DIR_SOURCE + 'ATTACK.WAD').maps['MAP01']
-    master3_wad.maps['MAP45'] = WAD(DIR_SOURCE + 'CANYON.WAD').maps['MAP01']
-
-    log('Final extraction complete.')
+    log('    Final extraction complete. Moving on...')
     return master3_wad
 
 
