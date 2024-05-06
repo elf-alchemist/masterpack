@@ -18,11 +18,13 @@ DIR_DEST = 'dest/'
 
 IWADS = [
     'DOOM.WAD',
-    'TNT.WAD'
+    'DOOM2.WAD',
+    'TNT.WAD',
 ]
 
 IWADS_SHA256SUM = {
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
+    'DOOM2.WAD': '10d67824b11025ddd9198e8cfc87ca335ee6e2d3e63af4180fa9b8a471893255',
     'TNT.WAD': 'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353',
 }
 
@@ -69,10 +71,6 @@ ML_WADS = [
 ]
 
 ML_WADS_SHA256SUM = {
-    # Ultimate Doom
-    'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
-    # Final Doom, TNT: Evilution
-    'TNT.WAD': 'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353',
     # Inferno
     'VIRGIL.WAD': 'c468a1684be8e8055fca52c0c0b3068893481dbaeff0d25f2d72a13b340dff09',
     'MINOS.WAD': 'fc3996e52b527dd4d7e76b023eebaa0c18263c94e21115b06ba64c8cda371ec0',
@@ -287,6 +285,40 @@ def get_found_ml_wads() -> bool:
 # Check IWAD data
 #
 
+
+def get_iwad_pre_hash(iwad_name: str) -> str | None:
+    if iwad_name not in IWADS:
+        return None
+
+    return IWADS_SHA256SUM[iwad_name]
+
+
+def get_iwad_hash(iwad_name: str) -> str | None:
+    sha256hash = sha256()
+
+    if iwad_name not in IWADS:
+        return None
+
+    file_handler = open(DIR_SOURCE + iwad_name, 'rb')
+
+    while True:
+        data = file_handler.read(BUFFER_SIZE)
+        if not data:
+            break
+        sha256hash.update(data)
+
+    return sha256hash.hexdigest()
+
+
+def validate_iwad_by_hash(iwad_name: str) -> str | None:
+    if iwad_name not in IWADS:
+        return None
+    if get_iwad_hash(iwad_name) != get_iwad_pre_hash(iwad_name):
+        return None
+    if get_iwad_hash(iwad_name) == get_iwad_pre_hash(iwad_name):
+        return iwad_name
+
+
 #
 # Check base PWAD data
 #
@@ -328,8 +360,7 @@ def extract_p3_lumps():
 
 
 def masterpack_build() -> None:
-    master_wad = WAD()
-    master_wad.from_file(DIR_BASE + 'master.wad')
+    master_wad = WAD(DIR_BASE + 'master.wad')
 
     master_p1_wad = extract_p1_lumps()
     master_wad.data += master_p1_wad.data
