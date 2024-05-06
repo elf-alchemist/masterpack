@@ -281,6 +281,7 @@ def get_found_ml_wads() -> bool:
 
     return True
 
+
 #
 # Check IWAD data
 #
@@ -322,6 +323,40 @@ def validate_iwad_by_hash(iwad_name: str) -> str | None:
 #
 # Check base PWAD data
 #
+
+
+def get_pwad_pre_hash(pwad_name: str) -> str | None:
+    if pwad_name not in MASTERPACK_WADS:
+        return None
+
+    return IWADS_SHA256SUM[pwad_name]
+
+
+def get_pwad_hash(pwad_name: str) -> str | None:
+    sha256hash = sha256()
+
+    if pwad_name not in MASTERPACK_WADS:
+        return None
+
+    file_handler = open(DIR_SOURCE + pwad_name, 'rb')
+
+    while True:
+        data = file_handler.read(BUFFER_SIZE)
+        if not data:
+            break
+        sha256hash.update(data)
+
+    return sha256hash.hexdigest()
+
+
+def validate_pwad_by_hash(pwad_name: str) -> str | None:
+    if pwad_name not in IWADS:
+        return None
+    if get_pwad_hash(pwad_name) != get_pwad_pre_hash(pwad_name):
+        return None
+    if get_pwad_hash(pwad_name) == get_pwad_pre_hash(pwad_name):
+        return pwad_name
+
 
 #
 # Actual lump-to-wad extraction
@@ -388,7 +423,6 @@ def masterpack_build() -> None:
 
 
 def main() -> None:
-    log('Welcome to Master Levels Masterpack build script.')
     log('Checking ML source wads...')
 
     if get_found_ml_wads() == None:
