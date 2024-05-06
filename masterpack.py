@@ -335,6 +335,7 @@ def masterpack_build() -> None:
     master_wad.data += master_p1_wad.data
     master_wad.music += master_p1_wad.music
     master_wad.txdefs += master_p1_wad.txdefs
+    master_wad.graphics += master_p1_wad.graphics
 
     master_p2_wad = extract_p2_lumps()
     master_wad.patches += master_p2_wad.patches
