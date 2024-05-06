@@ -330,22 +330,28 @@ def validate_iwad_by_hash(iwad_name: str) -> str | None:
 
 def extract_p1_lumps():
     log('  Base fiels extraction begins.')
-    master_build_part1_wad = WAD(DIR_BASE + 'master_p1.wad')
+    master1_wad = WAD(DIR_BASE + 'master_p1.wad')
+    doom_wad = WAD(DIR_SOURCE + 'DOOM.WAD')
+    doom2_wad = WAD(DIR_SOURCE + 'DOOM2.WAD')
+
+    master1_wad.graphics['INTERPIC'] = doom_wad.graphics['INTERPIC']
+    master1_wad.graphics['BOSSBACK'] = doom2_wad.graphics['INTERPIC']
+
     log('    First extraction done.')
-    return master_build_part1_wad
+    return master1_wad
 
 
 def extract_p2_lumps():
     log('  Patch extraction begins.')
 
-    master_build_part2_wad = WAD(DIR_BASE + 'master_p2.wad')
+    master2_wad = WAD(DIR_BASE + 'master_p2.wad')
     doom_wad = WAD(DIR_SOURCE + 'DOOM.WAD')
 
     for doom_patch in DOOM_PATCHES:
-        master_build_part2_wad.patches[doom_patch] = doom_wad.patches[doom_patch]
+        master2_wad.patches[doom_patch] = doom_wad.patches[doom_patch]
 
     log('    Second part of extraction done.')
-    return master_build_part2_wad
+    return master2_wad
 
 
 def extract_p3_lumps():
