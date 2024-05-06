@@ -16,33 +16,11 @@ DIR_SOURCE = 'source/'
 DIR_BASE = 'base/'
 DIR_DEST = 'dest/'
 
-IWADS = [
+SOURCE_WADS = [
+    # IWADs
     'DOOM.WAD',
     'DOOM2.WAD',
     'TNT.WAD',
-]
-
-IWADS_SHA256SUM = {
-    'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
-    'DOOM2.WAD': '10d67824b11025ddd9198e8cfc87ca335ee6e2d3e63af4180fa9b8a471893255',
-    'TNT.WAD': 'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353',
-}
-
-DOOM_PATCHES = [
-    'SW2_3',
-    'W15_6',
-    'WALL40_1',
-    'WALL63_2',
-    'WALL76_1',
-    'W109_1',
-    'W109_2',
-    'W110_1',
-    'W113_1',
-    'W113_2',
-    'W113_3',
-]
-
-ML_WADS = [
     # Inferno
     'VIRGIL.WAD',
     'MINOS.WAD',
@@ -70,7 +48,11 @@ ML_WADS = [
     'CANYON.WAD',
 ]
 
-ML_SHA256SUM = {
+SOURCE_SHA256SUM = {
+    # IWADS
+    'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
+    'DOOM2.WAD': '10d67824b11025ddd9198e8cfc87ca335ee6e2d3e63af4180fa9b8a471893255',
+    'TNT.WAD': 'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353',
     # Inferno
     'VIRGIL.WAD': 'c468a1684be8e8055fca52c0c0b3068893481dbaeff0d25f2d72a13b340dff09',
     'MINOS.WAD': 'fc3996e52b527dd4d7e76b023eebaa0c18263c94e21115b06ba64c8cda371ec0',
@@ -97,6 +79,20 @@ ML_SHA256SUM = {
     'ATTACK.WAD': '4b9a404a4ee43ed33f7c2e208269b84b58ccfec5823afa1fe50e3dd08e927622',
     'CANYON.WAD': 'a2dd18d174d25a5d31046114bf73d87e9e13e49e9e6b509b2c9942e77d4c9ecf',
 }
+
+DOOM_PATCHES = [
+    'SW2_3',
+    'W15_6',
+    'WALL40_1',
+    'WALL63_2',
+    'WALL76_1',
+    'W109_1',
+    'W109_2',
+    'W110_1',
+    'W113_1',
+    'W113_2',
+    'W113_3',
+]
 
 ML_MASTERPACK = [
     # Inferno
@@ -129,20 +125,6 @@ ML_MASTERPACK = [
     ['MAP44', 'ATTACK.WAD', 'MAP01'],
     ['MAP45', 'CANYON.WAD', 'MAP01'],
 ]
-
-MASTERPACK_WADS = [
-    'master.wad',     # empty base
-    'master_p1.wad',  # special lumps, graphics and midi
-    'master_p2.wad',  # pacthes
-    'master_p3.wad',  # maps
-]
-
-MASTERPACK_SHA256SUM = {
-    'master.wad': 'eb90ad49c63db42e7bc87eb290d80c24752dc47026f709c5cd0c8acb9de8d0fe',
-    'master_p1.wad': 'cfa9f5877ccdfe6998c8fc6e764325babf4500f8a86fb7b75036b12397edec3e',
-    'master_p2.wad': 'cabfa36f20a6506db9f7bf21854c5317a01698b71a7068819f46735a10202ec2',
-    'master_p3.wad': '863faaef816d46822eefc9993fbadf815ec34847ccf3912380a8d775eb6e7de9',
-}
 
 MASTERPACK_MAPS = [
     # Inferno
@@ -249,40 +231,22 @@ def get_wad_hash(wad_name: str, wad_name_list: list[str]) -> str | None:
     return sha256hash.hexdigest()
 
 
-def validate_iwad(wad_name: str) -> str | None:
-    if wad_name not in IWADS:
+def validate_wads(wad_name: str) -> str | None:
+    if wad_name not in SOURCE_WADS:
         return None
-    if get_wad_hash(wad_name, IWADS) != get_wad_pre_hash(wad_name, IWADS_SHA256SUM):
+    if get_wad_hash(wad_name, SOURCE_WADS) != get_wad_pre_hash(wad_name, SOURCE_SHA256SUM):
         return None
-    if get_wad_hash(wad_name, IWADS) == get_wad_pre_hash(wad_name, IWADS_SHA256SUM):
-        return wad_name
-
-
-def validate_ml_wad(wad_name: str) -> str | None:
-    if wad_name not in ML_WADS:
-        return None
-    if get_wad_hash(wad_name, ML_WADS) != get_wad_pre_hash(wad_name, ML_SHA256SUM):
-        return None
-    if get_wad_hash(wad_name, ML_WADS) == get_wad_pre_hash(wad_name, ML_SHA256SUM):
-        return wad_name
-
-
-def validate_pwad(wad_name: str) -> str | None:
-    if wad_name not in MASTERPACK_WADS:
-        return None
-    if get_wad_hash(wad_name, MASTERPACK_WADS) != get_wad_pre_hash(wad_name, MASTERPACK_SHA256SUM):
-        return None
-    if get_wad_hash(wad_name, MASTERPACK_WADS) == get_wad_pre_hash(wad_name, MASTERPACK_SHA256SUM):
+    if get_wad_hash(wad_name, SOURCE_WADS) == get_wad_pre_hash(wad_name, SOURCE_SHA256SUM):
         return wad_name
 
 
 def check_wads(found_wads: list[str]):
-    for wad in ML_WADS:
+    for wad in SOURCE_WADS:
         if get_wad_filename(wad) == None:
             log(f'  {wad.upper()} is missing.')
             continue
 
-        if validate_ml_wad(wad) == None:
+        if validate_wads(wad) == None:
             log(f'  {wad.upper()} failed SHA256 checksum!')
             continue
 
@@ -296,7 +260,7 @@ def get_found_wads() -> bool:
 
     check_wads(found_wads)
 
-    if sorted(found_wads) != sorted(ML_WADS):
+    if sorted(found_wads) != sorted(SOURCE_WADS):
         return False
 
     return True
@@ -367,9 +331,9 @@ def masterpack_build() -> None:
 
 
 def main() -> None:
-    log('Checking ML source wads...')
+    log('Checking wads...')
 
-    if get_found_wads() == None:
+    if not get_found_wads():
         log('Did not find all Master Levels! Check missing files and failed checksums!')
         log('Build failed. Exiting...')
         exit(1)
