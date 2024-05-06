@@ -70,7 +70,7 @@ ML_WADS = [
     'CANYON.WAD',
 ]
 
-ML_WADS_SHA256SUM = {
+ML_SHA256SUM = {
     # Inferno
     'VIRGIL.WAD': 'c468a1684be8e8055fca52c0c0b3068893481dbaeff0d25f2d72a13b340dff09',
     'MINOS.WAD': 'fc3996e52b527dd4d7e76b023eebaa0c18263c94e21115b06ba64c8cda371ec0',
@@ -222,20 +222,20 @@ def get_wad_filename(wad_name: str) -> str | None:
 
 
 #
-# Check ML WAD data
+# Check WAD data
 #
 
-def get_ml_wad_pre_hash(wad_name: str) -> str | None:
-    if wad_name not in ML_WADS:
+def get_wad_pre_hash(wad_name: str, wad_hash_dict: dict[str, str]) -> str | None:
+    if wad_name not in wad_hash_dict:
         return None
 
-    return ML_WADS_SHA256SUM[wad_name]
+    return wad_hash_dict[wad_name]
 
 
-def get_ml_wad_hash(wad_name: str) -> str | None:
+def get_wad_hash(wad_name: str, wad_name_list: list[str]) -> str | None:
     sha256hash = sha256()
 
-    if wad_name not in ML_WADS:
+    if wad_name not in wad_name_list:
         return None
 
     file_handler = open(DIR_SOURCE + wad_name, 'rb')
@@ -249,113 +249,57 @@ def get_ml_wad_hash(wad_name: str) -> str | None:
     return sha256hash.hexdigest()
 
 
-def validate_ml_wad_by_hash(wad_name: str) -> str | None:
-    if wad_name not in ML_WADS:
+def validate_iwad(wad_name: str) -> str | None:
+    if wad_name not in IWADS:
         return None
-    if get_ml_wad_hash(wad_name) != get_ml_wad_pre_hash(wad_name):
+    if get_wad_hash(wad_name, IWADS) != get_wad_pre_hash(wad_name, IWADS_SHA256SUM):
         return None
-    if get_ml_wad_hash(wad_name) == get_ml_wad_pre_hash(wad_name):
+    if get_wad_hash(wad_name, IWADS) == get_wad_pre_hash(wad_name, IWADS_SHA256SUM):
         return wad_name
 
 
-def get_found_ml_wads() -> bool:
-    found_wads: list[str] = []
-    missing_wads: list[str] = []
+def validate_ml_wad(wad_name: str) -> str | None:
+    if wad_name not in ML_WADS:
+        return None
+    if get_wad_hash(wad_name, ML_WADS) != get_wad_pre_hash(wad_name, ML_SHA256SUM):
+        return None
+    if get_wad_hash(wad_name, ML_WADS) == get_wad_pre_hash(wad_name, ML_SHA256SUM):
+        return wad_name
 
+
+def validate_pwad(wad_name: str) -> str | None:
+    if wad_name not in MASTERPACK_WADS:
+        return None
+    if get_wad_hash(wad_name, MASTERPACK_WADS) != get_wad_pre_hash(wad_name, MASTERPACK_SHA256SUM):
+        return None
+    if get_wad_hash(wad_name, MASTERPACK_WADS) == get_wad_pre_hash(wad_name, MASTERPACK_SHA256SUM):
+        return wad_name
+
+
+def check_wads(found_wads: list[str]):
     for wad in ML_WADS:
-        if get_wad_filename(wad):
-            if validate_ml_wad_by_hash(wad) == None:
-                log(f'  {wad.upper()} failed SHA256 checksum!')
-                missing_wads.append(wad)
-
-            wad_name = wad.upper().split(f".")[0]
-            log(f'  {wad_name} found!')
-            found_wads.append(wad)
-
-        else:
+        if get_wad_filename(wad) == None:
             log(f'  {wad.upper()} is missing.')
-            missing_wads.append(wad)
+            continue
+
+        if validate_ml_wad(wad) == None:
+            log(f'  {wad.upper()} failed SHA256 checksum!')
+            continue
+
+        wad_name = wad.upper().split(f".")[0]
+        log(f'  {wad_name} found!')
+        found_wads.append(wad)
+
+
+def get_found_wads() -> bool:
+    found_wads: list[str] = []
+
+    check_wads(found_wads)
 
     if sorted(found_wads) != sorted(ML_WADS):
         return False
 
     return True
-
-
-#
-# Check IWAD data
-#
-
-
-def get_iwad_pre_hash(iwad_name: str) -> str | None:
-    if iwad_name not in IWADS:
-        return None
-
-    return IWADS_SHA256SUM[iwad_name]
-
-
-def get_iwad_hash(iwad_name: str) -> str | None:
-    sha256hash = sha256()
-
-    if iwad_name not in IWADS:
-        return None
-
-    file_handler = open(DIR_SOURCE + iwad_name, 'rb')
-
-    while True:
-        data = file_handler.read(BUFFER_SIZE)
-        if not data:
-            break
-        sha256hash.update(data)
-
-    return sha256hash.hexdigest()
-
-
-def validate_iwad_by_hash(iwad_name: str) -> str | None:
-    if iwad_name not in IWADS:
-        return None
-    if get_iwad_hash(iwad_name) != get_iwad_pre_hash(iwad_name):
-        return None
-    if get_iwad_hash(iwad_name) == get_iwad_pre_hash(iwad_name):
-        return iwad_name
-
-
-#
-# Check base PWAD data
-#
-
-
-def get_pwad_pre_hash(pwad_name: str) -> str | None:
-    if pwad_name not in MASTERPACK_WADS:
-        return None
-
-    return IWADS_SHA256SUM[pwad_name]
-
-
-def get_pwad_hash(pwad_name: str) -> str | None:
-    sha256hash = sha256()
-
-    if pwad_name not in MASTERPACK_WADS:
-        return None
-
-    file_handler = open(DIR_SOURCE + pwad_name, 'rb')
-
-    while True:
-        data = file_handler.read(BUFFER_SIZE)
-        if not data:
-            break
-        sha256hash.update(data)
-
-    return sha256hash.hexdigest()
-
-
-def validate_pwad_by_hash(pwad_name: str) -> str | None:
-    if pwad_name not in IWADS:
-        return None
-    if get_pwad_hash(pwad_name) != get_pwad_pre_hash(pwad_name):
-        return None
-    if get_pwad_hash(pwad_name) == get_pwad_pre_hash(pwad_name):
-        return pwad_name
 
 
 #
@@ -425,7 +369,7 @@ def masterpack_build() -> None:
 def main() -> None:
     log('Checking ML source wads...')
 
-    if get_found_ml_wads() == None:
+    if get_found_wads() == None:
         log('Did not find all Master Levels! Check missing files and failed checksums!')
         log('Build failed. Exiting...')
         exit(1)
