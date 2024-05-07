@@ -1,0 +1,58 @@
+Inferno by John Anderson (Rest in Peace):
+	MAP01 - Canto 1 - Dante's Gate     - Standalone    - DANTE25.WAD   - MAP02 - En el Salón            - D_STALKS - master.pk3
+	MAP02 - Canto 2 - Crossing Acheron - Standalone    - ACHERON22.WAD - MAP03 - Lair of the Bitchmaker - D_ROMERO - master.pk3
+	MAP03 - Canto 3 - Virgil's Lead    - Master Levels - VIRGIL.WAD    - MAP03 - Shot Down              - D_COUNTD - master.pk3
+	MAP04 - Canto 4 - Minos' Judgement - Master Levels - MINOS.WAD     - MAP05 - Coliformication        - D_DOOM   - master.pk3
+	MAP05 - Canto 5 - Nessus           - Master Levels - NESSUS.WAD    - MAP07 - This Is My Boomstick   - D_SHAWN  - master.pk3
+	MAP06 - Canto 6 - Geryon           - Master Levels - GERYON.WAD    - MAP08 - Nuisances Unknown      - D_DDTBLU - master.pk3
+	MAP07 - Canto 7 - Vesperas         - Master Levels - VESPERAS.WAD  - MAP09 - Into Retrowave's City  - D_IN_CIT - master.pk3
+	MAP08 - Canto 8 - Chiron           - Ultimate Doom - DOOM.WAD      - E4M7  - Path of the Pale Horse - D_E4M7   - masterpack.wad, masters.pk3 E2M6
+	MAP09 - Canto 9 - Waters of Lethe  - UDTWiD        - UDTWiD.WAD    - E4M8  - The Eternal Emptiness  - D_E4M8   - masterpack.wad, masters.pk3 E2M5
+
+Titan by Jim Flynn (Rest in Peace):
+	MAP10 - Titan 1 - Mines of Titan   - Standalone    - MINES.WAD   - MAP01 - Aranea Imperatrix             - D_THE_DA - masters.pk3
+	MAP11 - Titan 2 - Titan Anomaly    - Standalone    - ANOMALY.WAD - MAP01 - Coliformication               - D_DOOM   - masters.pk3
+	MAP12 - Titan 3 - Farside of Titan - Standalone    - FARSIDE.WAD - MAP01 - Lair of the Bitchmaker        - D_ROMERO - masters.pk3
+	MAP13 - Titan 4 - Titan Manor      - Master Levels - MANOR.WAD   - MAP01 - This Is My Boomstick          - D_SHAWN  - masters.pk3
+	MAP14 - Titan 5 - Trapped on Titan - Master Levels - TTRAP.WAD   - MAP01 - Concocting Erinon's Milkshake - D_STLKS2 - masters.pk3
+	MAP15 - Titan 6 - Trouble on Titan - Standalone    - TROUBLE.WAD - MAP01 - Nukaland                      - D_AMPIE  - masters.pk3
+
+Cabal by Sverre Kvernmo:
+	MAP17 - Cabal 1  - Bloodflood                   - Standalone    - CABALL.WAD   - MAP24 - Shot Down                - D_COUNTD - masters.pk3
+	MAP18 - Cabal 2  - Derelict Station             - Standalone    - CABALL.WAD   - MAP25 - En el Salón              - D_STALKS - masters.pk3
+	MAP19 - Cabal 3  - The Watchtower               - Standalone    - CABALL.WAD   - MAP26 - Julian's Fragging Again  - D_BETWEE - masters.pk3
+	MAP19 - Cabal 4  - The Bloodsea Keep            - Master Levels - BLOODSEA.WAD - MAP07 - This Is My Boomstick     - D_SHAWN  - masters.pk3
+	MAP20 - Cabal 5  - Temple of Death              - Standalone    - CABALL.WAD   - MAP27 - Coliformication          - D_DOOM   - masters.pk3
+	MAP21 - Cabal 6  - We Who are About to Die      - Standalone    - CABALL.WAD   - MAP28 - SOON                     - D_DOOM2  - masterpack.wad, masters.pk3 D_DOOM
+	MAP22 - Cabal 7  - Blacktower                   - Master Levels - BLACKTWR.WAD - MAP25 - They're Here             - D_ADRIAN - masters.pk3
+	MAP23 - Cabal 8  - Mephisto's Mausoleum         - Master Levels - MEPHISTO.WAD - MAP07 - Behold! A God Who Bleeds - D_SHAWN2 - masterpack.wad, masters.pk3 D_SHAWN
+	MAP24 - Cabal 9  - The Image of Evil            - Standalone    - CABALL.WAD   - MAP30 - Echoes                   - D_OPENIN - masters.pk3
+	MAP25 - Cabal 10 - The Express Elevator to Hell - Master Levels - TEETH.WAD    - MAP31 - Garazin                  - D_EVIL   - masters.pk3
+	MAP26 - Cabal 11 - Eye of the Storm             - Standalone    - CABALL.WAD   - MAP29 - Into Retrowave's City    - D_IN_CIT - masters.pk3
+	MAP27 - Cabal 12 - Bad Dream                    - Master Levels - TEETH.WAD    - MAP32 - Suplex the Stars         - D_ULTIMA - masters.pk3
+
+Klietech by Christen Klie:
+	MAP28 - Klie 1  - The CPU          - Standalone    - CPU.WAD      - MAP01 - Toxic Sludge                  - D_E1M3   - masters.pk3
+	MAP29 - Klie 2  - Subspace         - Master Levels - SUBSPACE.WAD - MAP01 - Into Retrowave's City         - D_IN_CIT - masters.pk3
+	MAP30 - Klie 3  - The Combine      - Master Levels - COMBINE.WAD  - MAP01 - Julian's Fragging Again       - D_BETWEE - masters.pk3
+	MAP31 - Klie 4  - Device One       - Standalone    - DEVICE_1.WAD - MAP01 - Halls of Wandering Spirits    - D_E2M2   - masters.pk3
+	MAP32 - Klie 5  - The Fistula      - Master Levels - FISTULA.WAD  - MAP01 - Coliformication               - D_DOOM   - masters.pk3
+	MAP33 - Klie 6  - Subterra         - Master Levels - SUBTERRA.WAD - MAP01 - Whipped & Chained             - D_DEAD   - masters.pk3
+	MAP34 - Klie 7  - The DMZ          - Standalone    - DMZ.WAD      - MAP01 - On a Sea of Lava              - D_E3M6   - masters.pk3
+	MAP35 - Klie 8  - The Catwalk      - Master Levels - CATWALK.WAD  - MAP01 - Shot Down                     - D_COUNTD - masters.pk3
+	MAP36 - Klie 9  - The Fury         - Standalone    - CDK_FURY.WAD - MAP01 - Wondering...                  - D_SHAWN3 - masters.pk3
+	MAP37 - Klie 10 - The Garrison     - Master Levels - GARRISON.WAD - MAP01 - Aranea Imperatrix             - D_THE_DA - masters.pk3
+	MAP38 - Klie 11 - The Enemy Inside - Standalone    - E_INSIDE.WAD - MAP01 - They Are Going to Suspend You - D_E1M5   - masters.pk3
+	MAP39 - Klie 12 - The Hive         - Standalone    - HIVE.WAD     - MAP01 - Eclectic Death                - D_E3M3   - masters.pk3
+
+Lost Levels
+	by Tom Mustaine:
+	MAP40 - Lost Level 1 - System Control    - Final Doom    - TNT.WAD     - MAP01 - Good Luck      - D_E2M3   - masterpack.wad
+	MAP41 - Lost Level 2 - Processing Area   - Final Doom    - TNT.WAD     - MAP17 - Evil on Parade - D_THEDA2 - masterpack.wad
+	MAP42 - Lost Level 3 - The Master's Dens - Standalone    - TWM01.WAD   - MAP03 - Shot Down      - D_COUNTD - masters.pk3
+	MAP43 - Lost Level 4 - Paradox           - Master Levels - PARADOX.WAD - MAP01 - Five Iron      - D_DDTBL2 - masterpack.wad, masters.pk3 D_DDTBLU
+
+	by Theresa Chasar, Tim Willits:
+	MAP44 - Lost Level 5 - Attack       - Master Levels    - ATTACK.WAD  - MAP01 - Score One for the Bolthouse   - D_RUNNI2 - masterpack.wad, masters.pk3 D_RUNNIN
+	MAP45 - Lost Level 6 - Canyon       - Master Levels    - CANYON.WAD  - MAP01 - Concocting Erinon's Milkshake - D_STLKS2 - masterpack.wad, masters.pk3 D_STALKS
+	MAP46 - Lost Level 7 - Boot Assault - Kick Soda collab - KICKDM2.WAD - MAP01 - Nukaland                      - D_AMPIE  - masterlevels_fix_midtwid.wad
