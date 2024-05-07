@@ -13,8 +13,6 @@ LOG_FILE = 'masterpack.log'
 BUFFER_SIZE = 16384
 
 DIR_SOURCE = 'source/'
-DIR_BASE = 'base/'
-DIR_DEST = 'dest/'
 
 SOURCE_WADS = [
     # IWADs
@@ -294,8 +292,7 @@ def masterpack_build() -> None:
         base_wad.maps[map] = base_wad.maps[map]
 
     log('  Creating master.wad...')
-    base_wad.to_file('master.wad')
-    return None
+    base_wad.to_file('masterpack.wad')
 
 
 def main() -> None:
