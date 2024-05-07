@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from os import listdir, mkdir, path
+from os import listdir
 from hashlib import sha256
 
 from omg.wad import WAD
@@ -94,6 +94,7 @@ DOOM_PATCHES = [
     'W113_3',
 ]
 
+# map X, from wad Y, at slot Z
 ML_MASTERPACK = [
     # Inferno
     ['MAP03', 'VIRGIL.WAD', 'MAP03'],
@@ -270,63 +271,30 @@ def get_found_wads() -> bool:
 # Actual lump-to-wad extraction
 #
 
+def masterpack_build() -> None:
+    base_wad = WAD('base.wad')
 
-def extract_p1_lumps():
-    log('  Base fiels extraction begins.')
-    master1_wad = WAD(DIR_BASE + 'master_p1.wad')
     doom_wad = WAD(DIR_SOURCE + 'DOOM.WAD')
     doom2_wad = WAD(DIR_SOURCE + 'DOOM2.WAD')
 
-    master1_wad.graphics['INTERPIC'] = doom_wad.graphics['INTERPIC']
-    master1_wad.graphics['BOSSBACK'] = doom2_wad.graphics['INTERPIC']
+    log('  Extracting graphics...')
+    base_wad.graphics['INTERPIC'] = doom_wad.graphics['INTERPIC']
+    base_wad.graphics['BOSSBACK'] = doom2_wad.graphics['INTERPIC']
 
-    log('    First extraction done.')
-    return master1_wad
-
-
-def extract_p2_lumps():
-    log('  Patch extraction begins.')
-
-    master2_wad = WAD(DIR_BASE + 'master_p2.wad')
-    doom_wad = WAD(DIR_SOURCE + 'DOOM.WAD')
-
+    log('  Extracting Ultimate Doom patches...')
     for doom_patch in DOOM_PATCHES:
-        master2_wad.patches[doom_patch] = doom_wad.patches[doom_patch]
+        base_wad.patches[doom_patch] = doom_wad.patches[doom_patch]
 
-    log('    Second part of extraction done.')
-    return master2_wad
+    log('  Extracting maps...')
+    for triple in ML_MASTERPACK:
+        base_wad.maps[triple[0]] = WAD(DIR_SOURCE + triple[1]).maps[triple[2]]
 
-
-def extract_p3_lumps():
-    log('  Extracting maps.')
-    master3_wad = WAD(DIR_BASE + 'master_p3.wad')
-
-    for map in ML_MASTERPACK:
-        master3_wad.maps[map[0]] = WAD(DIR_SOURCE + map[1]).maps[map[2]]
-
-    log('    Final extraction complete. Moving on...')
-    return master3_wad
-
-
-def masterpack_build() -> None:
-    master_wad = WAD(DIR_BASE + 'master.wad')
-
-    master_p1_wad = extract_p1_lumps()
-    master_wad.data += master_p1_wad.data
-    master_wad.music += master_p1_wad.music
-    master_wad.txdefs += master_p1_wad.txdefs
-    master_wad.graphics += master_p1_wad.graphics
-
-    master_p2_wad = extract_p2_lumps()
-    master_wad.patches += master_p2_wad.patches
-
-    master_p3_wad = extract_p3_lumps()
+    log('  Organizing files...')
     for map in MASTERPACK_MAPS:
-        master_wad.maps[map] = master_p3_wad.maps[map]
+        base_wad.maps[map] = base_wad.maps[map]
 
-    if not path.exists(DIR_DEST):
-        mkdir(DIR_DEST)
-    master_wad.to_file(DIR_DEST + 'master.wad')
+    log('  Creating master.wad...')
+    base_wad.to_file('master.wad')
     return None
 
 
