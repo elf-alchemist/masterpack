@@ -57,6 +57,30 @@ In order to use this script correctly you will the following, from your Steam in
 		- `ATTACK.WAD`
 		- `CANYON.WAD`
 
+Once you have all the WAD files, drop them in the `source/` directory and run the script as the following:
+
+```bash
+$ python3 masterpack.py
+```
+
+It will generate a `masterpack.log` file containing the output of the script, if it was successful or not.
+
+And, if nothing went wrong, you will now be the proud onwer of your own copy of `masterpack.wad`.
+
+To play this, run it with a modern Doom source port, with xMAPINFO support, such as DSDA-Doom, Woof!, Eternity or the ZDoom family.
+
+```bash
+# With DSDA
+$ dsda-doom -file masterpack.wad -complevel 1.9
+
+# Or Woof!
+$ woof -file masterpack.wad -complevel vanilla
+
+# Or even ZDoom-family ports
+$ zdoom -file masterpack.wad
+$ gzdoom -file masterpack.wad
+```
+
 # Legalese
 
 Project: `Master Level Masterpack`  
