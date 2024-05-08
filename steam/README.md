@@ -1,16 +1,16 @@
 # How to get Doom WAD files from Steam, for dummies
 
-Before procceding, you should have already purchased both `Ultimate Doom` and `Doom II: Hell on Earth`, and installed both games on your machine, via the Steam client.
+Before proceeding, you should have already purchased both `Ultimate Doom` and `Doom II: Hell on Earth`, and installed both games on your machine, via the Steam client.
 
 <hr/>
 
-First: Click on the litle gear icon on the side of the page, then click on "Properties".
+First: Click on the little gear icon on the side of the page, then click on "Properties".
 
 ![Properties](./steam1.png)
 
 <hr/>
 
-Second: Now, a new window will pop-up, going to "Intalled Files" and cliking on "Browse..." will open your file explorer.
+Second: Now, a new window will pop up, going to "Installed Files" and clicking on "Browse..." will open your file explorer.
 
 ![Installed files](./steam2.png)
 
@@ -28,7 +28,7 @@ Fourth: You should, now, see `DOOM.WAD` this is the file you are looking for, co
 
 <hr/>
 
-Fifth: Now, close your explorer, returning to your Steam library, go to Doom II and repeat steps 1 and 2, you should now see the installation of Doom II, in here we have more directories to worry about, to begin, we'll concern with "base/", for now.
+Fifth: Now, close your explorer, return to your Steam library, go to Doom II and repeat steps 1 and 2, you should now see the installation of Doom II, in here we have more directories to worry about, to begin, we'll concern with "base/", for now.
 
 ![Onto Doom II](./steam5.png)
 
@@ -52,7 +52,7 @@ Eighth: Returning to the root Doom II directory, enter the, unfortunately named,
 
 <hr/>
 
-Nineth: Now go in the last directory, "wads/"
+Ninth: Now go to the last directory, "wads/"
 
 ![WADs directory](./steam9.png)
 
@@ -64,4 +64,4 @@ Tenth: Here you are, at the end, wasn't it fun to learn? Now you know your way a
 
 <hr/>
 
-And now, at last, you are done, you now have all needed WAD files for building `masterpack.wad`.
+And now, at last, you are done, you now have all the needed WAD files for building `masterpack.wad`.
