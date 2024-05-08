@@ -1,6 +1,6 @@
 # Masterpack build script utility
 
-![Master Levels Header](./.github/master-levels-header.jpg "Master Levels")
+![Master Levels](./.github/master-levels-header.jpg "Master Levels")
 
 The "Master Levels for Doom II" were by far the poorest official release by id Software in it's classic days.
 
@@ -15,7 +15,7 @@ With all this in mind, why should anyone play the official in their original amo
 This script fixes that, all content by the authors past, present and future to the Master Levels is now brought together in a single WAD file for your enjoyment. All 45 relevant (plus 1 bonus) map are now fully playable as 5 separate, organized episodes.
 
 Episodes include:
-```
+```txt
 Inferno     -  9 maps, by John "Dr. Sleep" Anderson, Rest In Peace
 Titan       -  6 maps, by James "Jim" Flynn, Rest In Peace
 Cabal       - 12 maps, by Sverre "Soundblock" Kvernmo
@@ -23,9 +23,9 @@ Klietech    - 12 maps, by Christen Klie
 Lost Levels -  7 maps, by Tom "Paradox" Mustaine, Theresa Chasar, and Tim Willits
 ```
 
-# Intructions
+# Instructions
 
-In order to use this script correctly you will the following, from your Steam installation of Ultimate Doom and Doom II (keeping in mind, these are the original DOS release version of the IWADs and PWADs, and NOT the Unity port re-release of the same, which have been modfied slightly and will fail the SHA256 checksum):
+In order to use this script correctly you will the following, from your Steam installation of Ultimate Doom and Doom II (keeping in mind, these are the original DOS version of the IWADs and PWADs, the Unity ones will not work):
 
 - Ultimate Doom, `DOOM.WAD`
 - Doom II: Hell on Earth, `DOOM2.WAD`
@@ -65,7 +65,7 @@ $ python3 masterpack.py
 
 It will generate a `masterpack.log` file containing the output of the script, if it was successful or not.
 
-And, if nothing went wrong, you will now be the proud onwer of your own copy of `masterpack.wad`.
+And, if nothing went wrong, you will now be the proud owner of your own copy of `masterpack.wad`.
 
 To play this, run it with a modern Doom source port, with xMAPINFO support, such as DSDA-Doom, Woof!, Eternity or the ZDoom family.
 
