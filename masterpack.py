@@ -14,6 +14,8 @@ BUFFER_SIZE = 16384
 
 DIR_SOURCE = 'source/'
 
+MASTERPACK = 'masterpack.wad'
+
 SOURCE_WADS = [
     # IWADs
     'DOOM.WAD',
@@ -47,6 +49,8 @@ SOURCE_WADS = [
 ]
 
 SOURCE_SHA256SUM = {
+    # Masterpack
+    'masterpack.wad': '4615c3db5e9a673b161bca77fdfc0aa7d26479d7a731ba641619bf640bc8ba1e',
     # IWADS
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
     'DOOM2.WAD': '10d67824b11025ddd9198e8cfc87ca335ee6e2d3e63af4180fa9b8a471893255',
@@ -93,7 +97,7 @@ DOOM_PATCHES = [
 ]
 
 # map X, from wad Y, at slot Z
-ML_MASTERPACK = [
+MAP_TRIPLETS = [
     # Inferno
     ['MAP03', 'VIRGIL.WAD', 'MAP03'],
     ['MAP04', 'MINOS.WAD', 'MAP05'],
@@ -213,13 +217,10 @@ def get_wad_pre_hash(wad_name: str) -> str | None:
     return SOURCE_SHA256SUM[wad_name]
 
 
-def get_wad_hash(wad_name: str) -> str | None:
+def get_wad_hash(wad_path: str) -> str | None:
     sha256hash = sha256()
 
-    if wad_name not in SOURCE_WADS:
-        return None
-
-    file_handler = open(DIR_SOURCE + wad_name, 'rb')
+    file_handler = open(wad_path, 'rb')
 
     while True:
         data = file_handler.read(BUFFER_SIZE)
@@ -235,11 +236,9 @@ def check_wads(found_wads: list[str]):
         if get_wad_filename(wad) == None:
             log(f'  {wad.upper()} is missing.')
 
-        if get_wad_hash(wad_name) != get_wad_pre_hash(wad_name):
+        if get_wad_hash(DIR_SOURCE + wad) != get_wad_pre_hash(wad):
             log(f'  {wad.upper()} checksum does not match. Continuing with caution.')
 
-        wad_name = wad.upper().split(f".")[0]
-        log(f'  {wad_name} found!')
         found_wads.append(wad)
 
 
@@ -248,6 +247,7 @@ def check_wads(found_wads: list[str]):
 #
 
 def masterpack_build() -> None:
+    master = WAD(MASTERPACK)
     base = WAD('base.wad')
 
     doom = WAD(DIR_SOURCE + 'DOOM.WAD')
@@ -257,24 +257,32 @@ def masterpack_build() -> None:
     base.graphics['INTERPIC'] = doom.graphics['INTERPIC']
     base.graphics['BOSSBACK'] = doom2.graphics['INTERPIC']
 
-    log('  Extracting Ultimate Doom patches...')
+    log('  Extracting patches...')
     for doom_patch in DOOM_PATCHES:
         base.patches[doom_patch] = doom.patches[doom_patch]
 
     log('  Extracting maps...')
-    for triple in ML_MASTERPACK:
+    for triple in MAP_TRIPLETS:
         base.maps[triple[0]] = WAD(DIR_SOURCE + triple[1]).maps[triple[2]]
 
-    log('  Organizing files...')
+    log('  Organizing lumps...')
+    master.data += base.data
+    master.music += base.music
+    master.txdefs += base.txdefs
+    master.patches += base.patches
+    master.graphics += base.graphics
     for map in MASTERPACK_MAPS:
-        base.maps[map] = base.maps[map]
+        master.maps[map] = base.maps[map]
 
-    log('  Creating master.wad...')
-    base.to_file('masterpack.wad')
+    log('  Creating masterpack.wad...')
+    master.to_file(MASTERPACK)
+
+    if get_wad_hash(MASTERPACK) != get_wad_pre_hash(MASTERPACK):
+        log('  WARNING: masterpack.wad failed the checksum, you can probably keep playing, but there are 0 guarantees.')
 
 
 def main() -> None:
-    log('Checking wads...')
+    log('Checking wads.')
     found_wads: list[str] = []
     check_wads(found_wads)
 
@@ -282,13 +290,12 @@ def main() -> None:
         log('Did not find all Master Levels. Check masterpack.log for more details.')
         log('Build failed. Exiting...')
         exit(1)
-    log('Found all Master Levels WADs!')
+    log(' Found all Master Levels WADs!')
 
-    log('Starting to build WAD!')
+    log('Starting to build WAD.')
     masterpack_build()
-    log('Finished build.')
 
-    log('Done. Exiting...')
+    log('Done.')
     exit(0)
 
 
