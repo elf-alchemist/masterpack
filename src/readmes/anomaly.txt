@@ -1,0 +1,101 @@
+================================================================
+Title                   : The Titan Anomaly
+Filename                : ANOMALY.WAD from ANOMALY.ZIP
+Author                  : Jim Flynn
+Email Address           : CIS: 72713,3334
+Misc. Author Info       : Programmer and Doomer
+================================================================
+Description             : While exploring for new mines on Titan
+			  (someone fragged the old one - darn!)
+			  UAC discovered the remains of an alien
+			  base. A tight security lid was clamped
+			  on the find, referred to only vaguely
+			  as the Anomaly in reports. You've been
+			  assigned the job of breaking in and
+			  finding out whats going on.
+			  
+			  A UAC research base and security garrison
+			  has grown up around the Anomaly, and you'll
+			  begin your visit in the Security Holding
+			  Area, where you'll be asked to show your
+			  papers. Too bad you don't have any. You'll
+			  need to explore the Vistor's Center (S), the
+			  Science Admin. Building (N), the Security
+			  Headquarters (E), and the Guard Barracks to
+			  gain the keys that'll allow you access to
+			  the Anomaly Research Area (W), where, if you're
+			  lucky, you may just find an exit back home.
+
+================================================================
+
+Play notes:               486/66 recommended
+
+================================================================
+
+Additional Credits to   : Brendon Wyber and Raphael Quinet for DEU-GCC
+                        : Antony Burden and Simon Oke for DETH 1.1c-2.6
+			: Colin Reed for BSP1.2x
+			: Olivier Montanuy for DeuTex 3.1-3.4
+			: HevKev (Kevin McGrail) for the DeuTex Manual
+			: Jens Hykkelbjerg for RMB 2.1
+			: NASA and all those who supported the HST
+			: Those folks at ID, for DOOM and DOOM II.
+
+                        : Playtesters: Peter Zahner, John Keary, 
+			               Matt Jonelis, Scott Harper
+				       Dr Sleep, Stan Gula
+================================================================
+
+* Play Information *
+
+Level #                 : MAP01
+Single Player           : Yes
+Cooperative 2-4 Player  : Yes (untested)
+Deathmatch 2-4 Player   : Yes (untested)
+Difficulty Settings     : Yes
+New Sounds              : No
+New Graphics            : Yes (thanks stsci.edu)
+New Music               : No
+Demos Replaced          : None
+
+================================================================
+
+* Construction *
+
+Base                    : New level from scratch
+Tools(s) used           : For level editing: DEU 5.2(GCC), DETH 1.1c-2.6
+			  For node building: BSP 1.2x
+			  For reject map building: RMB 2.1
+			  For wad composition: DeuTex 3.1-3.4
+
+================================================================
+
+* Known Bugs *
+
+	The first release had a logic error that allowed the player
+to become trapped if they obtained the red and blue keys prior to the
+yellow key. This was fixed by this version.
+
+================================================================
+
+* Copyright / Permissions *
+
+The file ANOMALY.ZIP may be distributed at will for personal use
+as long as it is unmodified. Wad authors may use the level and
+its textures if the resulting wad is distributed as freeware,
+and credit to the author and a pointer to this file are provided.
+
+This file may NOT be included in a CD-ROM collection without
+prior permission from the author.
+
+================================================================
+
+* Other Doom II wads by Jim Flynn *
+
+Available on Compuserve, Action Games Forum, Doom II Levels Library
+
+DM2ITZ.ZIP	The Interdiction Zone
+DM2ORA.ZIP	The Oracle (with Scott Harper)
+ENIGMA.ZIP	The Enigma Episode (9 levels)
+MINES.ZIP	The Mines of Titan
+FARSIDE.ZIP	The Farside of Titan
