@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: Copyright 2024 Guilherme M. Miranda <alchemist.software@proton.me>
+#
+# Description:
+#     Masterpack for Doom II, a utility for creating the ultimate way to enjoy the Master Levels for Doom II
 
 from os import listdir
 from hashlib import sha256
