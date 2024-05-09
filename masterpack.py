@@ -10,7 +10,7 @@ from hashlib import sha256
 
 from omg.wad import WAD
 
-VERSION = '0.3-proto'
+VERSION = '0.2-hotfix1'
 
 logfile = None
 LOG_FILE = 'masterpack.log'
@@ -252,7 +252,7 @@ def check_wads(found_wads: list[str]):
 #
 
 def masterpack_build() -> None:
-    master = WAD(MASTERPACK)
+    master = WAD()
     base = WAD('base.wad')
 
     doom = WAD(DIR_SOURCE + 'DOOM.WAD')
