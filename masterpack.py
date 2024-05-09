@@ -10,7 +10,7 @@ from hashlib import sha256
 
 from omg.wad import WAD
 
-VERSION = '0.2-hotfix1'
+VERSION = '0.2-hotfix2'
 
 logfile = None
 LOG_FILE = 'masterpack.log'
@@ -19,6 +19,7 @@ BUFFER_SIZE = 16384
 
 DIR_SOURCE = 'source/'
 
+BASE = 'base.wad'
 MASTERPACK = 'masterpack.wad'
 
 SOURCE_WADS = [
@@ -55,7 +56,8 @@ SOURCE_WADS = [
 
 SOURCE_SHA256SUM = {
     # Masterpack
-    'masterpack.wad': '4615c3db5e9a673b161bca77fdfc0aa7d26479d7a731ba641619bf640bc8ba1e',
+    'base.wad': '39794d12d2e0ddc88bc22bc2e8f6d8dfebb1196e32c81eceb0818ef2fdf901ba',
+    'masterpack.wad': 'e5a2a560ead68f4f1365f49fb26184e907dd3f4cd61d5ee389fb4736b4cc1ff2',
     # IWADS
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
     'DOOM2.WAD': '10d67824b11025ddd9198e8cfc87ca335ee6e2d3e63af4180fa9b8a471893255',
@@ -253,10 +255,13 @@ def check_wads(found_wads: list[str]):
 
 def masterpack_build() -> None:
     master = WAD()
-    base = WAD('base.wad')
+    base = WAD(BASE)
 
     doom = WAD(DIR_SOURCE + 'DOOM.WAD')
     doom2 = WAD(DIR_SOURCE + 'DOOM2.WAD')
+
+    if get_wad_hash(BASE) != get_wad_pre_hash(BASE):
+        log('  WARNING: base.wad failed the checksum, you can probably keep playing, but there are 0 guarantees.')
 
     log('  Extracting graphics...')
     base.graphics['INTERPIC'] = doom.graphics['INTERPIC']

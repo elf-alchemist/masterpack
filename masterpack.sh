@@ -11,7 +11,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-FILE=".github/masterpack.zip"
+FILE="masterpack.zip"
 
 if [[ -e "${FILE}" ]]; then rm "${FILE}"; fi
 
