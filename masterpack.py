@@ -5,7 +5,7 @@ from hashlib import sha256
 
 from omg.wad import WAD
 
-VERSION = '0.2'
+VERSION = '0.3-proto'
 
 logfile = None
 LOG_FILE = 'masterpack.log'
