@@ -17,7 +17,7 @@ LOG_FILE = 'masterpack.log'
 
 BUFFER_SIZE = 16384
 
-DIR_SOURCE = 'source/'
+DIR_SOURCE = 'masterpack/'
 
 BASE = 'base.wad'
 MASTERPACK = 'masterpack.wad'
@@ -212,10 +212,10 @@ def get_wad_filename(wad_name: str) -> str | None:
 
     return None
 
-
 #
 # Check WAD data
 #
+
 
 def get_wad_pre_hash(wad_name: str) -> str | None:
     if wad_name not in SOURCE_SHA256SUM:
