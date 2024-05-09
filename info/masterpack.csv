@@ -1,11 +1,11 @@
 Map Slot ,Map Label    ,Map Name                     ,Original Release ,Original WAD  ,Original Slot ,MIDI Name                     ,MIDI Lump ,Lump Selection               ,Original Lump
-MAP01    ,Canto 1      ,Dante's Gate                 ,Standalone       ,DANTE25.WAD   ,MAP02         ,En el Salón                   ,D_STALKS  ,master.pk3                   ,
-MAP02    ,Canto 2      ,Crossing Acheron             ,Standalone       ,ACHERON22.WAD ,MAP03         ,Lair of the Bitchmaker        ,D_ROMERO  ,master.pk3                   ,
-MAP03    ,Canto 3      ,Virgil's Lead                ,Master Levels    ,VIRGIL.WAD    ,MAP03         ,Shot Down                     ,D_COUNTD  ,master.pk3                   ,
-MAP04    ,Canto 4      ,Minos' Judgement             ,Master Levels    ,MINOS.WAD     ,MAP05         ,Coliformication               ,D_DOOM    ,master.pk3                   ,
-MAP05    ,Canto 5      ,Nessus                       ,Master Levels    ,NESSUS.WAD    ,MAP07         ,This Is My Boomstick          ,D_SHAWN   ,master.pk3                   ,
-MAP06    ,Canto 6      ,Geryon                       ,Master Levels    ,GERYON.WAD    ,MAP08         ,Nuisances Unknown             ,D_DDTBLU  ,master.pk3                   ,
-MAP07    ,Canto 7      ,Vesperas                     ,Master Levels    ,VESPERAS.WAD  ,MAP09         ,Into Retrowave's City         ,D_IN_CIT  ,master.pk3                   ,
+MAP01    ,Canto 1      ,Dante's Gate                 ,Standalone       ,DANTE25.WAD   ,MAP02         ,En el Salón                   ,D_STALKS  ,masters.pk3                  ,
+MAP02    ,Canto 2      ,Crossing Acheron             ,Standalone       ,ACHERON22.WAD ,MAP03         ,Lair of the Bitchmaker        ,D_ROMERO  ,masters.pk3                  ,
+MAP03    ,Canto 3      ,Virgil's Lead                ,Master Levels    ,VIRGIL.WAD    ,MAP03         ,Shot Down                     ,D_COUNTD  ,masters.pk3                  ,
+MAP04    ,Canto 4      ,Minos' Judgement             ,Master Levels    ,MINOS.WAD     ,MAP05         ,Coliformication               ,D_DOOM    ,masters.pk3                  ,
+MAP05    ,Canto 5      ,Nessus                       ,Master Levels    ,NESSUS.WAD    ,MAP07         ,This Is My Boomstick          ,D_SHAWN   ,masters.pk3                  ,
+MAP06    ,Canto 6      ,Geryon                       ,Master Levels    ,GERYON.WAD    ,MAP08         ,Nuisances Unknown             ,D_DDTBLU  ,masters.pk3                  ,
+MAP07    ,Canto 7      ,Vesperas                     ,Master Levels    ,VESPERAS.WAD  ,MAP09         ,Into Retrowave's City         ,D_IN_CIT  ,masters.pk3                  ,
 MAP08    ,Canto 8      ,Chiron                       ,Ultimate Doom    ,DOOM.WAD      ,E4M7          ,Path of the Pale Horse        ,D_E4M7    ,masterpack.wad               ,masters.pk3 E2M6
 MAP09    ,Canto 9      ,Waters of Lethe              ,UDTWiD           ,UDTWiD.WAD    ,E4M8          ,The Eternal Emptiness         ,D_E4M8    ,masterpack.wad               ,masters.pk3 E2M5
 MAP10    ,Titan 1      ,Mines of Titan               ,Standalone       ,MINES.WAD     ,MAP01         ,Aranea Imperatrix             ,D_THE_DA  ,masters.pk3                  ,
