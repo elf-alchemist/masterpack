@@ -1,6 +1,6 @@
 # Masterpack for Doom II
 
-![Master Levels](./.github/master-levels-header.jpg "Master Levels")
+![Master Levels](./.github/masterpack-header.jpg "Master Levels")
 
 The 'Master Levels for Doom II' were by far the lowest quality official release by id Software in it's classic days.
 
