@@ -18,9 +18,9 @@ Titan by Jim Flynn (Rest in Peace):
 	MAP15 - Titan 6 - Trouble on Titan - Standalone    - TROUBLE.WAD - MAP01 - Nukaland                      - D_AMPIE  - masters.pk3
 
 Cabal by Sverre Kvernmo:
-	MAP17 - Cabal 1  - Bloodflood                   - Standalone    - CABALL.WAD   - MAP24 - Shot Down                - D_COUNTD - masters.pk3
-	MAP18 - Cabal 2  - Derelict Station             - Standalone    - CABALL.WAD   - MAP25 - En el Salón              - D_STALKS - masters.pk3
-	MAP19 - Cabal 3  - The Watchtower               - Standalone    - CABALL.WAD   - MAP26 - Julian's Fragging Again  - D_BETWEE - masters.pk3
+	MAP16 - Cabal 1  - Bloodflood                   - Standalone    - CABALL.WAD   - MAP24 - Shot Down                - D_COUNTD - masters.pk3
+	MAP17 - Cabal 2  - Derelict Station             - Standalone    - CABALL.WAD   - MAP25 - En el Salón              - D_STALKS - masters.pk3
+	MAP18 - Cabal 3  - The Watchtower               - Standalone    - CABALL.WAD   - MAP26 - Julian's Fragging Again  - D_BETWEE - masters.pk3
 	MAP19 - Cabal 4  - The Bloodsea Keep            - Master Levels - BLOODSEA.WAD - MAP07 - This Is My Boomstick     - D_SHAWN  - masters.pk3
 	MAP20 - Cabal 5  - Temple of Death              - Standalone    - CABALL.WAD   - MAP27 - Coliformication          - D_DOOM   - masters.pk3
 	MAP21 - Cabal 6  - We Who are About to Die      - Standalone    - CABALL.WAD   - MAP28 - SOON                     - D_DOOM2  - masterpack.wad, masters.pk3 D_DOOM

@@ -1,6 +1,6 @@
 # Masterpack for Doom II
 
-![Master Levels](./.github/masterpack-header.jpg "Master Levels")
+![Master Levels](./misc/masterpack.jpg "Master Levels")
 
 The 'Master Levels for Doom II' were by far the lowest quality official release by id Software in it's classic days.
 
@@ -14,7 +14,7 @@ With all this in mind, why should anyone play the official in their original amo
 
 This script fixes that, all content by the authors past, present and future to the Master Levels is now brought together in a single WAD file for your enjoyment. All 45 relevant (plus 1 bonus) map are now fully playable as 5 separate, organized episodes. And with this, you can now properly enjoy the works of Doom's early great authors, some of early Doom's most timeless work
 
-Episodes include:
+Here are the included episodes, for a detailed list check out this [spreadsheet](./misc/masterpack.pdf):
 ```txt
 Inferno     -  9 maps - John "Dr. Sleep" Anderson, Rest In Peace
 Titan       -  6 maps - James "Jim" Flynn, Rest In Peace
@@ -23,7 +23,7 @@ Klietech    - 12 maps - Christen Klie
 Lost Levels -  7 maps - Tom "Paradox" Mustaine, Theresa Chasar, and Tim Willits
 ```
 
-Note: The last map by "Dr. Sleep" in his Inferno series, "Lethe" or "Waters of Lethe", is long known to be the Doom community's most important piece of "lost media", having no more proof than the author's own words and a single screenshot of the map to show for it's existence, it is substituted in this mapset by "[An End to Darkness](https://doomwiki.org/wiki/E4M8:_An_End_to_Darkness_(Ultimate_Doom_the_Way_id_Did))" by [Xaser Acheron](https://doomwiki.org/wiki/Xaser) from the communinty project "[Utimate Doom The Way id Did](https://doomwiki.org/wiki/Ultimate_Doom_the_Way_id_Did)".
+Note: The last map by "Dr. Sleep" in his Inferno series, "Lethe" or "Waters of Lethe", is long known to be the Doom community's most important piece of "lost media", having no more proof than the author's own words and a single screenshot of the map to show for it's existence. In this mapset, it is substituted by "[An End to Darkness](https://doomwiki.org/wiki/E4M8:_An_End_to_Darkness_(Ultimate_Doom_the_Way_id_Did))" by [Xaser Acheron](https://doomwiki.org/wiki/Xaser) from the communinty project "[Utimate Doom The Way id Did](https://doomwiki.org/wiki/Ultimate_Doom_the_Way_id_Did)".
 
 # Instructions
 
@@ -59,7 +59,7 @@ In order to use this script correctly you will the following, from your Steam in
 		- `ATTACK.WAD`
 		- `CANYON.WAD`
 
-To find these files, starting on your Steam library, check out [this](./steam/README.md) tutorial.
+To find these files, starting on your Steam library, check out [this](./misc/STEAM.md) tutorial.
 
 Once you have all the WAD files, drop them in the `source/` directory and run the script as the following:
 
@@ -92,13 +92,13 @@ Files: `*`
 Copyright: © 2024 Guilherme Marques Miranda  
 
 Project: `WadSmoosh`  
-Files: `masterpack.py`  
+Files: `src/masterpack.py`  
 Copyright: © 2018 Jean-Paul LeBreton  
 
 Project: `Works of the Masters`  
-Files: `base.wad`  
+Files: `src/base.wad`  
 Copyright: © 2020 Jean-Paul LeBreton  
 
 Project: `Omgifol`  
-Files: `omg/*`  
+Files: `src/omg/*`  
 Copyright: © 2005 Fredrik Johansson, 2017 Devin Acker  
