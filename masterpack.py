@@ -10,7 +10,7 @@ from hashlib import sha256
 
 from omg.wad import WAD
 
-VERSION = '0.2-hotfix2'
+VERSION = '0.3-proto'
 
 logfile = None
 LOG_FILE = 'masterpack.log'
@@ -244,7 +244,7 @@ def check_wads(found_wads: list[str]):
             log(f'  {wad.upper()} is missing.')
 
         if get_wad_hash(DIR_SOURCE + wad) != get_wad_pre_hash(wad):
-            log(f'  {wad.upper()} checksum does not match. Continuing with caution.')
+            log(f'  {wad.upper()} checksum does not match. Continuing with caution. If you see no other errors or warnings, ignore this one.')
 
         found_wads.append(wad)
 
@@ -261,7 +261,9 @@ def masterpack_build() -> None:
     doom2 = WAD(DIR_SOURCE + 'DOOM2.WAD')
 
     if get_wad_hash(BASE) != get_wad_pre_hash(BASE):
-        log('  WARNING: base.wad failed the checksum, you can probably keep playing, but there are 0 guarantees.')
+        log('  Error: base.wad failed the checksum, if you are seeing this, something terrible happened. Download and try again.')
+        log('Build failed.')
+        exit(2)
 
     log('  Extracting graphics...')
     base.graphics['INTERPIC'] = doom.graphics['INTERPIC']
@@ -288,7 +290,7 @@ def masterpack_build() -> None:
     master.to_file(MASTERPACK)
 
     if get_wad_hash(MASTERPACK) != get_wad_pre_hash(MASTERPACK):
-        log('  WARNING: masterpack.wad failed the checksum, you can probably keep playing, but there are 0 guarantees.')
+        log('  Warn: masterpack.wad failed the checksum, you can probably keep playing, but there are 0 guarantees.')
 
 
 def main() -> None:
@@ -297,7 +299,7 @@ def main() -> None:
     check_wads(found_wads)
 
     if sorted(found_wads) != sorted(SOURCE_WADS):
-        log('Did not find all Master Levels. Check masterpack.log for more details.')
+        log('Error: Did not find all Master Levels. Check masterpack.log for more details.')
         log('Build failed. Exiting...')
         exit(1)
     log(' Found all Master Levels WADs!')
@@ -305,7 +307,7 @@ def main() -> None:
     log('Starting to build WAD.')
     masterpack_build()
 
-    log('Done.')
+    log('Build successful.')
     exit(0)
 
 
