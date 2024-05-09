@@ -206,17 +206,17 @@ def get_wad_filename(wad_name: str) -> str | None:
 # Check WAD data
 #
 
-def get_wad_pre_hash(wad_name: str, wad_hash_dict: dict[str, str]) -> str | None:
-    if wad_name not in wad_hash_dict:
+def get_wad_pre_hash(wad_name: str) -> str | None:
+    if wad_name not in SOURCE_SHA256SUM:
         return None
 
-    return wad_hash_dict[wad_name]
+    return SOURCE_SHA256SUM[wad_name]
 
 
-def get_wad_hash(wad_name: str, wad_name_list: list[str]) -> str | None:
+def get_wad_hash(wad_name: str) -> str | None:
     sha256hash = sha256()
 
-    if wad_name not in wad_name_list:
+    if wad_name not in SOURCE_WADS:
         return None
 
     file_handler = open(DIR_SOURCE + wad_name, 'rb')
@@ -230,39 +230,17 @@ def get_wad_hash(wad_name: str, wad_name_list: list[str]) -> str | None:
     return sha256hash.hexdigest()
 
 
-def validate_wads(wad_name: str) -> str | None:
-    if wad_name not in SOURCE_WADS:
-        return None
-    if get_wad_hash(wad_name, SOURCE_WADS) != get_wad_pre_hash(wad_name, SOURCE_SHA256SUM):
-        return None
-    if get_wad_hash(wad_name, SOURCE_WADS) == get_wad_pre_hash(wad_name, SOURCE_SHA256SUM):
-        return wad_name
-
-
 def check_wads(found_wads: list[str]):
     for wad in SOURCE_WADS:
         if get_wad_filename(wad) == None:
             log(f'  {wad.upper()} is missing.')
-            continue
 
-        if validate_wads(wad) == None:
-            log(f'  {wad.upper()} failed SHA256 checksum!')
-            continue
+        if get_wad_hash(wad_name) != get_wad_pre_hash(wad_name):
+            log(f'  {wad.upper()} checksum does not match. Continuing with caution.')
 
         wad_name = wad.upper().split(f".")[0]
         log(f'  {wad_name} found!')
         found_wads.append(wad)
-
-
-def get_found_wads() -> bool:
-    found_wads: list[str] = []
-
-    check_wads(found_wads)
-
-    if sorted(found_wads) != sorted(SOURCE_WADS):
-        return False
-
-    return True
 
 
 #
@@ -270,36 +248,38 @@ def get_found_wads() -> bool:
 #
 
 def masterpack_build() -> None:
-    base_wad = WAD('base.wad')
+    base = WAD('base.wad')
 
-    doom_wad = WAD(DIR_SOURCE + 'DOOM.WAD')
-    doom2_wad = WAD(DIR_SOURCE + 'DOOM2.WAD')
+    doom = WAD(DIR_SOURCE + 'DOOM.WAD')
+    doom2 = WAD(DIR_SOURCE + 'DOOM2.WAD')
 
     log('  Extracting graphics...')
-    base_wad.graphics['INTERPIC'] = doom_wad.graphics['INTERPIC']
-    base_wad.graphics['BOSSBACK'] = doom2_wad.graphics['INTERPIC']
+    base.graphics['INTERPIC'] = doom.graphics['INTERPIC']
+    base.graphics['BOSSBACK'] = doom2.graphics['INTERPIC']
 
     log('  Extracting Ultimate Doom patches...')
     for doom_patch in DOOM_PATCHES:
-        base_wad.patches[doom_patch] = doom_wad.patches[doom_patch]
+        base.patches[doom_patch] = doom.patches[doom_patch]
 
     log('  Extracting maps...')
     for triple in ML_MASTERPACK:
-        base_wad.maps[triple[0]] = WAD(DIR_SOURCE + triple[1]).maps[triple[2]]
+        base.maps[triple[0]] = WAD(DIR_SOURCE + triple[1]).maps[triple[2]]
 
     log('  Organizing files...')
     for map in MASTERPACK_MAPS:
-        base_wad.maps[map] = base_wad.maps[map]
+        base.maps[map] = base.maps[map]
 
     log('  Creating master.wad...')
-    base_wad.to_file('masterpack.wad')
+    base.to_file('masterpack.wad')
 
 
 def main() -> None:
     log('Checking wads...')
+    found_wads: list[str] = []
+    check_wads(found_wads)
 
-    if not get_found_wads():
-        log('Did not find all Master Levels! Check missing files and failed checksums!')
+    if sorted(found_wads) != sorted(SOURCE_WADS):
+        log('Did not find all Master Levels. Check masterpack.log for more details.')
         log('Build failed. Exiting...')
         exit(1)
     log('Found all Master Levels WADs!')
