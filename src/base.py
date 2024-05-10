@@ -31,7 +31,7 @@ SOURCE_WADS = [
 
 SOURCE_SHA256SUM = {
     # Alpha
-    'alpha.wad': '732c51c4a16dcbd3fa59ba9b28217ffee431b311813be21f4cb1a66dbcd431ef',
+    'alpha.wad': '9b625634ab84381cba8136dcc3625d08b24375cb226806f01a7ffe6225bcb3c7',
     # Titan
     'MINES.WAD': '4156ed584a667f3d97cd4e3795e0cafa7194404855d9c88826e6e417da9e5d5d',
     'anomaly.wad': 'e0d3efc52add92974cf989c34ce93dbb35149041a1192a2ea169e24922490dad',
