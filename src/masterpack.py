@@ -10,8 +10,6 @@ from hashlib import sha256
 
 from omg.wad import WAD
 
-VERSION = '0.3-proto'
-
 logfile = None
 LOG_FILE = 'masterpack.log'
 
@@ -56,8 +54,8 @@ SOURCE_WADS = [
 
 SOURCE_SHA256SUM = {
     # Masterpack
-    'base.wad': '39794d12d2e0ddc88bc22bc2e8f6d8dfebb1196e32c81eceb0818ef2fdf901ba',
-    'masterpack.wad': 'e5a2a560ead68f4f1365f49fb26184e907dd3f4cd61d5ee389fb4736b4cc1ff2',
+    'base.wad': '66bb2746998e8686e6c1f9193317a1ab1e8a1bf96e342ad21a10365f54520da6',
+    'masterpack.wad': 'ad510ef14bf724fc254cfe925ff4547401b273ad9244c52f4ee84c626d1fcf32',
     # IWADS
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
     'DOOM2.WAD': '10d67824b11025ddd9198e8cfc87ca335ee6e2d3e63af4180fa9b8a471893255',

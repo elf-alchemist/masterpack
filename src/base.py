@@ -11,8 +11,6 @@ from hashlib import sha256
 from omg.wad import WAD
 from omg.mapedit import MapEditor
 
-VERSION = '0.3-proto'
-
 logfile = None
 LOG_FILE = 'base.log'
 
@@ -182,6 +180,11 @@ def base_build() -> None:
     massive_simple_sidedef_switch(map15, 'SW2STON6', 'TT2STON6')
     massive_simple_sidedef_switch(map15, 'SW1STON7', 'TT1STON7')
     massive_simple_sidedef_switch(map15, 'SW2STON7', 'TT2STON7')
+    massive_simple_sidedef_switch(map15, 'PIC00', 'PORTAL1')
+    massive_simple_sidedef_switch(map15, 'PIC01', 'PORTAL2')
+    massive_simple_sidedef_switch(map15, 'PIC06', 'PORTAL3')
+    massive_simple_sidedef_switch(map15, 'PIC07', 'PORTAL4')
+    massive_simple_sidedef_switch(map15, 'PIC13', 'PORTAL5')
     alpha.maps['MAP15'] = map15.to_lumps()
 
     log('  Organizing lumps...')
