@@ -15,7 +15,7 @@ LOG_FILE = 'masterpack.log'
 
 BUFFER_SIZE = 16384
 
-DIR_SOURCE = 'masterpack/'
+DIR_SOURCE = 'source/'
 
 BASE = 'base.wad'
 MASTERPACK = 'masterpack.wad'
