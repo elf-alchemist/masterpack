@@ -4,7 +4,7 @@
 
 The 'Master Levels for Doom II' were by far the lowest quality official release by id Software in it's classic days.
 
-In short it is a grabbag collection of various unstructured, unorganized WAD files, all made by various map authors with a wide variety of styles and design conventions.
+In short, it is a grabbag collection of various unstructured, unorganized WAD files, all made by various map authors with a wide variety of styles and design conventions.
 
 Most of the authors involved in the project, made these maps with the intention of them being a part of larger episode overarching a certain theme, with John Anderson, for example, directing a series of 9 total levels themed around the first third of Dante Alighieri's Divine Comedy, Inferno.
 
@@ -12,9 +12,9 @@ However, most of these authors would go on, after the release of the Master Leve
 
 With all this in mind, why should anyone play the official in their original amorphous format? Why should we accept the way things are? Why should we allow people to miss out on the great works of these authors just because the pieces are all over the place?
 
-This script fixes that, all content by the authors past, present and future to the Master Levels is now brought together in a single WAD file for your enjoyment. All 45 relevant (plus 1 bonus) map are now fully playable as 5 separate, organized episodes. And with this, you can now properly enjoy the works of Doom's early great authors, some of early Doom's most timeless work
+This script fixes that, all content by the authors past, present and future to the Master Levels is now brought together in a single WAD file for your enjoyment. All 45 relevant (plus 1 bonus) map are now fully playable as 5 separate, organized episodes. And with this, you can now properly enjoy the works of Doom's early great authors, some of early Doom's most timeless work.
 
-Here are the included episodes, for a detailed list check out this [spreadsheet](./misc/masterpack.pdf):
+Here are the included episodes (and for a detailed list check out this [table](./misc/full_maps.csv)):
 ```txt
 Inferno     -  9 maps - John "Dr. Sleep" Anderson, Rest In Peace
 Titan       -  6 maps - James "Jim" Flynn, Rest In Peace
