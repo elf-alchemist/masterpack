@@ -15,4 +15,4 @@ FILE="masterpack.zip"
 
 if [[ -e "${FILE}" ]]; then rm "${FILE}"; fi
 
-zip "${FILE}" omg/* source/delete_me.txt base.wad masterpack.py
+zip "${FILE}" omg/* source/delete_me.txt patches/masterpack_ml25amp.wad base.wad masterpack.py
