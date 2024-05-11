@@ -112,6 +112,12 @@ $ zandronum -file masterpack.wad
 Master Level Masterpack  
 Copyright © 2024 Guilherme Marques Miranda  
 
+WideHud  
+Copyright © 2013 NightFright  
+
+WidePix  
+Copyright © 2020 Nash Muhandes  
+
 WadSmoosh  
 Copyright © 2018 Jean-Paul LeBreton  
 
@@ -119,4 +125,7 @@ Works of the Masters
 Copyright © 2020 Jean-Paul LeBreton  
 
 Omgifol  
-Copyright: © 2005 Fredrik Johansson, 2017 Devin Acker  
+Copyright © 2005 Fredrik Johansson, 2017 Devin Acker  
+
+Doom, Doom II and Master Levels for Doom II
+Copyright © 1993, 1994, 1995 id Software
