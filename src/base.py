@@ -35,7 +35,7 @@ SOURCE_WADS = [
 
 SOURCE_SHA256SUM = {
     # Alpha
-    'alpha.wad': '9b625634ab84381cba8136dcc3625d08b24375cb226806f01a7ffe6225bcb3c7',
+    'alpha.wad': 'a51d69955c4a0141fb353f6732cf4421ea275f641789e10907a0169b34915234',
     # Inferno
     'DANTE25.WAD': '8ac0ce535c75027f46a8909ad6fa7c173ba1457a76167a05ac2213d5606cf902',
     'ACHRON22.WAD': '9c285f5b14b5a26a5e46e0c5566a1fbfc94a170a9d0d6c2dee19069b3e4d5423',
@@ -288,9 +288,9 @@ def base_build() -> None:
     base.data += alpha.data
     base.music += alpha.music
     base.txdefs += alpha.txdefs
+    base.sprites += alpha.sprites
     base.patches += alpha.patches
     base.graphics += alpha.graphics
-    log('    Ordering lumps...')
     for patch in BASE_PATCHES:
         base.patches[patch] = alpha.patches[patch]
     for map in BASE_MAPS:
