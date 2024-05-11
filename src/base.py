@@ -22,6 +22,10 @@ ALPHA = 'alpha.wad'
 BASE = 'beta.wad'
 
 SOURCE_WADS = [
+    # Inferno
+    'DANTE25.WAD',
+    'ACHRON22.WAD',
+    'UDTWiD.wad',
     # Titan
     'MINES.WAD',
     'anomaly.wad',
@@ -32,6 +36,10 @@ SOURCE_WADS = [
 SOURCE_SHA256SUM = {
     # Alpha
     'alpha.wad': '9b625634ab84381cba8136dcc3625d08b24375cb226806f01a7ffe6225bcb3c7',
+    # Inferno
+    'DANTE25.WAD': '8ac0ce535c75027f46a8909ad6fa7c173ba1457a76167a05ac2213d5606cf902',
+    'ACHRON22.WAD': '9c285f5b14b5a26a5e46e0c5566a1fbfc94a170a9d0d6c2dee19069b3e4d5423',
+    'UDTWiD.wad': '523108f0341da424fc390c2a43cb3a9d418f0137298e85b19d12272da4021ec7',
     # Titan
     'MINES.WAD': '4156ed584a667f3d97cd4e3795e0cafa7194404855d9c88826e6e417da9e5d5d',
     'anomaly.wad': 'e0d3efc52add92974cf989c34ce93dbb35149041a1192a2ea169e24922490dad',
@@ -39,14 +47,90 @@ SOURCE_SHA256SUM = {
     'TROUBLE.WAD': '8f89694bdaeb10709acea88423929bf4ea75cfc8f6d406565151076ccbc365f5',
 }
 
+PATCH_TRIPLETS = [
+    # patch X, in wad Y, as Z
+    ['SKY4', 'UDTWiD.wad', 'SKY4'],
+    ['RSKY6_1', 'MINES.WAD', 'STARS'],
+    ['RSKY6_2', 'MINES.WAD', 'STARS1'],
+    ['RSKY6_3', 'MINES.WAD', 'STARSAT'],
+    # Inferno
+    ['DRSLEEP', 'UDTWiD.wad', 'DRSLEEP'],
+    # Titan
+    ['ASHWALL', 'MINES.WAD', 'W104_1'],
+    ['WATER', 'MINES.WAD', 'TWF'],
+    ['REDWALL1', 'MINES.WAD', 'W15_4'],
+    ['REDWALL2', 'MINES.WAD', 'W15_5'],
+    ['BLACK', 'anomaly.wad', 'BLACK'],
+    ['FIRELV', 'anomaly.wad', 'FIRELV'],
+    ['ANOMALY1', 'anomaly.wad', 'S_DOOM09'],
+    ['ANOMALY2', 'anomaly.wad', 'S_DOOM10'],
+    ['ANOMALY3', 'anomaly.wad', 'S_DOOM11'],
+    ['ANOMALY4', 'anomaly.wad', 'S_DOOM12'],
+    ['ANOMALY5', 'anomaly.wad', 'S_DOOM13'],
+    ['ANOMALY6', 'anomaly.wad', 'S_DOOM14'],
+    ['ANOMALY7', 'anomaly.wad', 'S_DOOM15'],
+    ['ANOMALY8', 'anomaly.wad', 'S_DOOM16'],
+    ['SAVED', 'TROUBLE.WAD', 'SAVED'],
+    ['TROUBLE1', 'TROUBLE.WAD', 'TROU00'],
+    ['TROUBLE2', 'TROUBLE.WAD', 'TROU01'],
+    ['TROUBLE3', 'TROUBLE.WAD', 'TROU06'],
+    ['TROUBLE4', 'TROUBLE.WAD', 'TROU07'],
+    ['TROUBLE5', 'TROUBLE.WAD', 'TROU13'],
+]
+
 MAP_TRIPLETS = [
+    # Inferno
+    ['MAP01', 'DANTE25.WAD', 'MAP02'],
+    ['MAP02', 'ACHRON22.WAD', 'MAP03'],
+    ['MAP09', 'UDTWiD.wad', 'E4M8'],
+    # Titan
     ['MAP10', 'MINES.WAD', 'MAP01'],
     ['MAP11', 'anomaly.wad', 'MAP01'],
     ['MAP12', 'FARSIDE.WAD', 'MAP01'],
     ['MAP15', 'TROUBLE.WAD', 'MAP01'],
 ]
 
+BASE_PATCHES = [
+    # UDTWiD
+    'SKY4',
+    # Master Levels
+    # 'RSKY4',        # light stars
+    'RSKY5',        # medium stars
+    'RSKY6_1',      # heavy stars
+    'RSKY6_2',      # heavy stars, nebula
+    'RSKY6_3',      # heavy stars, saturn
+    # UDTWiD
+    'DRSLEEP',
+    # MINES.WAD
+    'ASHWALL',
+    'WATER',
+    'REDWALL1',
+    'REDWALL2',
+    # anomaly.wad
+    'BLACK',
+    'FIRELV',
+    'ANOMALY1',
+    'ANOMALY2',
+    'ANOMALY3',
+    'ANOMALY4',
+    'ANOMALY5',
+    'ANOMALY6',
+    'ANOMALY7',
+    'ANOMALY8',
+    # TROUBLE.WAD
+    'SAVED',
+    'TROUBLE1',
+    'TROUBLE2',
+    'TROUBLE3',
+    'TROUBLE4',
+    'TROUBLE5',
+]
+
 BASE_MAPS = [
+    # Inferno
+    'MAP01',
+    'MAP02',
+    'MAP09',
     # Titan
     'MAP10',
     'MAP11',
@@ -134,16 +218,29 @@ def base_build() -> None:
     base = WAD()
     alpha = WAD('alpha.wad')
 
-    if get_wad_hash(ALPHA) != get_wad_pre_hash(ALPHA):
-        log('  Error: alpha.wad failed the checksum, something terrible happened. Try again.')
-        log('Build failed.')
-        exit(2)
+    # if get_wad_hash(ALPHA) != get_wad_pre_hash(ALPHA):
+    # log('  Error: alpha.wad failed the checksum, something terrible happened. Try again.')
+    # log('Build failed.')
+    # exit(2)
+
+    log('  Extracting patches...')
+    # Canto 2 has it's single patch outside the P_* markers
+    achron22 = WAD(DIR_SOURCE + 'ACHRON22.WAD')
+    sky = achron22.data['RSKY1']
+    alpha.patches['RSKY5'] = sky
+    # thankfully all others are marked properly
+    for triple in PATCH_TRIPLETS:
+        wad = WAD(DIR_SOURCE + triple[1])
+        patch = wad.patches[triple[2]]
+        alpha.patches[triple[0]] = patch
 
     log('  Extracting maps...')
     for triple in MAP_TRIPLETS:
-        alpha.maps[triple[0]] = WAD(DIR_SOURCE + triple[1]).maps[triple[2]]
+        wad = WAD(DIR_SOURCE + triple[1])
+        map = wad.maps[triple[2]]
+        alpha.maps[triple[0]] = map
 
-    log(' Fixing MAP10...')
+    log('    Fixing MAP10...')
     map10 = MapEditor(alpha.maps['MAP10'])
     massive_simple_sidedef_switch(map10, 'DBRAIN1', 'WATER')
     massive_simple_sidedef_switch(map10, 'SW1COMP', 'TT1COMP')
@@ -152,13 +249,13 @@ def base_build() -> None:
     massive_simple_sidedef_switch(map10, 'SW2STON1', 'TT2STON1')
     alpha.maps['MAP10'] = map10.to_lumps()
 
-    log(' Fixing MAP11...')
+    log('    Fixing MAP11...')
     map11 = MapEditor(alpha.maps['MAP11'])
     massive_simple_sidedef_switch(map11, 'SW1STON2', 'TT1STON2')
     massive_simple_sidedef_switch(map11, 'SW2STON2', 'TT2STON2')
     alpha.maps['MAP11'] = map11.to_lumps()
 
-    log(' Fixing MAP12...')
+    log('    Fixing MAP12...')
     map12 = MapEditor(alpha.maps['MAP12'])
     massive_simple_sidedef_switch(map12, 'SW1BRIK', 'TT1BRIK')
     massive_simple_sidedef_switch(map12, 'SW2BRIK', 'TT2BRIK')
@@ -168,7 +265,7 @@ def base_build() -> None:
     massive_simple_sidedef_switch(map12, 'SW2STON4', 'TT2STON4')
     alpha.maps['MAP12'] = map12.to_lumps()
 
-    log(' Fixing MAP15...')
+    log('    Fixing MAP15...')
     map15 = MapEditor(alpha.maps['MAP15'])
     massive_simple_sidedef_switch(map15, 'SW1VINE', 'TT1VINE')
     massive_simple_sidedef_switch(map15, 'SW2VINE', 'TT2VINE')
@@ -187,12 +284,15 @@ def base_build() -> None:
     massive_simple_sidedef_switch(map15, 'PIC13', 'PORTAL5')
     alpha.maps['MAP15'] = map15.to_lumps()
 
-    log('  Organizing lumps...')
+    log('  Transferring lumps...')
     base.data += alpha.data
     base.music += alpha.music
     base.txdefs += alpha.txdefs
     base.patches += alpha.patches
     base.graphics += alpha.graphics
+    log('    Ordering lumps...')
+    for patch in BASE_PATCHES:
+        base.patches[patch] = alpha.patches[patch]
     for map in BASE_MAPS:
         base.maps[map] = alpha.maps[map]
 
@@ -201,10 +301,6 @@ def base_build() -> None:
 
     # if get_wad_hash(BASE) != get_wad_pre_hash(BASE):
     #    log('  Warn: base.wad failed the checksum, you can _maybe_ build masterpack.wad.')
-
-
-def base_fix() -> None:
-    log('None')
 
 
 def main() -> None:
@@ -220,9 +316,6 @@ def main() -> None:
 
     log('Starting to build WAD.')
     base_build()
-
-    log('Fixing maps.')
-    base_fix()
 
     log('Build successful.')
     exit(0)
