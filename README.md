@@ -4,26 +4,40 @@
 
 The 'Master Levels for Doom II' were by far the lowest quality official release by id Software in it's classic days.
 
-In short, it is a grabbag collection of various unstructured, unorganized WAD files, all made by various map authors with a wide variety of styles and design conventions.
+In short, it is a grab-bag collection of various unstructured, unorganized WAD files, all made by various map authors with a wide variety of styles and design conventions.
 
-Most of the authors involved in the project, made these maps with the intention of them being a part of larger episode overarching a certain theme, with John Anderson, for example, directing a series of 9 total levels themed around the first third of Dante Alighieri's Divine Comedy, Inferno.
+Most of the authors involved in the project, made these maps with the intention of them being a part of larger episode or campaign overarching a certain theme even before being contacted by id Software for this project of theirs. John W. Anderson, for example, directing a series of 9 total levels themed around the first third of Dante Alighieri's Divine Comedy, Inferno.
 
-However, most of these authors would go on, after the release of the Master Levels release later, freely available WADs which continued or preceeded the former levels in continuity or level design, many of which were originally piched to id Software for inclusion in the original release.
+However, not all maps made by these authors were accepted by id Software, being later released freely by their creators after the fact, with some of them even continuing their work further, beyond the original submitted level sets.
 
-With all this in mind, why should anyone play the official in their original amorphous format? Why should we accept the way things are? Why should we allow people to miss out on the great works of these authors just because the pieces are all over the place?
+With all this in mind, why should anyone play the works of these masters in their original amorphous format? Why should we accept the way things are? Why should we allow people to miss out on the great works of these authors just because the pieces are all over the place? Why should we be holden by the shackles of someone else's bad decisions? Why are we not allowed to have fun with some of the best level designers of 1995?
 
-This script fixes that, all content by the authors past, present and future to the Master Levels is now brought together in a single WAD file for your enjoyment. All 45 relevant (plus 1 bonus) map are now fully playable as 5 separate, organized episodes. And with this, you can now properly enjoy the works of Doom's early great authors, some of early Doom's most timeless work.
+This script fixes that and much more, by taking everything made by the authors past, present and future to the original Master Levels release and bringing it together in a single WAD file for your enjoyment. All 45 relevant (plus 1 bonus) map are now fully playable as 5 separate, organized episodes. And with this, you can now properly enjoy the works of Doom's early great authors, some of early Doom's most timeless work.
 
 Here are the included episodes (and for a detailed list check out this [table](./misc/full_maps.csv)):
 ```txt
-Inferno     -  9 maps - John "Dr. Sleep" Anderson, Rest In Peace
-Titan       -  6 maps - James "Jim" Flynn, Rest In Peace
-Cabal       - 12 maps - Sverre "Soundblock" Kvernmo
-Klietech    - 12 maps - Christen Klie
-Lost Levels -  7 maps - Tom "Paradox" Mustaine, Theresa Chasar, and Tim Willits
+  Inferno     -  9 maps - John "Dr. Sleep" Anderson, Rest In Peace
+  Titan       -  6 maps - James "Jim" Flynn, Rest In Peace
+  Cabal       - 12 maps - Sverre "Soundblock" Kvernmo
+  Klietech    - 12 maps - Christen Klie
+  Lost Levels -  7 maps - Tom "Paradox" Mustaine, Theresa Chasar, and Tim Willits
 ```
 
-Note: The last map by "Dr. Sleep" in his Inferno series, "Lethe" or "Waters of Lethe", is long known to be the Doom community's most important piece of "lost media", having no more proof than the author's own words and a single screenshot of the map to show for it's existence. In this mapset, it is substituted by "[An End to Darkness](https://doomwiki.org/wiki/E4M8:_An_End_to_Darkness_(Ultimate_Doom_the_Way_id_Did))" by [Xaser Acheron](https://doomwiki.org/wiki/Xaser) from the communinty project "[Utimate Doom The Way id Did](https://doomwiki.org/wiki/Ultimate_Doom_the_Way_id_Did)".
+Note about [Dr. Sleep](https://doomwiki.org/wiki/John_Anderson_(Dr._Sleep))'s "Waters of Lethe": The last map by "Dr. Sleep" in his Inferno series, is long known to be the Doom community's most important piece of "lost media", having no more proof than the author's own words and a single screenshot of the map to show for it's existence. In this map set, it is substituted by "[An End to Darkness](https://doomwiki.org/wiki/E4M8:_An_End_to_Darkness_(Ultimate_Doom_the_Way_id_Did))" by [Xaser Acheron](https://doomwiki.org/wiki/Xaser) from the community project "[Ultimate Doom The Way id Did](https://doomwiki.org/wiki/Ultimate_Doom_the_Way_id_Did)".
+
+Note about Kick Attack: The only map to not have anything to do with the original Master Levels project is Boot Assault, a stripped version of Kick Attack! for Doom II, as part of a commercial collaboration in advertisement between RC Cola and id Software, organized and led by Tim Willits and released in early 1996, shortly after the release of the Master Levels, attached in here be design similarity to round off the end of the "Lost Levels" episodes.
+
+# Inspiration
+
+The infamy of the Master Levels in well known and understood in the Classic Doom community. As many have criticized the level design of some of the maps, the repetitive lack of proper music choice for many maps, amongst other issues plaguing the official release.
+
+Many have attempted to improve upon this botched release, from Peter "Megasphere" Lawrence, who created a custom MIDI pack specifically for each map in the the set, or Devalaous, who created a QoL PWAD to be used on top of masterlevels.wad. But, by far, the most important improvement made to this highly underrated map set was made by JP LeBreton, when he released the Works of the Masters, a PWAD for his WadSmoosh utility, a complete set of maps, based on the missing maps by the involved authors.
+
+By simply giving the maps an episodic structure, as they were all originally supposed to have, JP completely fixed the fundamental issues with these WADs, by merging it into one, he allowed me and many other players to enjoy the work of Doom's early great authors. By questioning the way we are supposed to play the Master Levels, they were completely reinvented, breathed brand new life into, given new purpose, shown what they could be something great.
+
+However, for how great WadSmoosh and Works of the Masters are they remain GZDoom-exclusive WADs, severely limiting the community members that do not use the highly advanced source port. So I set out to rebuild the superb "deluxe version" of the master levels, into some thing more palatable for the rest of the Classic Doom audience.
+
+I started out using SLADE3 to extract the content of LeBreton's masters.pk3 into the more vanilla-friendly formats, using a plain WAD file, the "TEXTURE1" and "SWITCHES" lumps, etc. But soon, I came to a realization that my work could've fallen in vain, as a commercial release can not be redistributed, I came to thought of imitating @JPL once more, and needed a build script utility of my own. And that is when I decided to start making the Masterpack for Doom II.
 
 # Instructions
 
@@ -43,7 +57,7 @@ In order to use this script correctly you will the following, from your Steam in
 		- `MANOR.WAD`
 		- `TTRAP.WAD`
 	- Cabal
-		- `BLODDSEA.WAD`
+		- `BLOODSEA.WAD`
 		- `BLACKTWR.WAD`
 		- `MEPHISTO.WAD`
 		- `TEETH.WAD`
@@ -80,25 +94,27 @@ $ dsda-doom -file masterpack.wad -complevel 1.9
 # Or Woof!
 $ woof -file masterpack.wad -complevel vanilla
 
+# Or Odamex
+$ odamex -file masterpack.wad
+
 # Or even ZDoom-family ports
 $ zdoom -file masterpack.wad
+$ qzdoom -file masterpack.wad
+$ lzdoom -file masterpack.wad
 $ gzdoom -file masterpack.wad
+$ zandronum -file masterpack.wad
 ```
 
 # Legalese
 
-Project: `Master Level Masterpack`  
-Files: `*`  
-Copyright: © 2024 Guilherme Marques Miranda  
+Master Level Masterpack  
+Copyright © 2024 Guilherme Marques Miranda  
 
-Project: `WadSmoosh`  
-Files: `src/masterpack.py`  
-Copyright: © 2018 Jean-Paul LeBreton  
+WadSmoosh  
+Copyright © 2018 Jean-Paul LeBreton  
 
-Project: `Works of the Masters`  
-Files: `src/base.wad`  
-Copyright: © 2020 Jean-Paul LeBreton  
+Works of the Masters  
+Copyright © 2020 Jean-Paul LeBreton  
 
-Project: `Omgifol`  
-Files: `src/omg/*`  
+Omgifol  
 Copyright: © 2005 Fredrik Johansson, 2017 Devin Acker  
