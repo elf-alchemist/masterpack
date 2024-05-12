@@ -1,0 +1,56 @@
+===========================================================================
+Primary purpose         : Single play
+===========================================================================
+Title                   : The Enemy Inside
+Filename                : e_inside.wad
+Release date            : 08/27/95 (timestamp on the file)
+Author                  : Chris Klie
+Email Address           : mapslinger@gmail.com
+Misc. Author Info       : Mission Designer, Rogue Squadron series.  Lead
+                          Level Designer, Outlaws.  Contributing Level
+                          Designer, Master Levels for Doom II.
+
+Description             : This was an outtake from the Master Levels.
+
+Additional Credits to   : Dr. Sleep, Mal Blackwell, Michael and Megan Klie
+===========================================================================
+* What is included *
+
+New levels              : 1
+Sounds                  : No
+Music                   : No
+Graphics                : No
+Dehacked/BEX Patch      : No
+Demos                   : No
+Other                   : No
+Other files required    : None
+
+
+* Play Information *
+
+Game                    : Doom 2
+Map #                   : 1
+Single Player           : Designed for
+Cooperative 2-4 Player  : Designed for
+Deathmatch 2-4 Player   : Designed for
+Other game styles       : None
+Difficulty Settings     : Yes
+
+
+* Construction *
+
+Base                    : New from scratch
+
+
+* Copyright / Permissions *
+
+Authors may NOT use the contents of this file as a base for modification or
+reuse.
+
+You MAY distribute this file, provided you include this text file, with no
+modifications.  You may distribute this file in any electronic format (BBS,
+Diskette, CD, etc) as long as you include this file intact.
+
+* Where to get the file that this text file describes *
+
+The Usual: ftp://archives.3dgamers.com/pub/idgames/ and mirrors
