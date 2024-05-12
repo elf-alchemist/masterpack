@@ -1,0 +1,70 @@
+===========================================================================
+Archive Maintainer      : This is here for historic values.
+Advanced engine needed  : Not
+Primary purpose         : Single play
+===========================================================================
+Title                   : Doom2 Map14 Homage. AKA: A map submitted for Master
+                          Levels that was REJECTED! =]
+Filename                : TWM01.wad
+Release date            : 21/6/95
+Author                  : Tom "ParadoX" Mustaine
+Email Address           : [redacted]
+Other Files By Author   : http://doomwiki.org/wiki/Category:Tom_Mustaine_levels
+Misc. Author Info       : Ummm...
+
+Description             : This is a Doom2 level - you'll have to idclev to
+                          map03
+                          It's a level.  Play it!
+
+===========================================================================
+* What is included *
+
+New levels              : 1
+Sounds                  : No
+Music                   : No
+Graphics                : No
+Dehacked/BEX Patch      : No
+Demos                   : No
+Other                   : No
+Other files required    : None
+
+
+* Play Information *
+
+Game                    : Doom 2
+Map #                   : MAP03
+Single Player           : Designed for
+Cooperative 2-4 Player  : Player starts only
+Deathmatch 2-4 Player   : Player starts only
+Other game styles       : None
+Difficulty Settings     : Yes
+
+
+* Construction *
+
+Base                    : New from scratch
+Build Time              : A day or so
+Editor(s) used          : DCK 
+Known Bugs              : There's a speedrun technique that allows you to
+                          skip the entire map. But I'm not going to modify
+                          this map. -Joe-ilya
+May Not Run With        : A pair of shoes.
+Tested With             : Vanilla doom 2
+
+
+* Copyright / Permissions *
+
+Authors MAY use the contents of this file as a base for modification or
+reuse.  Permissions have been obtained from original authors for any of their
+resources modified or included in this file.
+
+You MAY distribute this file, provided you include this text file, with no
+modifications.  You may distribute this file in any electronic format (BBS,
+Diskette, CD, etc) as long as you include this file intact.  I have received
+permission from the original authors of any modified or included content in
+this file to allow further distribution.
+
+* Where to get the file that this text file describes *
+
+The Usual: ftp://archives.gamers.org/pub/idgames/ and mirrors
+Web sites: http://www.mustaine.com/about/video-game-work/master-levels/

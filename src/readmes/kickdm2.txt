@@ -1,0 +1,122 @@
+===========================================================================
+Archive Maintainer      : This is a reupload of an old promotional level.
+						: The file has been cleaned out of unchanged sprites.
+Update to               : levels/doom2
+Advanced engine needed  : None, however you will need deusf -merge to play
+						: with vanilla, or the -merge option with ChocoDoom.
+						: Any other source port should work right away.
+Primary purpose         : Single Player.
+===========================================================================
+Title                   : Kick Attack!
+Author                  : Digital Marketing Associates for Kick               
+Email Address           : brainmasher@kicksoda.com
+
+Description: 
+
+This is a brand new WAD produced to celebrate Kick, the Hardcore Psycho Nitro
+Drink in a Can. Not a total conversion, but we've put a bit of work into this 
+baby - hope you like it!  It's been produced with permission from ID Software -
+thanks guys. . . Give Kick a try, after this level, we think you'll agree it 
+does a little more for you than Alpine Spew. . .
+
+You're a veteran Quality Control Manager at a Kick bottling plant.  Your 
+world is one of suits and ties, tests and reports, but above all making sure 
+that every bottle of Kick that hits the streets is a brain-mashing brew of 
+nitro-driven fizz.
+
+You are not having a good day.
+
+The line has been shut down and you pulled the cord.  You didn't need a 
+spectrometer to know that something was wrong - this batch was weak, it did 
+nothing for mouth or mind.  It lacked, well. . . Kick.
+
+So you, with loosened tie and your jacket on a hook were crawling through 
+passageways trying to find the problem.  Storage tanks, feeder pipes, filling 
+nozzles, just what you expected. . .but wait.  What's that?  Out of a newly cut
+scar on the side of an otherwise pristine wall came a crudely fashioned pipe.  
+Clumsily welded to a major feeder main, it disappeared into the darkness.
+
+Punching a small hole in the pipe with a screwdriver, the liquid that dripped
+to the ground confirmed what you already feared  - it was Alpine Spew. Someone
+was using Alpine Spew to take the kick out of Kick!  You could already hear
+them echoing up from below:  Surfer Mutants with Flattops shouting "Hey Dude!"
+The screams of flying two liter bottles with teeth so sharp they'd tear you 
+apart faster than the Spew itself.  And most chilling, the taunts of a musty 
+old lounge singer: "C'mere baby. . ."  It sounded like he wanted your career 
+to be over too.
+
+Something had to be done and you were the man to do it.  Tie off, armed only 
+with the pistol from your desk and a can of Kick you crawled into the inky 
+abyss.  It was time to Kick some Alpine ass. . .
+===========================================================================
+* INFO *
+
+New level WAD           : Yes
+
+* Play Information *
+
+Episode and Level #     : MAP01
+Single Player           : Yes
+Cooperative 2-4 Player  : Yes
+Deathmatch 2-4 Player   : Yes
+Difficulty Settings     : Yes
+New Sounds              : Yes
+New Music               : No
+New Graphics            : Yes
+Demos Replaced          : No
+
+* Construction *
+
+For Dryden and Petisi:			Neil Kimberley
+For Kick:						Deborah Stern
+
+For Digital Marketing Associates:
+
+Executive Producer:				Dave Bushnell (dave@dma.net)
+Level Design:					Tim Willits
+Illustration and Animation:		Dean Camastro
+								Anthony Verducci
+								Paco Levine
+Additional Graphics:			The Sisson Group, Inc.
+Integration and Programming:	James Monroe
+
+Big thanks to Jay Wilbur, Mike Wilson, and all the folks at Id for helping us 
+build this thing, and also to our Kick bottlers for getting it in your hands.
+
+Congratulations to Dryden and Petisi in Westport,CT for having the idea and 
+building the team that could pull it off.
+
+Thanks also to Martin Bihl of Dryden and Petisi for his groovy designs, 
+Joe Payne, Don Lenehan, and John Carson for paying for it, and the lawyers 
+let us do it.  
+
+
+Base                    : New level from scratch
+Build Time              : 100+ Hours
+Editor(s) used          : A bunch. . .  
+Known Bugs              : None.
+
+
+* Copyright / Permissions *
+
+Portions copyright Royal Crown Company, Inc.
+
+Authors MAY NOT use this level as a base to build additional
+levels.  Sorry folks.
+
+You MAY distribute this WAD, provided you include this file, with no 
+modifications, and promise to actually try a can of Kick.  You may distribute
+this file in any electronic format (BBS, Diskette, CD, etc) as long as you 
+include this file intact.  
+
+Check the website - http://www.kicksoda.com 
+
+Spread the word. . .
+
+
+
+* Where to get the file that this text file describes *
+
+The Internet Archive: 
+	http://web.archive.org/web/*/http://kicksoda.com/doom/doom.html
+
