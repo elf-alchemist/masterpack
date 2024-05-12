@@ -7,6 +7,7 @@
 
 from os import listdir
 from hashlib import sha256
+from pprint import pprint
 
 from omg.wad import WAD
 from omg.mapedit import MapEditor
@@ -31,6 +32,15 @@ SOURCE_WADS = [
     'anomaly.wad',
     'FARSIDE.WAD',
     'TROUBLE.WAD',
+    # Cabal
+    'CABALL.WAD',
+    # Klietech
+    'cpu.wad',
+    'device_1.wad',
+    'dmz.wad',
+    'cdk_fury.wad',
+    'e_inside.wad',
+    'hive.wad',
 ]
 
 SOURCE_SHA256SUM = {
@@ -45,16 +55,26 @@ SOURCE_SHA256SUM = {
     'anomaly.wad': 'e0d3efc52add92974cf989c34ce93dbb35149041a1192a2ea169e24922490dad',
     'FARSIDE.WAD': '55e40715b49c201ea035eef00b5ece40243ca217a56b20c1fb7625c7103ac277',
     'TROUBLE.WAD': '8f89694bdaeb10709acea88423929bf4ea75cfc8f6d406565151076ccbc365f5',
+    # Cabal
+    'CABALL.WAD': '5ed07c63382124793eb8c2881a4d85da15d430d32265c14d8452930ef3f2c2c4',
+    # Klietech
+    'cpu.wad': '9377554a75a18eaa2cd60a8707040efeaa21d136e842b0060d4262972f6b790f',
+    'device_1.wad': 'f1493e01d7f3fdcda098ebf4c48560fe098b9c56610650b44bd535e0255d7d54',
+    'dmz.wad': '365e62691813d9653d588c65590b889cf0fb16276363c3d5454fbcabbb45eaea',
+    'cdk_fury.wad': '1cafc59bd422991c93f9c34830793375c9914cf4ffae88db927867d6871888a8',
+    'e_inside.wad': 'f5f97aa3f09c97a99f3721aeda32037e55cf4f936f9a74fa8d4c5bcf57ab3eae',
+    'hive.wad': '754479211ffcbf240c08c6cdc6c1912f1c2eee3626682d04fe286a8fb55d1d70',
 }
 
 PATCH_TRIPLETS = [
     # patch X, in wad Y, as Z
-    ['SKY4', 'UDTWiD.wad', 'SKY4'],
-    ['RSKY6_1', 'MINES.WAD', 'STARS'],
-    ['RSKY6_2', 'MINES.WAD', 'STARS1'],
-    ['RSKY6_3', 'MINES.WAD', 'STARSAT'],
+    ['MSKY1', 'UDTWiD.wad', 'SKY4'],
+    ['MSKY2_1', 'MINES.WAD', 'STARS'],
+    ['MSKY2_2', 'MINES.WAD', 'STARS1'],
+    ['MSKY2_3', 'MINES.WAD', 'STARSAT'],
     # Inferno
     ['DRSLEEP', 'UDTWiD.wad', 'DRSLEEP'],
+    # ['MSKY3', 'ACHRON22.WAD', 'SKY1'],
     # Titan
     ['ASHWALL', 'MINES.WAD', 'W104_1'],
     ['WATER', 'MINES.WAD', 'TWF'],
@@ -88,17 +108,31 @@ MAP_TRIPLETS = [
     ['MAP11', 'anomaly.wad', 'MAP01'],
     ['MAP12', 'FARSIDE.WAD', 'MAP01'],
     ['MAP15', 'TROUBLE.WAD', 'MAP01'],
+    # Caball
+    ['MAP16', 'CABALL.WAD', 'MAP24'],
+    ['MAP17', 'CABALL.WAD', 'MAP25'],
+    ['MAP18', 'CABALL.WAD', 'MAP26'],
+    ['MAP20', 'CABALL.WAD', 'MAP27'],
+    ['MAP21', 'CABALL.WAD', 'MAP28'],
+    ['MAP24', 'CABALL.WAD', 'MAP30'],
+    ['MAP26', 'CABALL.WAD', 'MAP29'],
+    # Klietech
+    ['MAP28', 'cpu.wad', 'MAP01'],
+    ['MAP31', 'device_1.wad', 'MAP01'],
+    ['MAP34', 'dmz.wad', 'MAP01'],
+    ['MAP36', 'cdk_fury.wad', 'MAP01'],
+    ['MAP38', 'e_inside.wad', 'MAP01'],
+    ['MAP39', 'hive.wad', 'MAP01'],
 ]
 
 BASE_PATCHES = [
     # UDTWiD
-    'SKY4',
+    'MSKY1',
     # Master Levels
-    # 'RSKY4',        # light stars
-    'RSKY5',        # medium stars
-    'RSKY6_1',      # heavy stars
-    'RSKY6_2',      # heavy stars, nebula
-    'RSKY6_3',      # heavy stars, saturn
+    'MSKY2_1',      # space
+    'MSKY2_2',      # nebula
+    'MSKY2_3',      # saturn
+    'MSKY3',        # stars
     # UDTWiD
     'DRSLEEP',
     # MINES.WAD
@@ -136,6 +170,21 @@ BASE_MAPS = [
     'MAP11',
     'MAP12',
     'MAP15',
+    # Cabal
+    'MAP16',
+    'MAP17',
+    'MAP18',
+    'MAP20',
+    'MAP21',
+    'MAP24',
+    'MAP26',
+    # Klietech
+    'MAP28',
+    'MAP31',
+    'MAP34',
+    'MAP36',
+    'MAP38',
+    'MAP39',
 ]
 
 
@@ -227,7 +276,7 @@ def base_build() -> None:
     # Canto 2 has it's single patch outside the P_* markers
     achron22 = WAD(DIR_SOURCE + 'ACHRON22.WAD')
     sky = achron22.data['RSKY1']
-    alpha.patches['RSKY5'] = sky
+    alpha.patches['MSKY3'] = sky
     # thankfully all others are marked properly
     for triple in PATCH_TRIPLETS:
         wad = WAD(DIR_SOURCE + triple[1])
@@ -289,7 +338,6 @@ def base_build() -> None:
     base.music += alpha.music
     base.txdefs += alpha.txdefs
     base.sprites += alpha.sprites
-    base.patches += alpha.patches
     base.graphics += alpha.graphics
     for patch in BASE_PATCHES:
         base.patches[patch] = alpha.patches[patch]
