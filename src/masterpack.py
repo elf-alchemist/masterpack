@@ -21,7 +21,6 @@ BUFFER_SIZE = 16384
 
 DIR_SOURCE = 'source/'
 
-ALPHA = 'alpha.wad'
 BASE = 'base.wad'
 MASTERPACK = 'masterpack.wad'
 
@@ -37,10 +36,6 @@ ALL_WADS = [
 
 SHA256_DIGEST = {
     'data.zip': 'eeaea73652980fc5068266a5d077394e5847acfeaae500c1794c84adccbcf8c5',
-
-    'alpha.wad': 'a51d69955c4a0141fb353f6732cf4421ea275f641789e10907a0169b34915234',
-    'base.wad': 'cc1381363256199b5e93031c7d84cc7d27ed1c23db83f8421d46e4ac9ed16181',
-    'masterpack.wad': '0dfe970900481a6b474c51e5ceabed53754b3163674dcd9bdcd91f3cdd9df030',
 
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
     'TNT.WAD': 'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353',
@@ -97,7 +92,7 @@ PATCH_TRIPLETS = [
     ['MSKY2_3', 'MINES.WAD', 'STARSAT'],
 
     ['DRSLEEP', 'UDTWiD.wad', 'DRSLEEP'],
-    # ['UN_SKY', 'ACHRON22.WAD', 'SKY1'], <-- unused because MSKY1 is a MUCH better fit for Inferno
+    # ['', 'ACHRON22.WAD', 'SKY1'], <-- unused because MSKY1 is a MUCH better fit for Inferno
 
     ['ASHWALL', 'MINES.WAD', 'W104_1'],
     ['WATER', 'MINES.WAD', 'TWF'],
@@ -364,8 +359,8 @@ def massive_simple_sidedef_switch(map: MapEditor, initial_tx: str, desired_tx: s
 
 
 def base_build(dir: str) -> None:
-    base = WAD()
-    alpha = WAD(ALPHA)
+    masterpack = WAD()
+    base = WAD(BASE)
 
     midi1 = WAD(dir + 'ultimidi.wad')
     midi2 = WAD(dir + 'midtwid2.wad')
@@ -375,57 +370,69 @@ def base_build(dir: str) -> None:
     # since it is not located between P_* markers
     combine = WAD(DIR_SOURCE + 'COMBINE.WAD')
     sky = combine.data['RSKY1']
-    alpha.patches['MSKY3'] = sky
+    base.patches['MSKY3'] = sky
+    log('    MSKY3')
 
     for triple in PATCH_TRIPLETS:
-        wad = WAD(dir + triple[1])
-        patch = wad.patches[triple[2]]
-        alpha.patches[triple[0]] = patch
-        log('    ' + triple[0])
+        wad_name = triple[1]
+        wad = WAD(dir + wad_name)
+
+        original_name = triple[2]
+        slot = wad.patches[original_name]
+
+        name = triple[0]
+        base.patches[name] = slot
+
+        log(f'    {name}')
 
     log('  Extracting maps...')
     for triple in ALL_MAP_TRIPLETS:
-        wad = WAD(dir + triple[1])
-        map = wad.maps[triple[2]]
-        alpha.maps[triple[0]] = map
-        log(f'    Pulled {triple[0]}...')
+        wad_name = triple[1]
+        wad = WAD(dir + wad_name)
+
+        original_slot = triple[2]
+        slot = wad.maps[original_slot]
+
+        slot = triple[0]
+        base.maps[slot] = slot
+        log(f'    Pulled {slot}...')
 
     log('  Fixing maps...')
     for triplet in SIDEDEF_SWITCH_TRIPLETS:
-        map = triplet[0]
-        map_edit = MapEditor(alpha.maps[map])
+        slot = triplet[0]
+        map_edit = MapEditor(base.maps[slot])
 
         initial_tex = triplet[1]
         desired_tex = triplet[2]
 
         massive_simple_sidedef_switch(map_edit, initial_tex, desired_tex)
-        alpha.maps[map] = map_edit.to_lumps()
-        log(f'    Fixing {map}...')
+        base.maps[slot] = map_edit.to_lumps()
+        log(f'    Fixing {slot}...')
 
     log('  Organizing lumps...')
-    base.data += alpha.data
-    base.txdefs += alpha.txdefs
-    base.sprites += alpha.sprites
-    base.graphics += alpha.graphics
+    masterpack.data += base.data
+    masterpack.txdefs += base.txdefs
+    masterpack.sprites += base.sprites
+    masterpack.graphics += base.graphics
 
     log('    Sorting MIDIs...')
     for midi in DOOM1_MIDI:
-        base.music[midi] = midi1.music[midi]
+        masterpack.music[midi] = midi1.music[midi]
 
     log('    Sorting MIDIs...')
     for midi in DOOM2_MIDI:
-        base.music[midi] = midi2.music[midi]
+        masterpack.music[midi] = midi2.music[midi]
 
     log('    Sorting maps...')
-    for map in ALL_MAPS:
-        base.maps[map] = alpha.maps[map]
+    for slot in ALL_MAPS:
+        masterpack.maps[slot] = base.maps[slot]
 
     log('    Sorting patches...')
-    for patch in ALL_PATCHES:
-        base.patches[patch] = alpha.patches[patch]
+    for slot in ALL_PATCHES:
+        masterpack.patches[slot] = base.patches[slot]
 
     log('  Creating masterpack.wad...')
-    base.to_file(BASE)
+    masterpack.to_file(MASTERPACK)
 
 
 def main() -> None:
