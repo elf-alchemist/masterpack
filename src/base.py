@@ -124,6 +124,9 @@ MAP_TRIPLETS = [
     ['MAP36', 'cdk_fury.wad', 'MAP01'],
     ['MAP38', 'e_inside.wad', 'MAP01'],
     ['MAP39', 'hive.wad', 'MAP01'],
+    # Lost Levels
+    ['MAP42', 'TWM01.WAD', 'MAP03'],
+    ['MAP46', 'kickdm2.wad', 'MAP01'],
 ]
 
 BASE_MAPS = [
@@ -151,6 +154,9 @@ BASE_MAPS = [
     'MAP36',
     'MAP38',
     'MAP39',
+    # Lost Levels
+    'MAP42',
+    'MAP46',
 ]
 
 
