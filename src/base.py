@@ -23,47 +23,36 @@ ALPHA = 'alpha.wad'
 BASE = 'beta.wad'
 
 SOURCE_WADS = [
-    # Inferno
-    'DANTE25.WAD',
-    'ACHRON22.WAD',
-    'UDTWiD.wad',
-    # Titan
-    'MINES.WAD',
-    'anomaly.wad',
-    'FARSIDE.WAD',
-    'TROUBLE.WAD',
-    # Cabal
+    'DANTE25.WAD', 'ACHRON22.WAD', 'UDTWiD.wad',
+    'MINES.WAD', 'anomaly.wad', 'FARSIDE.WAD', 'TROUBLE.WAD',
     'CABALL.WAD',
-    # Klietech
-    'cpu.wad',
-    'device_1.wad',
-    'dmz.wad',
-    'cdk_fury.wad',
-    'e_inside.wad',
-    'hive.wad',
+    'cpu.wad', 'device_1.wad', 'dmz.wad', 'cdk_fury.wad', 'e_inside.wad', 'hive.wad',
+    'ultimidi.wad', 'midtwid2.wad',
 ]
 
 SOURCE_SHA256SUM = {
-    # Alpha
     'alpha.wad': 'a51d69955c4a0141fb353f6732cf4421ea275f641789e10907a0169b34915234',
-    # Inferno
+
     'DANTE25.WAD': '8ac0ce535c75027f46a8909ad6fa7c173ba1457a76167a05ac2213d5606cf902',
     'ACHRON22.WAD': '9c285f5b14b5a26a5e46e0c5566a1fbfc94a170a9d0d6c2dee19069b3e4d5423',
     'UDTWiD.wad': '523108f0341da424fc390c2a43cb3a9d418f0137298e85b19d12272da4021ec7',
-    # Titan
+
     'MINES.WAD': '4156ed584a667f3d97cd4e3795e0cafa7194404855d9c88826e6e417da9e5d5d',
     'anomaly.wad': 'e0d3efc52add92974cf989c34ce93dbb35149041a1192a2ea169e24922490dad',
     'FARSIDE.WAD': '55e40715b49c201ea035eef00b5ece40243ca217a56b20c1fb7625c7103ac277',
     'TROUBLE.WAD': '8f89694bdaeb10709acea88423929bf4ea75cfc8f6d406565151076ccbc365f5',
-    # Cabal
+
     'CABALL.WAD': '5ed07c63382124793eb8c2881a4d85da15d430d32265c14d8452930ef3f2c2c4',
-    # Klietech
+
     'cpu.wad': '9377554a75a18eaa2cd60a8707040efeaa21d136e842b0060d4262972f6b790f',
     'device_1.wad': 'f1493e01d7f3fdcda098ebf4c48560fe098b9c56610650b44bd535e0255d7d54',
     'dmz.wad': '365e62691813d9653d588c65590b889cf0fb16276363c3d5454fbcabbb45eaea',
     'cdk_fury.wad': '1cafc59bd422991c93f9c34830793375c9914cf4ffae88db927867d6871888a8',
     'e_inside.wad': 'f5f97aa3f09c97a99f3721aeda32037e55cf4f936f9a74fa8d4c5bcf57ab3eae',
     'hive.wad': '754479211ffcbf240c08c6cdc6c1912f1c2eee3626682d04fe286a8fb55d1d70',
+
+    'ultimidi.wad': 'cff289109308dceffb0f2e9361196bda1c35edca7665c5ad604d335ad8d756c5',
+    'midtwid2.wad': '54806d8606273cda58db29477fb3fc8be8e40c774f587dda217dab1015e1547b',
 }
 
 PATCH_TRIPLETS = [
@@ -72,11 +61,11 @@ PATCH_TRIPLETS = [
     ['MSKY2_1', 'MINES.WAD', 'STARS'],
     ['MSKY2_2', 'MINES.WAD', 'STARS1'],
     ['MSKY2_3', 'MINES.WAD', 'STARSAT'],
-    # Inferno
+
     ['DRSLEEP', 'UDTWiD.wad', 'DRSLEEP'],
     # ['UN_SKY', 'ACHRON22.WAD', 'SKY1'],
     # ^ unused because MSKY1 is a MUCH better fit for Inferno
-    # Titan
+
     ['ASHWALL', 'MINES.WAD', 'W104_1'],
     ['WATER', 'MINES.WAD', 'TWF'],
     ['REDWALL1', 'MINES.WAD', 'W15_4'],
@@ -100,16 +89,16 @@ PATCH_TRIPLETS = [
 ]
 
 MAP_TRIPLETS = [
-    # Inferno
+
     ['MAP01', 'DANTE25.WAD', 'MAP02'],
     ['MAP02', 'ACHRON22.WAD', 'MAP03'],
     ['MAP09', 'UDTWiD.wad', 'E4M8'],
-    # Titan
+
     ['MAP10', 'MINES.WAD', 'MAP01'],
     ['MAP11', 'anomaly.wad', 'MAP01'],
     ['MAP12', 'FARSIDE.WAD', 'MAP01'],
     ['MAP15', 'TROUBLE.WAD', 'MAP01'],
-    # Caball
+
     ['MAP16', 'CABALL.WAD', 'MAP24'],
     ['MAP17', 'CABALL.WAD', 'MAP25'],
     ['MAP18', 'CABALL.WAD', 'MAP26'],
@@ -117,48 +106,41 @@ MAP_TRIPLETS = [
     ['MAP21', 'CABALL.WAD', 'MAP28'],
     ['MAP24', 'CABALL.WAD', 'MAP30'],
     ['MAP26', 'CABALL.WAD', 'MAP29'],
-    # Klietech
+
     ['MAP28', 'cpu.wad', 'MAP01'],
     ['MAP31', 'device_1.wad', 'MAP01'],
     ['MAP34', 'dmz.wad', 'MAP01'],
     ['MAP36', 'cdk_fury.wad', 'MAP01'],
     ['MAP38', 'e_inside.wad', 'MAP01'],
     ['MAP39', 'hive.wad', 'MAP01'],
-    # Lost Levels
+
     ['MAP42', 'TWM01.WAD', 'MAP03'],
     ['MAP46', 'kickdm2.wad', 'MAP01'],
 ]
 
 BASE_MAPS = [
-    # Inferno
-    'MAP01',
-    'MAP02',
-    'MAP09',
-    # Titan
-    'MAP10',
-    'MAP11',
-    'MAP12',
-    'MAP15',
-    # Cabal
-    'MAP16',
-    'MAP17',
-    'MAP18',
-    'MAP20',
-    'MAP21',
-    'MAP24',
-    'MAP26',
-    # Klietech
-    'MAP28',
-    'MAP31',
-    'MAP34',
-    'MAP36',
-    'MAP38',
-    'MAP39',
-    # Lost Levels
-    'MAP42',
-    'MAP46',
+    'MAP01', 'MAP02', 'MAP09',
+    'MAP10', 'MAP11', 'MAP12', 'MAP15',
+    'MAP16', 'MAP17', 'MAP18', 'MAP20', 'MAP21', 'MAP24', 'MAP26',
+    'MAP28', 'MAP31', 'MAP34', 'MAP36', 'MAP38', 'MAP39',
+    'MAP42', 'MAP46',
 ]
 
+ULTIMIDI = [
+    'D_INTRO', 'D_INTROA', 'D_INTER', 'D_VICTOR', 'D_BUNNY',
+    'D_E1M1', 'D_E1M2', 'D_E1M3', 'D_E1M4', 'D_E1M5', 'D_E1M6', 'D_E1M7', 'D_E1M8', 'D_E1M9',
+    'D_E2M1', 'D_E2M2', 'D_E2M3', 'D_E2M4', 'D_E2M5', 'D_E2M6', 'D_E2M7', 'D_E2M8', 'D_E2M9',
+    'D_E3M1', 'D_E3M2', 'D_E3M3', 'D_E3M4', 'D_E3M5', 'D_E3M6', 'D_E3M7', 'D_E3M8', 'D_E3M9',
+    'D_E4M1', 'D_E4M2', 'D_E4M3', 'D_E4M4', 'D_E4M5', 'D_E4M6', 'D_E4M7', 'D_E4M8', 'D_E4M9',
+]
+
+MIDTWID = [
+    'D_DM2TTL', 'D_DM2INT', 'D_READ_M',
+    'D_RUNNIN', 'D_STALKS', 'D_COUNTD', 'D_BETWEE', 'D_DOOM',   'D_THE_DA', 'D_SHAWN',  'D_DDTBLU',
+    'D_IN_CIT', 'D_DEAD',   'D_STLKS2', 'D_THEDA2', 'D_DOOM2',  'D_DDTBL2', 'D_RUNNI2', 'D_DEAD2',
+    'D_STLKS3', 'D_ROMERO', 'D_SHAWN2', 'D_MESSAG', 'D_COUNT2', 'D_DDTBL3', 'D_AMPIE',  'D_THEDA3',
+    'D_ADRIAN', 'D_MESSG2', 'D_ROMER2', 'D_TENSE',  'D_SHAWN3', 'D_OPENIN', 'D_EVIL',   'D_ULTIMA',
+]
 
 #
 # Utils
@@ -239,10 +221,8 @@ def base_build() -> None:
     base = WAD()
     alpha = WAD('alpha.wad')
 
-    # if get_wad_hash(ALPHA) != get_wad_pre_hash(ALPHA):
-    # log('  Error: alpha.wad failed the checksum, something terrible happened. Try again.')
-    # log('Build failed.')
-    # exit(2)
+    midi1 = WAD(DIR_SOURCE + 'ultimidi.wad')
+    midi2 = WAD(DIR_SOURCE + 'midtwid2.wad')
 
     log('  Extracting patches...')
     for triple in PATCH_TRIPLETS:
@@ -307,20 +287,22 @@ def base_build() -> None:
 
     log('  Transferring lumps...')
     base.data += alpha.data
-    base.music += alpha.music
     base.txdefs += alpha.txdefs
     base.patches += alpha.patches
     base.sprites += alpha.sprites
     base.graphics += alpha.graphics
+
+    for midi in ULTIMIDI:
+        base.music[midi] = midi1.music[midi]
+
+    for midi in MIDTWID:
+        base.music[midi] = midi2.music[midi]
 
     for map in BASE_MAPS:
         base.maps[map] = alpha.maps[map]
 
     log('  Creating base.wad...')
     base.to_file(BASE)
-
-    # if get_wad_hash(BASE) != get_wad_pre_hash(BASE):
-    #    log('  Warn: base.wad failed the checksum, you can _maybe_ build masterpack.wad.')
 
 
 def main() -> None:
