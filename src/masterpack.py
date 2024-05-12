@@ -54,8 +54,8 @@ SOURCE_WADS = [
 
 SOURCE_SHA256SUM = {
     # Masterpack
-    'base.wad': 'bb53410af837ed44b04b9d2f5f1b77be3cc4dfc0d0eaf740c785088f0a662b82',
-    'masterpack.wad': 'acf1a26181992ee63846eb4b5ac665b990dd4288a7592d34f307db77c782a288',
+    'base.wad': '282d7b3f88d06eb07cc8c3b0023e6e09387d12380867f5ca3293599151f8b097',
+    'masterpack.wad': 'b4b1288fd042016e86535bcc0432a7e2ce8da03080af006d1beda9cb6b5ba19a',
     # IWADS
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
     'DOOM2.WAD': '10d67824b11025ddd9198e8cfc87ca335ee6e2d3e63af4180fa9b8a471893255',
