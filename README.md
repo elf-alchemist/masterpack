@@ -43,7 +43,7 @@ I started out using [SLADE3](https://slade.mancubus.net/) to extract the content
 
 # Instructions
 
-In order to use this script correctly you will the following, from your Steam installation of Ultimate Doom and Doom II (keeping in mind, these are the original DOS version of the IWADs and PWADs, the Unity ones will not work):
+In order to use this script correctly you will need the following, from your Steam installation of Ultimate Doom and Doom II (keeping in mind, these are the original DOS version of the IWADs and PWADs, the Unity ones will not work):
 
 - Ultimate Doom, `DOOM.WAD`
 - Doom II: Hell on Earth, `DOOM2.WAD`
@@ -75,7 +75,7 @@ In order to use this script correctly you will the following, from your Steam in
 		- `ATTACK.WAD`
 		- `CANYON.WAD`
 
-To find these files, starting on your Steam library, check out [this](./misc/STEAM.md) tutorial.
+If you don't know how to find these, check out [this](./misc/STEAM.md) tutorial.
 
 Once you have all the WAD files, drop them in the `source/` directory and run the script as the following:
 
