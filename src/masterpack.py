@@ -23,7 +23,6 @@ MASTERPACK = 'masterpack.wad'
 SOURCE_WADS = [
     # IWADs
     'DOOM.WAD',
-    'DOOM2.WAD',
     'TNT.WAD',
     # Inferno
     'VIRGIL.WAD',
@@ -54,11 +53,10 @@ SOURCE_WADS = [
 
 SOURCE_SHA256SUM = {
     # Masterpack
-    'base.wad': '7eb98beee241c0e0f45a85080047a72294d904af90dd3e0d7e8a8d1b0235e5d7',
-    'masterpack.wad': '65019f83dbb66bf1831abd7f4ba3cd4c6da25a7e91e460cf243265ed1e6fd773',
+    'base.wad': 'cc1381363256199b5e93031c7d84cc7d27ed1c23db83f8421d46e4ac9ed16181',
+    'masterpack.wad': '0dfe970900481a6b474c51e5ceabed53754b3163674dcd9bdcd91f3cdd9df030',
     # IWADS
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
-    'DOOM2.WAD': '10d67824b11025ddd9198e8cfc87ca335ee6e2d3e63af4180fa9b8a471893255',
     'TNT.WAD': 'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353',
     # Inferno
     'VIRGIL.WAD': 'c468a1684be8e8055fca52c0c0b3068893481dbaeff0d25f2d72a13b340dff09',
@@ -86,6 +84,52 @@ SOURCE_SHA256SUM = {
     'ATTACK.WAD': '4b9a404a4ee43ed33f7c2e208269b84b58ccfec5823afa1fe50e3dd08e927622',
     'CANYON.WAD': 'a2dd18d174d25a5d31046114bf73d87e9e13e49e9e6b509b2c9942e77d4c9ecf',
 }
+
+BASE_PATCHES = [
+    # UDTWiD
+    'MSKY1',
+    # Master Levels
+    'MSKY2_1',      # space
+    'MSKY2_2',      # nebula
+    'MSKY2_3',      # saturn
+    'MSKY3',        # stars
+    # UDTWiD
+    'DRSLEEP',
+    # MINES.WAD
+    'ASHWALL',
+    'WATER',
+    'REDWALL1',
+    'REDWALL2',
+    # anomaly.wad
+    'BLACK',
+    'FIRELV',
+    'ANOMALY1',
+    'ANOMALY2',
+    'ANOMALY3',
+    'ANOMALY4',
+    'ANOMALY5',
+    'ANOMALY6',
+    'ANOMALY7',
+    'ANOMALY8',
+    # TROUBLE.WAD
+    'SAVED',
+    'TROUBLE1',
+    'TROUBLE2',
+    'TROUBLE3',
+    'TROUBLE4',
+    'TROUBLE5',
+    'SW2_3',
+    'W15_6',
+    'WALL40_1',
+    'WALL63_2',
+    'WALL76_1',
+    'W109_1',
+    'W109_2',
+    'W110_1',
+    'W113_1',
+    'W113_2',
+    'W113_3',
+]
 
 DOOM_PATCHES = [
     'SW2_3',
@@ -256,18 +300,19 @@ def masterpack_build() -> None:
     base = WAD(BASE)
 
     doom = WAD(DIR_SOURCE + 'DOOM.WAD')
-    doom2 = WAD(DIR_SOURCE + 'DOOM2.WAD')
 
     if get_wad_hash(BASE) != get_wad_pre_hash(BASE):
         log('  Error: base.wad failed the checksum, if you are seeing this, something terrible happened. Download and try again.')
         log('Build failed.')
         exit(2)
 
-    log('  Extracting graphics...')
-    base.graphics['INTERPIC'] = doom.graphics['INTERPIC']
-    base.graphics['BOSSBACK'] = doom2.graphics['INTERPIC']
-
     log('  Extracting patches...')
+    # gotta extract the Klietech sky manually
+    # since it is not between P_* markers
+    combine = WAD(DIR_SOURCE + 'COMBINE.WAD')
+    sky = combine.data['RSKY1']
+    base.patches['MSKY3'] = sky
+
     for doom_patch in DOOM_PATCHES:
         base.patches[doom_patch] = doom.patches[doom_patch]
 
@@ -279,8 +324,11 @@ def masterpack_build() -> None:
     master.data += base.data
     master.music += base.music
     master.txdefs += base.txdefs
-    master.patches += base.patches
     master.graphics += base.graphics
+
+    for patch in BASE_PATCHES:
+        master.patches[patch] = base.patches[patch]
+
     for map in MASTERPACK_MAPS:
         master.maps[map] = base.maps[map]
 

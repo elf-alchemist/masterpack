@@ -74,7 +74,8 @@ PATCH_TRIPLETS = [
     ['MSKY2_3', 'MINES.WAD', 'STARSAT'],
     # Inferno
     ['DRSLEEP', 'UDTWiD.wad', 'DRSLEEP'],
-    # ['MSKY3', 'ACHRON22.WAD', 'SKY1'],
+    # ['UN_SKY', 'ACHRON22.WAD', 'SKY1'],
+    # ^ unused because MSKY1 is a MUCH better fit for Inferno
     # Titan
     ['ASHWALL', 'MINES.WAD', 'W104_1'],
     ['WATER', 'MINES.WAD', 'TWF'],
@@ -123,41 +124,6 @@ MAP_TRIPLETS = [
     ['MAP36', 'cdk_fury.wad', 'MAP01'],
     ['MAP38', 'e_inside.wad', 'MAP01'],
     ['MAP39', 'hive.wad', 'MAP01'],
-]
-
-BASE_PATCHES = [
-    # UDTWiD
-    'MSKY1',
-    # Master Levels
-    'MSKY2_1',      # space
-    'MSKY2_2',      # nebula
-    'MSKY2_3',      # saturn
-    'MSKY3',        # stars
-    # UDTWiD
-    'DRSLEEP',
-    # MINES.WAD
-    'ASHWALL',
-    'WATER',
-    'REDWALL1',
-    'REDWALL2',
-    # anomaly.wad
-    'BLACK',
-    'FIRELV',
-    'ANOMALY1',
-    'ANOMALY2',
-    'ANOMALY3',
-    'ANOMALY4',
-    'ANOMALY5',
-    'ANOMALY6',
-    'ANOMALY7',
-    'ANOMALY8',
-    # TROUBLE.WAD
-    'SAVED',
-    'TROUBLE1',
-    'TROUBLE2',
-    'TROUBLE3',
-    'TROUBLE4',
-    'TROUBLE5',
 ]
 
 BASE_MAPS = [
@@ -273,11 +239,6 @@ def base_build() -> None:
     # exit(2)
 
     log('  Extracting patches...')
-    # Canto 2 has it's single patch outside the P_* markers
-    achron22 = WAD(DIR_SOURCE + 'ACHRON22.WAD')
-    sky = achron22.data['RSKY1']
-    alpha.patches['MSKY3'] = sky
-    # thankfully all others are marked properly
     for triple in PATCH_TRIPLETS:
         wad = WAD(DIR_SOURCE + triple[1])
         patch = wad.patches[triple[2]]
@@ -288,6 +249,11 @@ def base_build() -> None:
         wad = WAD(DIR_SOURCE + triple[1])
         map = wad.maps[triple[2]]
         alpha.maps[triple[0]] = map
+
+    log('    Fixing MAP09...')
+    map09 = MapEditor(alpha.maps['MAP09'])
+    massive_simple_sidedef_switch(map09, 'SKY4', 'MSKY1')
+    alpha.maps['MAP09'] = map09.to_lumps()
 
     log('    Fixing MAP10...')
     map10 = MapEditor(alpha.maps['MAP10'])
@@ -337,10 +303,10 @@ def base_build() -> None:
     base.data += alpha.data
     base.music += alpha.music
     base.txdefs += alpha.txdefs
+    base.patches += alpha.patches
     base.sprites += alpha.sprites
     base.graphics += alpha.graphics
-    for patch in BASE_PATCHES:
-        base.patches[patch] = alpha.patches[patch]
+
     for map in BASE_MAPS:
         base.maps[map] = alpha.maps[map]
 
