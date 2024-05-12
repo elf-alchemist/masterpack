@@ -5,7 +5,9 @@
 # Description:
 #     Masterpack build script. Bring together all Master Levels for Doom II in one single package.
 
-from os import listdir
+from os import listdir, path
+from shutil import copy
+from tempfile import mkdtemp
 from hashlib import sha256
 from zipfile import ZipFile
 
@@ -13,7 +15,7 @@ from omg.wad import WAD
 from omg.mapedit import MapEditor
 
 logfile = None
-LOG_FILE = 'base.log'
+LOG_FILE = 'build.log'
 
 BUFFER_SIZE = 16384
 
@@ -34,6 +36,8 @@ ALL_WADS = [
 ]
 
 SHA256_DIGEST = {
+    'data.zip': 'eeaea73652980fc5068266a5d077394e5847acfeaae500c1794c84adccbcf8c5',
+
     'alpha.wad': 'a51d69955c4a0141fb353f6732cf4421ea275f641789e10907a0169b34915234',
     'base.wad': 'cc1381363256199b5e93031c7d84cc7d27ed1c23db83f8421d46e4ac9ed16181',
     'masterpack.wad': '0dfe970900481a6b474c51e5ceabed53754b3163674dcd9bdcd91f3cdd9df030',
@@ -298,10 +302,10 @@ def log(line: str) -> None:
     logfile.write(line + '\n')
 
 
-def get_wad_filename(wad_name: str) -> str | None:
-    for filename in listdir(DIR_SOURCE):
+def check_wad(dir: str, wad_name: str) -> str | None:
+    for filename in listdir(dir):
         if wad_name.lower() == filename.lower():
-            return DIR_SOURCE + filename
+            return dir + filename
 
     return None
 
@@ -332,16 +336,16 @@ def get_wad_hash(wad_path: str) -> str | None:
     return sha256hash.hexdigest()
 
 
-def check_wads(found_wads: list[str]):
+def check_all_wads(dir: str):
+    found_wads: list[str] = []
     for wad in ALL_WADS:
-        if get_wad_filename(wad) == None:
+        if check_wad(dir, wad) == None:
             log(f'  {wad.upper()} is missing.')
-
         if get_wad_hash(DIR_SOURCE + wad) != get_wad_pre_hash(wad):
-            log(f'  {wad.upper()} checksum does not match. Continuing Wit')
-
+            log(f'  {wad.upper()} checksum does not match. Do you have the right version?')
         found_wads.append(wad)
 
+    return found_wads
 
 #
 # Actual lump-to-wad extraction
@@ -362,7 +366,6 @@ def base_build() -> None:
     base = WAD()
     alpha = WAD(ALPHA)
 
-    doom = WAD(DIR_SOURCE + 'DOOM.WAD')
     midi1 = WAD(DIR_SOURCE + 'ultimidi.wad')
     midi2 = WAD(DIR_SOURCE + 'midtwid2.wad')
 
@@ -407,17 +410,28 @@ def base_build() -> None:
 
 
 def main() -> None:
+    log('Setting up.')
+
+    temp = mkdtemp()
+    data = ZipFile('data.zip', 'r')
+    data.extractall(temp)
+
+    for file in listdir(DIR_SOURCE):
+        origin = path.join(DIR_SOURCE, file)
+        dest = path.join(temp, file)
+        copy(origin, dest)
+
     log('Checking wads.')
-    found_wads: list[str] = []
-    check_wads(found_wads)
+    found_wads = check_all_wads(temp)
 
     if sorted(found_wads) != sorted(ALL_WADS):
-        log('Error: Did not find all base wads. Check base.log for more details.')
+        log('Error: Did not find all wads.')
+        log('Check build.log for more details.')
         log('Build failed. Exiting...')
         exit(1)
-    log(' Found all base WADs!')
+    log('Found all WADs!')
 
-    log('Starting to build WAD.')
+    log('Starting to build masterpack.wad.')
     base_build()
 
     log('Build successful.')
