@@ -31,7 +31,7 @@ ALL_WADS = [
     'MINES.WAD', 'anomaly.wad', 'FARSIDE.WAD', 'MANOR.WAD', 'TTRAP.WAD', 'TROUBLE.WAD',
     'CABALL.WAD', 'BLOODSEA.WAD', 'BLACKTWR.WAD', 'MEPHISTO.WAD', 'TEETH.WAD',
     'cpu.wad', 'SUBSPACE.WAD', 'COMBINE.WAD', 'device_1.wad', 'FISTULA.WAD', 'SUBTERRA.WAD', 'dmz.wad', 'CATWALK.WAD', 'cdk_fury.wad', 'GARRISON.WAD', 'e_inside.wad', 'hive.wad',
-    'TWM01.WAD', 'PARADOX.WAD', 'ATTACK.WAD', 'CANYON.WAD', 'kickdm2.wad'
+    'TWM01.WAD', 'PARADOX.WAD', 'ATTACK.WAD', 'CANYON.WAD', 'kickdm2.wad',
     'ultimidi.wad', 'midtwid2.wad',
 ]
 
@@ -340,9 +340,10 @@ def check_all_wads(dir: str):
     found_wads: list[str] = []
     for wad in ALL_WADS:
         if check_wad(dir, wad) == None:
-            log(f'  {wad.upper()} is missing.')
-        if get_wad_hash(DIR_SOURCE + wad) != get_wad_pre_hash(wad):
-            log(f'  {wad.upper()} checksum does not match. Do you have the right version?')
+            log(f'  {wad} is missing.')
+            break
+        if get_wad_hash(dir + wad) != get_wad_pre_hash(wad):
+            log(f'  {wad} checksum does not match. Do you have the right version?')
         found_wads.append(wad)
 
     return found_wads
@@ -362,50 +363,68 @@ def massive_simple_sidedef_switch(map: MapEditor, initial_tx: str, desired_tx: s
             sidedef.tx_low = desired_tx
 
 
-def base_build() -> None:
+def base_build(dir: str) -> None:
     base = WAD()
     alpha = WAD(ALPHA)
 
-    midi1 = WAD(DIR_SOURCE + 'ultimidi.wad')
-    midi2 = WAD(DIR_SOURCE + 'midtwid2.wad')
+    midi1 = WAD(dir + 'ultimidi.wad')
+    midi2 = WAD(dir + 'midtwid2.wad')
 
     log('  Extracting patches...')
+    # gotta extract the Klietech sky manually
+    # since it is not located between P_* markers
+    combine = WAD(DIR_SOURCE + 'COMBINE.WAD')
+    sky = combine.data['RSKY1']
+    alpha.patches['MSKY3'] = sky
+
     for triple in PATCH_TRIPLETS:
-        wad = WAD(DIR_SOURCE + triple[1])
+        wad = WAD(dir + triple[1])
         patch = wad.patches[triple[2]]
         alpha.patches[triple[0]] = patch
         log('    ' + triple[0])
 
     log('  Extracting maps...')
     for triple in ALL_MAP_TRIPLETS:
-        wad = WAD(DIR_SOURCE + triple[1])
+        wad = WAD(dir + triple[1])
         map = wad.maps[triple[2]]
         alpha.maps[triple[0]] = map
         log(f'    Pulled {triple[0]}...')
 
     log('  Fixing maps...')
     for triplet in SIDEDEF_SWITCH_TRIPLETS:
-        map = MapEditor(alpha.maps[triplet[0]])
-        massive_simple_sidedef_switch(map, triplet[1], triplet[2])
-        alpha.maps[triplet[0]] = map.to_lumps()
+        map = triplet[0]
+        map_edit = MapEditor(alpha.maps[map])
+
+        initial_tex = triplet[1]
+        desired_tex = triplet[2]
+
+        massive_simple_sidedef_switch(map_edit, initial_tex, desired_tex)
+        alpha.maps[map] = map_edit.to_lumps()
+        log(f'    Fixing {map}...')
 
     log('  Organizing lumps...')
     base.data += alpha.data
     base.txdefs += alpha.txdefs
-    base.patches += alpha.patches
     base.sprites += alpha.sprites
     base.graphics += alpha.graphics
 
+    log('    Sorting MIDIs...')
     for midi in DOOM1_MIDI:
         base.music[midi] = midi1.music[midi]
 
+    log('    Sorting MIDIs...')
     for midi in DOOM2_MIDI:
         base.music[midi] = midi2.music[midi]
 
+    log('    Sorting maps...')
     for map in ALL_MAPS:
         base.maps[map] = alpha.maps[map]
 
-    log('  Creating base.wad...')
+    log('    Sorting patches...')
+    for patch in ALL_PATCHES:
+        base.patches[patch] = alpha.patches[patch]
+
+    log('  Creating masterpack.wad...')
     base.to_file(BASE)
 
 
@@ -422,7 +441,7 @@ def main() -> None:
         copy(origin, dest)
 
     log('Checking wads.')
-    found_wads = check_all_wads(temp)
+    found_wads = check_all_wads(temp + '/')
 
     if sorted(found_wads) != sorted(ALL_WADS):
         log('Error: Did not find all wads.')
@@ -432,7 +451,7 @@ def main() -> None:
     log('Found all WADs!')
 
     log('Starting to build masterpack.wad.')
-    base_build()
+    base_build(temp + '/')
 
     log('Build successful.')
     exit(0)
