@@ -290,7 +290,7 @@ DOOM2_MIDI = [
 #
 
 
-def log(line: str) -> None:
+def log(line: str):
     global logfile
 
     if not logfile:
@@ -300,7 +300,7 @@ def log(line: str) -> None:
     logfile.write(line + '\n')
 
 
-def check_wad(dir: str, wad_name: str) -> str | None:
+def check_wad(dir: str, wad_name: str):
     for filename in listdir(dir):
         if wad_name.lower() == filename.lower():
             return dir + filename
@@ -313,14 +313,14 @@ def check_wad(dir: str, wad_name: str) -> str | None:
 #
 
 
-def get_wad_pre_hash(wad_name: str) -> str | None:
+def get_wad_pre_hash(wad_name: str):
     if wad_name not in SHA256_DIGEST:
         return None
 
     return SHA256_DIGEST[wad_name]
 
 
-def get_wad_hash(wad_path: str) -> str:
+def get_wad_hash(wad_path: str):
     sha256hash = sha256()
 
     file_handler = open(wad_path, 'rb')
@@ -351,7 +351,7 @@ def check_all_wads(dir: str):
 #
 
 
-def massive_simple_sidedef_switch(map: MapEditor, initial_tx: str, desired_tx: str) -> None:
+def massive_simple_sidedef_switch(map: MapEditor, initial_tx: str, desired_tx: str):
     for sidedef in map.sidedefs:
         if sidedef.tx_up == initial_tx:
             sidedef.tx_up = desired_tx
@@ -361,7 +361,7 @@ def massive_simple_sidedef_switch(map: MapEditor, initial_tx: str, desired_tx: s
             sidedef.tx_low = desired_tx
 
 
-def base_build(dir: str) -> None:
+def base_build(dir: str):
     masterpack = WAD()
     base = WAD(BASE)
 
@@ -443,7 +443,7 @@ def base_build(dir: str) -> None:
         log('  Checksum failed failed for `masterpack.wad`. Something went terribly wrong.')
 
 
-def main() -> None:
+def main():
     log('Setting up.')
 
     temp = mkdtemp()
