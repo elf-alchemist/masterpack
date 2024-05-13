@@ -43,10 +43,11 @@ I started out using [SLADE3](https://slade.mancubus.net/) to extract the content
 
 # Instructions
 
-In order to use this script correctly you will need the following, from your Steam installation of Ultimate Doom and Doom II (keeping in mind, these are the original DOS version of the IWADs and PWADs, the Unity ones will not work):
+To get started, extract the contents of `masterpack-v0.4.0-windows.zip`, onto any folder. Keeping in mind, that the internal `data.zip` file must be present and NOT extracted.
+
+In order to use this script you will need the following, from your Steam installation of Ultimate Doom and Doom II (keeping in mind, these are the original DOS version of the IWADs and PWADs, the Unity ones will not work):
 
 - Ultimate Doom, `DOOM.WAD`
-- Doom II: Hell on Earth, `DOOM2.WAD`
 - TNT: Evilution, `TNT.WAD`
 - All 20 of the Master Levels for Doom II:
 	- Inferno
@@ -80,14 +81,20 @@ If you don't know how to find these, check out [this](./misc/STEAM.md) tutorial.
 Once you have all the WAD files, drop them in the `source/` directory and run the script as the following:
 
 ```bash
-$ python3 masterpack.py
+# Linux
+$ ./masterpack.elf
+
+# Windows
+$ ./masterpack.exe
 ```
 
-It will generate a `masterpack.log` file containing the output of the script, if it was successful or not.
+The above is identical to simply double-clicking on the respective `masterpack.exe` on a graphical interface.
 
-And, if nothing went wrong, you will now be the proud owner of your own copy of `masterpack.wad`.
+Once finished it will generate a `build.log` file containing the output of the script, if it was successful or not.
 
-To play this, run it with a modern Doom source port, with xMAPINFO support, such as DSDA-Doom, Woof!, Eternity or the ZDoom family.
+And, if sucessful, you will now be the proud owner of your own copy of `masterpack.wad`.
+
+To play this, run it with a modern Doom source port, with xMAPINFO support, such as DSDA-Doom, Woof!, Eternity or the ZDoom family. By merely dragging and dropping the `masterpack.wad` file on the source port EXE, or by runnign the following on the command line.
 
 ```bash
 # With DSDA

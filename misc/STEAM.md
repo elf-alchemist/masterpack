@@ -28,37 +28,31 @@ Fourth: You should, now, see `DOOM.WAD` this is the file you are looking for, co
 
 <hr/>
 
-Fifth: Now, close your explorer, return to your Steam library, go to Doom II and repeat steps 1 and 2, you should now see the installation of Doom II, in here we have more directories to worry about, to begin, we'll concern with "base/", for now.
+Fifth: Now, close your explorer, return to your Steam library, go to Doom II and repeat steps 1 and 2, you should now see the installation of Doom II, in here we have more directories to worry about, to begin, we'll concern with "finaldoombase/", for now.
 
 ![Onto Doom II](./steam5.png)
 
 <hr/>
 
-Sixth: Same as before, but now, with `DOOM2.WAD`, copy the WAD file to the "New Folder" you made on the fourth step.
-
-![DOOM2.WAD](./steam6.png)
-
-<hr/>
-
-Seventh: Moving back up one directory, and entering "finaldoombase/", you will see `TNT.WAD`, and now, you know the drill, copy this WAD over as well.
+Sixth: You will see `TNT.WAD`, and now, you know the drill, copy this WAD over to the "New Folder" as well.
 
 ![TNT.WAD](./steam7.png)
 
 <hr/>
 
-Eighth: Returning to the root Doom II directory, enter the, unfortunately named, "masterbase/".
+Seventh: Returning to the root Doom II directory, enter the, unfortunately named, "masterbase/".
 
 ![Onto Master Levels](./steam8.png)
 
 <hr/>
 
-Ninth: Now go to the last directory, "wads/"
+Eighth: Now go to the last directory, "wads/"
 
 ![WADs directory](./steam9.png)
 
 <hr/>
 
-Tenth: Here you are, at the end, wasn't it fun to learn? Now you know your way around Steam installation directories. *Ahem*, grab the 20 WAD files, present in this directory and copy them to the aforementioned folder.
+Ninth: Here you are, at the end, wasn't it fun to learn? Now you know your way around Steam installation directories. *Ahem*, grab the 20 WAD files, present in this directory and copy them to the aforementioned folder.
 
 ![Master Level WADs](./steam10.png)
 
