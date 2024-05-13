@@ -391,10 +391,10 @@ def base_build(dir: str) -> None:
         wad = WAD(dir + wad_name)
 
         original_slot = triple[2]
-        slot = wad.maps[original_slot]
+        map = wad.maps[original_slot]
 
         slot = triple[0]
-        base.maps[slot] = slot
+        base.maps[slot] = map
         log(f'    Pulled {slot}...')
 
     log('  Fixing maps...')
