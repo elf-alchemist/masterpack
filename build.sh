@@ -11,15 +11,15 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-version='v0.4.0'
+version='v0.4.1'
 
 cd src/
 
-zip "masterpack-${version}-windows.zip" source/delete_me.txt patches/masterpack_ml25amp.wad base.wad masterpack.exe
+zip "masterpack-${version}-windows.zip" data.zip source/delete_me.txt patches/masterpack_ml25amp.wad base.wad masterpack.exe
 mv "masterpack-${version}-windows.zip" ../pkgs/
 echo "Windows package built"
 
-zip "masterpack-${version}-linux.zip" source/delete_me.txt patches/masterpack_ml25amp.wad base.wad masterpack.elf
+zip "masterpack-${version}-linux.zip" data.zip source/delete_me.txt patches/masterpack_ml25amp.wad base.wad masterpack.elf
 mv "masterpack-${version}-linux.zip" ../pkgs/
 echo "Linux package built"
 
