@@ -37,6 +37,9 @@ ALL_WADS = [
 SHA256_DIGEST = {
     'data.zip': 'eeaea73652980fc5068266a5d077394e5847acfeaae500c1794c84adccbcf8c5',
 
+    'base.wad': '71c7680ebdd2ba0d7c5fd7514eb448fca95bc53db9954a2feae0bae63f6a01b8',
+    'masterpack.wad': 'f5bbf5ca67fbac1a1e08f41c3a3d4cc063940094ae0f65abc6e6f5504be528ec',
+
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
     'TNT.WAD': 'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353',
 
@@ -317,7 +320,7 @@ def get_wad_pre_hash(wad_name: str) -> str | None:
     return SHA256_DIGEST[wad_name]
 
 
-def get_wad_hash(wad_path: str) -> str | None:
+def get_wad_hash(wad_path: str) -> str:
     sha256hash = sha256()
 
     file_handler = open(wad_path, 'rb')
@@ -365,7 +368,7 @@ def base_build(dir: str) -> None:
     midi1 = WAD(dir + 'ultimidi.wad')
     midi2 = WAD(dir + 'midtwid2.wad')
 
-    log('  Extracting patches...')
+    log('  Extracting patches')
     # gotta extract the Klietech sky manually
     # since it is not located between P_* markers
     combine = WAD(DIR_SOURCE + 'COMBINE.WAD')
@@ -383,9 +386,9 @@ def base_build(dir: str) -> None:
         name = triple[0]
         base.patches[name] = slot
 
-        log(f'    {name}')
+        log(f'    Pulling {name}')
 
-    log('  Extracting maps...')
+    log('  Extracting maps')
     for triple in ALL_MAP_TRIPLETS:
         wad_name = triple[1]
         wad = WAD(dir + wad_name)
@@ -395,9 +398,9 @@ def base_build(dir: str) -> None:
 
         slot = triple[0]
         base.maps[slot] = map
-        log(f'    Pulled {slot}...')
+        log(f'    Pulling {slot}')
 
-    log('  Fixing maps...')
+    log('  Fixing maps')
     for triplet in SIDEDEF_SWITCH_TRIPLETS:
         slot = triplet[0]
         map_edit = MapEditor(base.maps[slot])
@@ -407,32 +410,37 @@ def base_build(dir: str) -> None:
 
         massive_simple_sidedef_switch(map_edit, initial_tex, desired_tex)
         base.maps[slot] = map_edit.to_lumps()
-        log(f'    Fixing {slot}...')
+        log(f'    Fixing {slot}')
 
-    log('  Organizing lumps...')
+    log('  Organizing lumps')
     masterpack.data += base.data
     masterpack.txdefs += base.txdefs
     masterpack.sprites += base.sprites
     masterpack.graphics += base.graphics
 
-    log('    Sorting MIDIs...')
+    log('    Sorting MIDIs')
     for midi in DOOM1_MIDI:
         masterpack.music[midi] = midi1.music[midi]
 
-    log('    Sorting MIDIs...')
+    log('    Sorting MIDIs')
     for midi in DOOM2_MIDI:
         masterpack.music[midi] = midi2.music[midi]
 
-    log('    Sorting maps...')
+    log('    Sorting maps')
     for slot in ALL_MAPS:
         masterpack.maps[slot] = base.maps[slot]
 
-    log('    Sorting patches...')
+    log('    Sorting patches')
     for slot in ALL_PATCHES:
         masterpack.patches[slot] = base.patches[slot]
 
-    log('  Creating masterpack.wad...')
     masterpack.to_file(MASTERPACK)
+    log('  Creating masterpack.wad')
+
+    pre_digest = get_wad_pre_hash(MASTERPACK)
+    digest = get_wad_hash(MASTERPACK)
+    if pre_digest != digest:
+        log('  Checksum failed failed for `masterpack.wad`. Something went terribly wrong.')
 
 
 def main() -> None:
@@ -453,15 +461,14 @@ def main() -> None:
     if sorted(found_wads) != sorted(ALL_WADS):
         log('Error: Did not find all wads.')
         log('Check build.log for more details.')
-        log('Build failed. Exiting...')
+        log('Build failed. Exiting')
         exit(1)
     log('Found all WADs!')
 
     log('Starting to build masterpack.wad.')
     base_build(temp + '/')
 
-    log('Build successful.')
-    exit(0)
+    log('Build successful')
 
 
 if __name__ == '__main__':
