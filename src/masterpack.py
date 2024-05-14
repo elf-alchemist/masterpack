@@ -5,6 +5,7 @@
 # Description:
 #     Masterpack build script. Bring together all Master Levels for Doom II in one single package.
 
+import sys
 from os import listdir, path
 from shutil import copy
 from tempfile import mkdtemp
@@ -13,6 +14,13 @@ from zipfile import ZipFile
 
 from omg.wad import WAD
 from omg.mapedit import MapEditor
+
+if getattr(sys, 'frozen', False):
+    base_path = sys._MEIPASS      # executable
+else:
+    base_path = path.abspath(".") # script
+
+DATA_ZIP = path.join(base_path, "data.zip")
 
 logfile = None
 LOG_FILE = 'build.log'
@@ -447,7 +455,7 @@ def main():
     log('Setting up.')
 
     temp = mkdtemp()
-    data = ZipFile('data.zip', 'r')
+    data = ZipFile(DATA_ZIP, 'r')
     data.extractall(temp)
 
     for file in listdir(DIR_SOURCE):

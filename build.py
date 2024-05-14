@@ -11,7 +11,7 @@ from zipfile import ZipFile
 
 version = "v0.4.1"
 windows_pkg = f"masterpack-{version}-windows.zip"
-linux_pkg = f"masterpack-{version}-windows.zip"
+linux_pkg = f"masterpack-{version}-linux.zip"
 pkgs = "pkgs/"
 
 
@@ -26,6 +26,8 @@ create_zip_package(
     files=[
         ("source/delete_me.txt", None),
         ("patches/masterpack_ml25amp.wad", None),
+        ("src/base.wad", "base.wad"),
+        ("src/data.zip", "data.zip"),
         ("dist/masterpack.exe", "masterpack.exe"),
     ],
 )
