@@ -2,17 +2,17 @@
 
 ![Master Levels](./misc/masterpack.jpg "Master Levels")
 
-The 'Master Levels for Doom II' were by far the lowest quality official release by id Software in it's classic days.
+The 'Master Levels for Doom II' is a grab-bag collection of various unstructured, unorganized WAD files, all made by various map authors with a wide variety of styles and design conventions.
 
-In short, it is a grab-bag collection of various unstructured, unorganized WAD files, all made by various map authors with a wide variety of styles and design conventions.
+Most of the authors involved in the project, made these maps with the intention of them being a part of larger episode or campaign overarching a certain theme even before being contacted by id Software for this project of theirs.
 
-Most of the authors involved in the project, made these maps with the intention of them being a part of larger episode or campaign overarching a certain theme even before being contacted by id Software for this project of theirs. John W. Anderson, for example, directing a series of 9 total levels themed around the first third of Dante Alighieri's Divine Comedy, Inferno.
+John W. Anderson, for example, directing a series of 9 total levels themed around the first third of Dante Alighieri's Divine Comedy, Inferno. While James Flynn concocted a series of 6 mind-cracking puzzle-oriented adventures set in Saturn's moon, Titan. And Sverre André Kvernmo told the story of a cyberdemon betrayed by his fellow hell-spawn taking revenge on the Cabal that conspired against him.
 
 However, not all maps made by these authors were accepted by id Software, being later released freely by their creators after the fact, with some of them even continuing their work further, beyond the original submitted level sets.
 
 With all this in mind, why should anyone play the works of these masters in their original amorphous format? Why should we accept the way things are? Why should we allow people to miss out on the great works of these authors just because the pieces are all over the place? Why should we be holden by the shackles of someone else's bad decisions? Why are we not allowed to have fun with some of the best level designers of 1995?
 
-This script fixes that and much more, by taking everything made by the authors past, present and future to the original Master Levels release and bringing it together in a single WAD file for your enjoyment. All 45 relevant (plus 1 bonus) map are now fully playable as 5 separate, organized episodes. And with this, you can now properly enjoy the works of Doom's early great authors, some of early Doom's most timeless work.
+The Masterpack works by taking everything made by the authors past, present and future to the original Master Levels release and bringing it together in a single WAD file for your enjoyment. All 45 relevant (plus 1 bonus) map are now fully playable as 5 separate, organized episodes. And with this, you can now properly enjoy the works of Doom's early great authors, some of early Doom's most timeless work.
 
 Here are the included episodes (and for a detailed list check out this [table](./misc/full_maps.csv)):
 ```txt
@@ -25,7 +25,7 @@ Here are the included episodes (and for a detailed list check out this [table](.
 
 Note about Waters of Lethe: The last Canto of the Inferno series, is long known to be the Doom community's [most important piece of lost media](https://www.doomworld.com/forum/topic/128173-known-lost-wads-of-our-history/), having no more proof than the author's own words and a single screenshot of the map to show for it's existence. In this map set, it is substituted by "[An End to Darkness](https://doomwiki.org/wiki/E4M8:_An_End_to_Darkness_(Ultimate_Doom_the_Way_id_Did))", by [Xaser Acheron](https://doomwiki.org/wiki/Xaser), an homage to [Dr. Sleep](https://doomwiki.org/wiki/John_Anderson_(Dr._Sleep)), inspired by the only know screenshot of Lethe.
 
-Note about Kick Attack: The only map to not have anything to do with the original Master Levels project is Boot Assault, a  version of [Kick Attack!](https://doomwiki.org/wiki/Kick_Attack!) for Doom II stripped of it's custom graphics. Coming from the commercial collaboration between RC Cola and id Software, organized and led by Tim Willits and released in early 1996, shortly after the release of the Master Levels, it is attached here by level design similarity, in order to round off the end of the "Lost Levels" episodes.
+Note about Boot Assault: The only map to not have anything to do with the original Master Levels project is Boot Assault, a  version of [Kick Attack!](https://doomwiki.org/wiki/Kick_Attack!) for Doom II stripped of it's custom graphics. Coming from the commercial collaboration between RC Cola and id Software, organized and led by Tim Willits and released in early 1996, shortly after the release of the Master Levels, it is attached here by level design similarity, in order to round off the end of the "Lost Levels" episodes.
 
 # Inspiration
 
@@ -43,9 +43,15 @@ I started out using [SLADE3](https://slade.mancubus.net/) to extract the content
 
 # Instructions
 
-To get started, extract the contents of `masterpack-v0.4.0-windows.zip`, onto any folder. Keeping in mind, that the internal `data.zip` file must be present and NOT extracted.
+To get started, extract the contents of the Masterpack zip file, onto any folder.
 
-In order to use this script you will need the following, from your Steam installation of Ultimate Doom and Doom II (keeping in mind, these are the original DOS version of the IWADs and PWADs, the Unity ones will not work):
+After extracting, you will see:
+- The executable, `masterpack.exe`
+- The folder `source/`, with the empty file `delete_me.txt`
+- the folser `patches/`, containing optional patches to play on top of Masterpack, optional
+	- `masterpack_ml25amp.wad`, contains the MIDI music from the Master Levels MIDI Pack by Peter Lawrence
+
+In order to use this utility you will need the following, from your Steam installation of Ultimate Doom and Doom II (keeping in mind, these are the original DOS version of the IWADs and PWADs, the Unity ones will not work):
 
 - Ultimate Doom, `DOOM.WAD`
 - TNT: Evilution, `TNT.WAD`
@@ -92,7 +98,7 @@ The above is identical to simply double-clicking on the respective `masterpack.e
 
 Once finished it will generate a `build.log` file containing the output of the script, if it was successful or not.
 
-And, if sucessful, you will now be the proud owner of your own copy of `masterpack.wad`.
+And, if successful, you will now be the proud owner of your own copy of `masterpack.wad`.
 
 To play this, run it with a modern Doom source port, with xMAPINFO support, such as DSDA-Doom, Woof!, Eternity or the ZDoom family. By merely dragging and dropping the `masterpack.wad` file on the source port EXE, or by runnign the following on the command line.
 
