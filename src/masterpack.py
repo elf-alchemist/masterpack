@@ -18,9 +18,9 @@ from omg.mapedit import MapEditor
 if getattr(sys, 'frozen', False):
     base_path = sys._MEIPASS      # executable
 else:
-    base_path = path.abspath(".") # script
+    base_path = path.abspath('.') # script
 
-DATA_ZIP = path.join(base_path, "data.zip")
+DATA_ZIP = path.join(base_path, 'data.zip')
 
 logfile = None
 LOG_FILE = 'build.log'
@@ -33,6 +33,7 @@ BASE = 'base.wad'
 MASTERPACK = 'masterpack.wad'
 
 ALL_WADS = [
+    'base.wad',
     'DOOM.WAD', 'TNT.WAD',
     'DANTE25.WAD', 'ACHRON22.WAD', 'VIRGIL.WAD', 'MINOS.WAD', 'NESSUS.WAD', 'GERYON.WAD', 'VESPERAS.WAD', 'UDTWiD.wad',
     'MINES.WAD', 'anomaly.wad', 'FARSIDE.WAD', 'MANOR.WAD', 'TTRAP.WAD', 'TROUBLE.WAD',
@@ -43,7 +44,7 @@ ALL_WADS = [
 ]
 
 SHA256_DIGEST = {
-    'data.zip': 'eeaea73652980fc5068266a5d077394e5847acfeaae500c1794c84adccbcf8c5',
+    'data.zip': 'f4a373ae55342019715b046f53cb94ee68e80b46f22c0de8fbc9eb99c2f8b190',
 
     'base.wad': '71c7680ebdd2ba0d7c5fd7514eb448fca95bc53db9954a2feae0bae63f6a01b8',
     'masterpack.wad': 'f5bbf5ca67fbac1a1e08f41c3a3d4cc063940094ae0f65abc6e6f5504be528ec',
@@ -349,7 +350,7 @@ def check_all_wads(dir: str):
             log(f'  {wad} is missing.')
             break
         if get_wad_hash(dir + wad) != get_wad_pre_hash(wad):
-            log(f'  {wad} checksum does not match. Do you have the right version?')
+            log(f'  {wad} checksum does not match.')
         found_wads.append(wad)
 
     return found_wads
@@ -371,7 +372,7 @@ def massive_simple_sidedef_switch(map: MapEditor, initial_tx: str, desired_tx: s
 
 def base_build(dir: str):
     masterpack = WAD()
-    base = WAD(BASE)
+    base = WAD(dir + BASE)
 
     midi1 = WAD(dir + 'ultimidi.wad')
     midi2 = WAD(dir + 'midtwid2.wad')
@@ -382,7 +383,7 @@ def base_build(dir: str):
     combine = WAD(DIR_SOURCE + 'COMBINE.WAD')
     sky = combine.data['RSKY1']
     base.patches['MSKY3'] = sky
-    log('    MSKY3')
+    log('    Pulleing SKY3')
 
     for triple in PATCH_TRIPLETS:
         wad_name = triple[1]
@@ -454,8 +455,13 @@ def base_build(dir: str):
 def main():
     log('Setting up.')
 
-    temp = mkdtemp()
+    pre_digest = get_wad_pre_hash(DATA_ZIP)
+    digest = get_wad_hash(DATA_ZIP)
+    if pre_digest != digest:
+        log('  Checksum failed failed for `data.zip`.')
     data = ZipFile(DATA_ZIP, 'r')
+
+    temp = mkdtemp()
     data.extractall(temp)
 
     for file in listdir(DIR_SOURCE):
