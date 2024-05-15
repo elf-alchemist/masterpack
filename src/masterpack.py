@@ -48,7 +48,7 @@ SHA256_DIGEST = {
     'data.zip': '7240763073a320391bc5f55a3bce53d18bdb997175385dbe16838261aaaf00c0',
 
     'base.wad': '70977b2113c9d71ca007e81ce328c709317a2746c55ae77ce7857e76ff29b09a',
-    'masterpack.wad': 'd9fa8bf52138209b56b9ba4ecd0ec63cc9485c10d9be61229ee2ee4326035840',
+    'masterpack.wad': '7d5bf33a3bb6a2ecbc776ed1257b86c15f11beac577fce0fb2f6133a2f6794f3',
 
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
     'TNT.WAD': 'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353',
@@ -397,7 +397,7 @@ def base_build(dir: str):
     combine = WAD(DIR_SOURCE + 'COMBINE.WAD')
     sky = combine.data['RSKY1']
     base.patches['MSKY3'] = sky
-    log('    Pulleing SKY3')
+    log('    Pulling MSKY3')
 
     for triple in PATCH_TRIPLETS:
         wad_name = triple[1]
@@ -469,9 +469,7 @@ def base_build(dir: str):
 def main():
     log('Setting up.')
 
-    pre_digest = get_wad_pre_hash(DATA_ZIP)
-    digest = get_wad_hash(DATA_ZIP)
-    if pre_digest != digest:
+    if get_wad_pre_hash('data.zip') != get_wad_hash(DATA_ZIP):
         log('  Checksum failed failed for `data.zip`.')
     data = ZipFile(DATA_ZIP, 'r')
 
