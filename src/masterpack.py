@@ -12,6 +12,7 @@ from tempfile import mkdtemp
 from hashlib import sha256
 from zipfile import ZipFile
 
+from omg.lump import Lump
 from omg.wad import WAD
 from omg.mapedit import MapEditor
 
@@ -53,6 +54,7 @@ SHA256_DIGEST = {
     'TNT.WAD': 'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353',
 
     'DANTE25.WAD': '8ac0ce535c75027f46a8909ad6fa7c173ba1457a76167a05ac2213d5606cf902',
+    'DANTE25.LMP': '30317ff777ea118c1244b0faf1e05ccad63a16421dfa4e00b14a6e9cd1300d10',
     'ACHRON22.WAD': '9c285f5b14b5a26a5e46e0c5566a1fbfc94a170a9d0d6c2dee19069b3e4d5423',
     'VIRGIL.WAD': 'c468a1684be8e8055fca52c0c0b3068893481dbaeff0d25f2d72a13b340dff09',
     'MINOS.WAD': 'fc3996e52b527dd4d7e76b023eebaa0c18263c94e21115b06ba64c8cda371ec0',
@@ -373,9 +375,21 @@ def massive_simple_sidedef_switch(map: MapEditor, initial_tx: str, desired_tx: s
 def base_build(dir: str):
     masterpack = WAD()
     base = WAD(dir + BASE)
+    tnt = WAD(dir + 'TNT.WAD')
 
     midi1 = WAD(dir + 'ultimidi.wad')
     midi2 = WAD(dir + 'midtwid2.wad')
+
+    log('  Extracting DEMOs')
+    demo1lmp = tnt.data['DEMO1']
+    demo1data = bytearray(demo1lmp.data)
+    demo1data[3] = 0x28
+    base.data['DEMO1'] = Lump(bytes(demo1data))
+
+    demo2lmp = Lump(from_file=dir + 'DANTE25.LMP')
+    demo2data = bytearray(demo2lmp.data)
+    demo2data[3] = 0x01
+    base.data['DEMO2'] = Lump(bytes(demo2data))
 
     log('  Extracting patches')
     # gotta extract the Klietech sky manually

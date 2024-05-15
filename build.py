@@ -25,8 +25,8 @@ def create_zip_package(name: str, files: list[tuple[str, str | None]]) -> None:
             zipf.write(src_file, arc_name)
 
 
-system('wine pyinstaller src/masterpack.py --onefile --add-data \'src/data.zip;.\' --icon masterpack.ico')
-print('Building Windows package')
+print('Building for Windows...')
+system('wine pyinstaller src/masterpack.py --log-level WARN --onefile --add-data \'src/data.zip;.\' --icon masterpack.ico --noupx')
 create_zip_package(
     windows,
     files=[
@@ -40,8 +40,8 @@ move(windows, pkg_windows)
 print('\n\nWindows package built\n\n')
 
 
-system('pyinstaller src/masterpack.py --onefile --add-data=src/data.zip:.')
-print('Building Linux package')
+print('Building for Linux...')
+system('pyinstaller src/masterpack.py --log-level WARN --onefile --add-data=src/data.zip:. --strip --noupx')
 create_zip_package(
     linux,
     files=[
