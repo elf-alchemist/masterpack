@@ -6,13 +6,21 @@ The 'Master Levels for Doom II' is a grab-bag collection of various unstructured
 
 Most of the authors involved in the project, made these maps with the intention of them being a part of larger episode or campaign overarching a certain theme even before being contacted by id Software for this project of theirs.
 
-John W. Anderson, for example, directing a series of 9 total levels themed around the first third of Dante Alighieri's Divine Comedy, Inferno. While James Flynn concocted a series of 6 mind-cracking puzzle-oriented adventures set in Saturn's moon, Titan. And Sverre André Kvernmo told the story of a cyberdemon betrayed by his fellow hell-spawn taking revenge on the Cabal that conspired against him.
+John W. Anderson, for example, directed a series of 9 total levels themed around the first third of Dante Alighieri's Divine Comedy, Inferno. While James Flynn concocted a series of 6 mind-cracking puzzle-oriented adventures set in Saturn's moon, Titan. And Sverre André Kvernmo told the story of a cyberdemon betrayed by his fellow hell-spawn, taking revenge on the Cabal that conspired against him.
 
 However, not all maps made by these authors were accepted by id Software, being later released freely by their creators after the fact, with some of them even continuing their work further, beyond the original submitted level sets.
 
 With all this in mind, why should anyone play the works of these masters in their original amorphous format? Why should we accept the way things are? Why should we allow people to miss out on the great works of these authors just because the pieces are all over the place? Why should we be holden by the shackles of someone else's bad decisions? Why are we not allowed to have fun with some of the best level designers of 1995?
 
 The Masterpack works by taking everything made by the authors past, present and future to the original Master Levels release and bringing it together in a single WAD file for your enjoyment. All 45 relevant (plus 1 bonus) map are now fully playable as 5 separate, organized episodes. And with this, you can now properly enjoy the works of Doom's early great authors, some of early Doom's most timeless work.
+
+<div align="center">
+	<p>
+		<a href="https://elf-alchemist.itch.io/masterpack" >
+			<img src="./misc/badge_itch.png" alt="Available on Itch.io" width="200"/>
+		</a>
+	</p>
+</div>
 
 Here are the included episodes (and for a detailed list check out this [table](./misc/full_maps.csv)):
 ```txt
