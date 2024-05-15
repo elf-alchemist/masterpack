@@ -44,10 +44,10 @@ ALL_WADS = [
 ]
 
 SHA256_DIGEST = {
-    'data.zip': 'f4a373ae55342019715b046f53cb94ee68e80b46f22c0de8fbc9eb99c2f8b190',
+    'data.zip': '7240763073a320391bc5f55a3bce53d18bdb997175385dbe16838261aaaf00c0',
 
-    'base.wad': '71c7680ebdd2ba0d7c5fd7514eb448fca95bc53db9954a2feae0bae63f6a01b8',
-    'masterpack.wad': 'f5bbf5ca67fbac1a1e08f41c3a3d4cc063940094ae0f65abc6e6f5504be528ec',
+    'base.wad': '70977b2113c9d71ca007e81ce328c709317a2746c55ae77ce7857e76ff29b09a',
+    'masterpack.wad': 'd9fa8bf52138209b56b9ba4ecd0ec63cc9485c10d9be61229ee2ee4326035840',
 
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
     'TNT.WAD': 'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353',
