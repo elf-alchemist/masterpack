@@ -10,7 +10,7 @@ from shutil import move
 from zipfile import ZipFile
 
 
-version = 'v0.4.2'
+version = 'v0.4.3'
 
 windows = 'masterpack-' + version + '-windows.zip'
 linux = 'masterpack-' + version + '-linux.zip'
@@ -37,7 +37,6 @@ create_zip_package(
     ],
 )
 move(windows, pkg_windows)
-print('\n\nWindows package built\n\n')
 
 
 print('Building for Linux...')
@@ -52,4 +51,5 @@ create_zip_package(
     ],
 )
 move(linux, pkg_linux)
-print('\n\nLinux package built\n\n')
+
+print('Packages built')
