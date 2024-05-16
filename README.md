@@ -90,16 +90,17 @@ In order to use this utility you will need the following, from your Steam instal
 		- `ATTACK.WAD`
 		- `CANYON.WAD`
 
-If you don't know how to find these, check out [this](./misc/STEAM.md) tutorial.
+If you don't know how to find these, check out [this](./steam/README.md) step-by-atep.
 
 Once you have all the WAD files, drop them in the `source/` directory and run the script as the following:
 
+```powershell
+# Windows Powershell
+PS C:\Users\User ./masterpack.exe
+```
 ```bash
-# Linux
-$ ./masterpack.elf
-
-# Windows
-$ ./masterpack.exe
+# Linux Bash
+$ ~ ./masterpack.elf
 ```
 
 The above is identical to simply double-clicking on the respective `masterpack.exe` on a graphical interface.
@@ -108,7 +109,9 @@ Once finished it will generate a `build.log` file containing the output of the s
 
 And, if successful, you will now be the proud owner of your own copy of `masterpack.wad`.
 
-To play this, run it with a modern Doom source port, with xMAPINFO support, such as DSDA-Doom, Woof!, Eternity or the ZDoom family. By merely dragging and dropping the `masterpack.wad` file on the source port EXE, or by runnign the following on the command line.
+To play this, run it with a modern Doom source port, with xMAPINFO support, such as DSDA-Doom, Woof!, Nugget, Eternity, Odamex or the ZDoom family.
+
+By merely dragging and dropping the `masterpack.wad` file on the source port EXE, or by running the following on the command line.
 
 ```bash
 # With DSDA
@@ -122,9 +125,9 @@ $ odamex -file masterpack.wad
 
 # Or even ZDoom-family ports
 $ zdoom -file masterpack.wad
-$ qzdoom -file masterpack.wad
-$ lzdoom -file masterpack.wad
 $ gzdoom -file masterpack.wad
+$ lzdoom -file masterpack.wad
+$ qzdoom -file masterpack.wad
 $ zandronum -file masterpack.wad
 ```
 
