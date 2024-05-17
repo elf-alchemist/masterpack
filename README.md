@@ -1,6 +1,6 @@
 # Masterpack for Doom II
 
-![Master Levels](./misc/masterpack.jpg "Master Levels")
+![Master Levels](./branding/masterpack6.png "Master Levels")
 
 The 'Master Levels for Doom II' is a grab-bag collection of various unstructured, unorganized WAD files, all made by various map authors with a wide variety of styles and design conventions.
 
@@ -13,14 +13,6 @@ However, not all maps made by these authors were accepted by id Software, being 
 With all this in mind, why should anyone play the works of these masters in their original amorphous format? Why should we accept the way things are? Why should we allow people to miss out on the great works of these authors just because the pieces are all over the place? Why should we be holden by the shackles of someone else's bad decisions? Why are we not allowed to have fun with some of the best level designers of 1995?
 
 The Masterpack works by taking everything made by the authors past, present and future to the original Master Levels release and bringing it together in a single WAD file for your enjoyment. All 45 relevant (plus 1 bonus) maps are now fully playable as 5 separate, organized episodes. And with this, you can now properly enjoy the works of Doom's early great authors, some of early Doom's most timeless work.
-
-<div align="center">
-	<p>
-		<a href="https://elf-alchemist.itch.io/masterpack" >
-			<img src="./misc/badge_itch.png" alt="Available on Itch.io" width="200"/>
-		</a>
-	</p>
-</div>
 
 Here are the included episodes (and for a detailed list check out this [table](./misc/full_maps.csv)):
 ```txt
@@ -51,7 +43,7 @@ I started out using [SLADE3](https://slade.mancubus.net/) to extract the content
 
 # Instructions
 
-To get started, extract the contents of the Masterpack zip file, onto any folder.
+To get started, extract the contents of the Masterpack zip file, onto any folder, that you have dowloaded fron the official page on [Itch.io](https://elf-alchemist.itch.io/masterpack) or here on the releases section.
 
 After extracting, you will see:
 - The executable, `masterpack.exe`
@@ -100,7 +92,7 @@ PS C:\Users\User ./masterpack.exe
 ```
 ```bash
 # Linux Bash
-$ ~ ./masterpack.elf
+$ ./masterpack.elf
 ```
 
 The above is identical to simply double-clicking on the respective `masterpack.exe` on a graphical interface.
