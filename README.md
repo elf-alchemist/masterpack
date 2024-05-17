@@ -151,5 +151,5 @@ Copyright © 2020 Jean-Paul LeBreton
 Omgifol  
 Copyright © 2005 Fredrik Johansson, 2017 Devin Acker  
 
-Doom, Doom II and Master Levels for Doom II
-Copyright © 1993, 1994, 1995 id Software
+Doom, Doom II, Master Levels, Ultimate Doom, Final Doom
+Copyright © 1993, 1994, 1995, 1996 id Software

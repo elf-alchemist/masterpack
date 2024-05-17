@@ -23,7 +23,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -248,34 +249,26 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,python
 
-
-
-# SLADE3
-*.bak
-
-# IWADs
+# Commercial Content
 DOOM.WAD
 DOOM2.WAD
 TNT.WAD
+PLUTONIA.WAD
 
-# Inferno
 VIRGIL.WAD
 MINOS.WAD
 NESSUS.WAD
 GERYON.WAD
 VESPERAS.WAD
 
-# Titan
 MANOR.WAD
 TTRAP.WAD
 
-# Cabal
 BLACKTWR.WAD
 BLOODSEA.WAD
 MEPHISTO.WAD
 TEETH.WAD
 
-# Klietech
 SUBSPACE.WAD
 COMBINE.WAD
 FISTULA.WAD
@@ -283,10 +276,12 @@ SUBTERRA.WAD
 CATWALK.WAD
 GARRISON.WAD
 
-# Lost Levels
 PARADOX.WAD
 ATTACK.WAD
 CANYON.WAD
+
+# SLADE3
+*.bak
 
 # Masterpack build
 masterpack.wad
