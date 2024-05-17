@@ -45,10 +45,10 @@ ALL_WADS = [
 ]
 
 SHA256_DIGEST = {
-    'data.zip': '7240763073a320391bc5f55a3bce53d18bdb997175385dbe16838261aaaf00c0',
+    'data.zip': 'd579cb18bd1e30851da94aa87cfe81acfa14efa2b30317a7b25eaf487d217337',
 
-    'base.wad': '70977b2113c9d71ca007e81ce328c709317a2746c55ae77ce7857e76ff29b09a',
-    'masterpack.wad': '7d5bf33a3bb6a2ecbc776ed1257b86c15f11beac577fce0fb2f6133a2f6794f3',
+    'base.wad': '1b1b0288c581a704280d332fa96a721ea24dd5cf96fe5f57fcac6c5d262d3627',
+    'masterpack.wad': '3fe438541e2d744da107145fafee5a1c5bff1c49899ec9c5966a2724cf5092f2',
 
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
     'TNT.WAD': 'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353',
@@ -110,8 +110,6 @@ PATCH_TRIPLETS = [
 
     ['ASHWALL', 'MINES.WAD', 'W104_1'],
     ['WATER', 'MINES.WAD', 'TWF'],
-    ['REDWALL1', 'MINES.WAD', 'W15_4'],
-    ['REDWALL2', 'MINES.WAD', 'W15_5'],
     ['BLACK', 'anomaly.wad', 'BLACK'],
     ['FIRELV', 'anomaly.wad', 'FIRELV'],
     ['ANOMALY1', 'anomaly.wad', 'S_DOOM09'],
@@ -128,7 +126,10 @@ PATCH_TRIPLETS = [
     ['TROUBLE3', 'TROUBLE.WAD', 'TROU06'],
     ['TROUBLE4', 'TROUBLE.WAD', 'TROU07'],
     ['TROUBLE5', 'TROUBLE.WAD', 'TROU13'],
+
     ['SW2_3', 'DOOM.WAD', 'SW2_3'],
+    ['W15_4', 'DOOM.WAD', 'W15_4'],
+    ['W15_5', 'DOOM.WAD', 'W15_5'],
     ['W15_6', 'DOOM.WAD', 'W15_6'],
     ['WALL40_1', 'DOOM.WAD', 'WALL40_1'],
     ['WALL63_2', 'DOOM.WAD', 'WALL63_2'],
@@ -153,8 +154,6 @@ ALL_PATCHES = [
 
     'ASHWALL',
     'WATER',
-    'REDWALL1',
-    'REDWALL2',
 
     'BLACK',
     'FIRELV',
@@ -175,6 +174,8 @@ ALL_PATCHES = [
     'TROUBLE5',
 
     'SW2_3',
+    'W15_4',
+    'W15_5',
     'W15_6',
     'WALL40_1',
     'WALL63_2',
