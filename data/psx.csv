@@ -1,35 +1,53 @@
-Track  ,Lump     ,Music Name              ,Final Doom Episode ,Uses
-TITLE  ,D_DM2TTL ,Main Theme              ,N/A                ,N/A
-INTER  ,D_DM2INT ,Level Complete Stats    ,N/A                ,N/A
-VICTOR ,D_READ_M ,Credits & Demo          ,N/A                ,N/A
-CAST   ,D_EVIL   ,Finale                  ,N/A                ,N/A
-PSX01  ,D_PSX01  ,Retribution Dawns       ,Master Levels      ,1
-PSX02  ,D_PSX02  ,The Broken Ones         ,Master Levels      ,2
-PSX03  ,D_PSX03  ,Sanity's Edge           ,Master Levels      ,2
-PSX04  ,D_PSX04  ,Hell's Churn            ,TNT: Evilution     ,2
-PSX05  ,D_PSX05  ,Digitized Pain          ,TNT: Evilution     ,3
-PSX06  ,D_PSX06  ,Curropted Code          ,TNT: Evilution     ,0
-PSX07  ,D_PSX07  ,Mind Massacre           ,TNT: Evilution     ,0
-PSX08  ,D_PSX08  ,Mutation                ,TNT: Evilution     ,1
-PSX09  ,D_PSX09  ,Breath of Horror        ,TNT: Evilution     ,0
-PSX10  ,D_PSX10  ,A Calm Panic Rises      ,TNT: Evilution     ,0
-PSX11  ,D_PSX11  ,A Slow Demonic Pulse    ,Plutonia           ,0
-PSX12  ,D_PSX12  ,Corrupted               ,Plutonia           ,1
-PSX13  ,D_PSX13  ,Steadfest Exterminatino ,                   ,0
-PSX14  ,D_PSX14  ,Beyond Fear             ,Plutonia           ,2
-PSX15  ,D_PSX15  ,In The Grip Of Madness  ,Plutonia           ,1
-PSX16  ,D_PSX16  ,Lurkers                 ,Plutonia           ,1
-PSX17  ,D_PSX17  ,Creeping Brutality      ,Plutonia           ,1
-PSX18  ,D_PSX18  ,Lamentation             ,Plutonia           ,1
-PSX19  ,D_PSX19  ,Twisted Beyond Reason   ,Plutonia           ,0
-PSX20  ,D_PSX20  ,Hopeless Despair        ,                   ,0
-PSX21  ,D_PSX21  ,Bells of Agony          ,Master Levels      ,2
-PSX22  ,D_PSX22  ,Vexation                ,Master Levels      ,2
-PSX23  ,D_PSX23  ,Infectious              ,Master Levels      ,2
-PSX24  ,D_PSX24  ,Larva Circuits          ,Master Levels      ,2
-PSX25  ,D_PSX25  ,Malignant               ,Master Levels      ,2
-PSX26  ,D_PSX26  ,The Foulness Consumes   ,Master Levels      ,2
-PSX27  ,D_PSX27  ,Unhallowed              ,Master Levels      ,1
-PSX28  ,D_PSX28  ,Demon Drone             ,Master Levels      ,4 - wtf
-PSX29  ,D_PSX29  ,Tendrils of Hate        ,Master Levels      ,3
-PSX30  ,D_PSX30  ,Breath of Corruption    ,Master Levels      ,2
+Track  ,Lump     ,Music Name              ,Used in
+TITLE  ,D_DM2TTL ,Main Theme              ,*
+INTER  ,D_DM2INT ,Level Complete Stats    ,*
+VICTOR ,D_READ_M ,Credits & Demo          ,*
+CAST   ,D_EVIL   ,Finale                  ,*
+PSX01  ,D_PSX01  ,Retribution Dawns       ,MAP29
+PSX02  ,D_PSX02  ,The Broken Ones         ,MAP33
+PSX03  ,D_PSX03  ,Sanity's Edge           ,MAP07
+PSX04  ,D_PSX04  ,Hell's Churn            ,MAP40
+PSX05  ,D_PSX05  ,Digitized Pain          ,
+PSX06  ,D_PSX06  ,Curropted Code          ,
+PSX07  ,D_PSX07  ,Mind Massacre           ,
+PSX08  ,D_PSX08  ,Mutation                ,
+PSX09  ,D_PSX09  ,Breath of Horror        ,
+PSX10  ,D_PSX10  ,A Calm Panic Rises      ,
+PSX11  ,D_PSX11  ,A Slow Demonic Pulse    ,
+PSX12  ,D_PSX12  ,Corrupted               ,MAP41
+PSX13  ,D_PSX13  ,Steadfest Exterminatino ,
+PSX14  ,D_PSX14  ,Beyond Fear             ,
+PSX15  ,D_PSX15  ,In The Grip Of Madness  ,
+PSX16  ,D_PSX16  ,Lurkers                 ,
+PSX17  ,D_PSX17  ,Creeping Brutality      ,
+PSX18  ,D_PSX18  ,Lamentation             ,
+PSX19  ,D_PSX19  ,Twisted Beyond Reason   ,
+PSX20  ,D_PSX20  ,Hopeless Despair        ,
+PSX21  ,D_PSX21  ,Bells of Agony          ,MAP44
+PSX22  ,D_PSX22  ,Vexation                ,MAP03
+PSX23  ,D_PSX23  ,Infectious              ,MAP45
+PSX24  ,D_PSX24  ,Larva Circuits          ,MAP30
+PSX25  ,D_PSX25  ,Malignant               ,MAP35
+PSX26  ,D_PSX26  ,The Foulness Consumes   ,MAP32
+PSX27  ,D_PSX27  ,Unhallowed              ,MAP06
+PSX28  ,D_PSX28  ,Demon Drone             ,MAP04
+PSX29  ,D_PSX29  ,Tendrils of Hate        ,MAP05
+PSX30  ,D_PSX30  ,Breath of Corruption    ,MAP43
+PSX31  ,D_PSX31  ,Mutate Cooldown         ,
+PSX32  ,D_PSX32  ,Underbelly Groan        ,
+PSX33  ,D_PSX33  ,Twitch Shadows          ,
+PSX34  ,D_PSX34  ,Pulse-a-tron            ,
+PSX35  ,D_PSX35  ,Deep Waveform Churbles  ,
+PSX36  ,D_PSX36  ,Distortica              ,
+PSX37  ,D_PSX37  ,Final Transmission      ,
+PSX38  ,D_PSX38  ,Dark Sludge             ,
+PSX39  ,D_PSX39  ,Club Doom               ,
+PSX40  ,D_PSX40  ,Dark Wind of Despair    ,
+PSX41  ,D_PSX41  ,Grounge Sacculations    ,
+PSX42  ,D_PSX42  ,Screech Mongrels        ,
+PSX43  ,D_PSX43  ,Garbulation             ,
+PSX44  ,D_PSX44  ,Shadow Howls            ,
+PSX45  ,D_PSX45  ,Foul Fluctuations       ,
+PSX46  ,D_PSX46  ,Insidious Infestation   ,
+PSX47  ,D_PSX47  ,The Worbulation of Hell ,
+PSX48  ,D_PSX48  ,The End Of It All       ,
