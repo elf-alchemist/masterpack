@@ -1,0 +1,50 @@
+James "Jim" Flynn' Titan series has various custom switch textures, which
+overrides vanilla textures, since this came before Boom's special texture
+lumps, ANIMATED and SWITCHES, leaving Flynn to make new ones from the
+vanilla set. These need to be renamed in order to fix conflicts with other
+levels, by way of having alternative textures that start with TT1/TT2 in
+contrast to vanilla's SW1/SW2, being redefined in TEXTURE1, and set as proper
+switches in SWITCHES. This file contains how these textures need to be renamed
+in order to fix the aforementioned conflicts.
+
+Switches, as TT1/TT2:
+  - STON1 Ashwall
+  - STON2 Redwall
+  - STON3 Large gray bricks
+  - STON4 Black squares
+  - STON5 Fire
+  - STON6 Small brown bricks
+  - STON7 Cobblestone (Skull)
+  - BRIK  Large brown brick
+  - COMP  Silver square
+  - PIPE  Small red bricks
+  - VINE  Black squares (Green square)
+
+MAP10 Mines:
+  - DBRAIN1 -> WATER
+  - STON1 -> STON1
+  - STON2 -> STON2
+  - COMP -> COMP
+
+MAP11 Anomaly:
+  - STON2 -> STON5
+
+MAP12 Farside:
+  - BRIK -> BRIK
+  - STON1 -> STON3
+  - STON2 -> STON4
+
+MAP13 Manor:
+  None!
+
+MAP14 Trapped:
+  None!
+
+MAP15 Trouble:
+  - STON1 -> STON5
+  - STON2 -> STON6
+  - STON6 -> STON7
+  - STONE -> BRIK
+  - PIPE -> PIPE
+  - VINE -> VINE
+
