@@ -5,12 +5,13 @@
 # Description:
 #     Simplest build script possible
 
-from os import system
-from shutil import move
-from zipfile import ZipFile
+import os
+import platform
+import shutil
+import zipfile
 
 
-version = 'v0.4.4'
+version = 'v0.5.0'
 
 windows = 'masterpack-' + version + '-windows.zip'
 linux = 'masterpack-' + version + '-linux.zip'
@@ -18,7 +19,15 @@ linux = 'masterpack-' + version + '-linux.zip'
 pkg_windows = 'pkgs/' + windows
 pkg_linux = 'pkgs/' + linux
 
-windows_cmd = 'wine' \
+windows_cmd = 'pyinstaller src/masterpack.py ' \
+    + ' --log-level WARN' \
+    + ' --paths venv/lib64/python3.11/site-packages/' \
+    + ' --onefile ' \
+    + ' --add-data "src/data.zip;."' \
+    + ' --icon masterpack.ico' \
+    + ' --noupx'
+
+linux_to_windows_cmd = 'wine' \
     + ' pyinstaller src/masterpack.py' \
     + ' --log-level WARN' \
     + ' --paths venv/lib64/python3.11/site-packages/' \
@@ -35,36 +44,55 @@ linux_cmd = 'pyinstaller src/masterpack.py' \
     + ' --noupx'
 
 def create_zip_package(name: str, files: list[tuple[str, str | None]]) -> None:
-    with ZipFile(name, 'w') as zipf:
+    with zipfile.ZipFile(name, 'w') as zipf:
         for src_file, arc_name in files:
             zipf.write(src_file, arc_name)
 
+def windows_build():
+    print('Building for Windows')
+    os.system(linux_to_windows_cmd)
+    create_zip_package(
+        windows,
+        files=[
+            ('source/delete_me.txt', None),
+            ('dist/masterpack.exe', 'masterpack.exe'),
+        ],
+    )
+    shutil.move(windows, pkg_windows)
+    print('Package built')
 
-print('Building for Windows...')
-system(windows_cmd)
-create_zip_package(
-    windows,
-    files=[
-        ('source/delete_me.txt', None),
-        ('patches/masterpack-ml25amp.wad', None),
-        ('src/data.zip', 'data.zip'),
-        ('dist/masterpack.exe', 'masterpack.exe'),
-    ],
-)
-move(windows, pkg_windows)
+def linux_build():
+    print('Building for Windows...')
+    os.system(linux_to_windows_cmd)
+    create_zip_package(
+        windows,
+        files=[
+            ('source/delete_me.txt', None),
+            ('dist/masterpack.exe', 'masterpack.exe'),
+        ],
+    )
+    shutil.move(windows, pkg_windows)
+    print('Building for Linux...')
+    os.system(linux_cmd)
+    create_zip_package(
+        linux,
+        files=[
+            ('source/delete_me.txt', None),
+            ('dist/masterpack', 'masterpack.elf'),
+        ],
+    )
+    shutil.move(linux, pkg_linux)
+    print('Packages built')
 
 
-print('Building for Linux...')
-system(linux_cmd)
-create_zip_package(
-    linux,
-    files=[
-        ('source/delete_me.txt', None),
-        ('patches/masterpack-ml25amp.wad', None),
-        ('src/data.zip', 'data.zip'),
-        ('dist/masterpack', 'masterpack.elf'),
-    ],
-)
-move(linux, pkg_linux)
+if platform.system() == '':
+    print('Could not assertain the operating system. Exiting safely')
+    exit(1)
 
-print('Packages built')
+if platform.system() == 'Windows':
+    print('Host is Windows.')
+    linux_build()
+
+if platform.system() == 'Linux':
+    print('Host is Linux.')
+    linux_build()
