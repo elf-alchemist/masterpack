@@ -1,3 +1,4 @@
 * text=auto
 *.ps1 text eol=crlf
 addons/masterpack-psx-tc.wad filter=lfs diff=lfs merge=lfs -text
+pkgs/masterpack-addons-alpha.zip filter=lfs diff=lfs merge=lfs -text

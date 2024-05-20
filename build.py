@@ -15,7 +15,7 @@ version = 'v0.5.0'
 
 windows = 'masterpack-' + version + '-windows.zip'
 linux = 'masterpack-' + version + '-linux.zip'
-addons = 'masterpack-addons-' + version + '.zip'
+addons = 'masterpack-addons-alpha.zip'
 
 pkg_windows = 'pkgs/' + windows
 pkg_linux = 'pkgs/' + linux
@@ -69,8 +69,8 @@ def windows_build():
         addons,
         files=[
             ('addons/masterpack-ml25amp.wad', 'masterpack-ml25amp.wad'),
-            ('addons/masterpack-freedoom-tc.wad', 'masterpack-freedoom-tc-alpha1.wad'),
-            ('addons/masterpack-psx-tc.wad', 'masterpack-psx-tc-alpha1.wad'),
+            ('addons/masterpack-freedoom-tc.wad', 'masterpack-freedoom-tc-alpha.wad'),
+            ('addons/masterpack-psx-tc.wad', 'masterpack-psx-tc-alpha.wad'),
         ]
     )
     shutil.move(addons, pkg_addons)
@@ -103,8 +103,8 @@ def linux_build():
         addons,
         files=[
             ('addons/masterpack-ml25amp.wad', 'masterpack-ml25amp.wad'),
-            ('addons/masterpack-freedoom-tc.wad', 'masterpack-freedoom-tc-alpha1.wad'),
-            ('addons/masterpack-psx-tc.wad', 'masterpack-psx-tc-alpha1.wad'),
+            ('addons/masterpack-freedoom-tc.wad', 'masterpack-freedoom-tc-alpha.wad'),
+            ('addons/masterpack-psx-tc.wad', 'masterpack-psx-tc-alpha.wad'),
         ]
     )
     shutil.move(addons, pkg_addons)
