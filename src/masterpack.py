@@ -48,7 +48,7 @@ SHA256_DIGEST = {
     'data.zip': 'ebbee139b3cf2daa6e8c9818ec28cf2530ae22804f87943c09e2b7de9d65d8ef',
 
     'base.wad': '38e1fa9ef3d98c962ed88593459e943922d471af0bfbef366c95942ec7e64323',
-    'masterpack.wad': '7aebd380286688b20be839d9e5d5cee40e46764c664e0f9241a2e277abf232b3',
+    'masterpack.wad': '2d27f884b5fe488a0ccb9cb9c4dcee27a07a883363cedff5220cf558c03fed20',
 
     'DOOM.WAD': '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f',
     'TNT.WAD': 'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353',
@@ -213,11 +213,11 @@ SIDEDEF_SWITCH_TRIPLETS = [
     ['MAP15', 'SW2STON6', 'TT2STON6'],
     ['MAP15', 'SW1STON7', 'TT1STON7'],
     ['MAP15', 'SW2STON7', 'TT2STON7'],
-    ['MAP15', 'PIC00', 'PORTAL01'],
-    ['MAP15', 'PIC01', 'PORTAL02'],
-    ['MAP15', 'PIC06', 'PORTAL03'],
-    ['MAP15', 'PIC07', 'PORTAL04'],
-    ['MAP15', 'PIC13', 'PORTAL05'],
+    ['MAP15', 'PIC00', 'PORTAL1'],
+    ['MAP15', 'PIC01', 'PORTAL2'],
+    ['MAP15', 'PIC06', 'PORTAL3'],
+    ['MAP15', 'PIC07', 'PORTAL4'],
+    ['MAP15', 'PIC13', 'PORTAL5'],
 ]
 
 ALL_MAP_TRIPLETS = [
