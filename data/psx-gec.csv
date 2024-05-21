@@ -6,7 +6,7 @@ MAP04    ,Canto 4      ,Minos' Judgement             ,Demon Drone            ,D_
 MAP05    ,Canto 5      ,Nessus                       ,Tendrils Of Hate       ,D_PSX29   ,PSX Doom
 MAP06    ,Canto 6      ,Geryon                       ,Unhallowed             ,D_PSX27   ,PSX Doom
 MAP07    ,Canto 7      ,Vesperas                     ,Sanity's Edge          ,D_PSX03   ,PSX Doom
-MAP08    ,Canto 8      ,Chiron                       ,*Beyond Fear           ,D_PSX14   ,GEC Master
+MAP08    ,Canto 8      ,Chiron                       ,Twisted Beyond Reason  ,D_PSX19   ,GEC Master
 MAP09    ,Canto 9      ,Waters of Lethe              ,                       ,          ,
 MAP10    ,Titan 1      ,Mines of Titan               ,                       ,          ,
 MAP11    ,Titan 2      ,Titan Anomaly                ,*Digitized Pain        ,D_PSX05   ,GEC Master
@@ -40,7 +40,7 @@ MAP38    ,Klie 11      ,The Enemy Inside             ,*Demon Drone           ,D_
 MAP39    ,Klie 12      ,The Hive                     ,*Vexation              ,D_PSX22   ,GEC Master
 MAP40    ,Lost Level 1 ,System Control               ,Hell's Churn           ,D_PSX04   ,PSX Doom
 MAP41    ,Lost Level 2 ,Processing Area              ,Corrupted              ,D_PSX12   ,PSX Doom
-MAP42    ,Lost Level 3 ,The Master's Dens            ,                       ,          ,
+MAP42    ,Lost Level 3 ,The Master's Dens            ,*Hell's Churn          ,D_PSX04   ,GEC Master
 MAP43    ,Lost Level 4 ,Paradox                      ,Breath Of Corruption   ,D_PSX30   ,PSX Doom
 MAP44    ,Lost Level 5 ,Attack                       ,Bells Of Agony         ,D_PSX21   ,PSX Doom
 MAP45    ,Lost Level 6 ,Canyon                       ,Infectious             ,D_PSX23   ,PSX Doom

@@ -7,22 +7,22 @@ PSX01  ,D_PSX01  ,Retribution Dawns       ,MAP29    ,
 PSX02  ,D_PSX02  ,The Broken Ones         ,MAP33    ,
 PSX03  ,D_PSX03  ,Sanity's Edge           ,MAP07    ,
 PSX04  ,D_PSX04  ,Hell's Churn            ,MAP40    ,
-PSX05  ,D_PSX05  ,Digitized Pain          ,         ,
+PSX05  ,D_PSX05  ,Digitized Pain          ,         ,MAP09
 PSX06  ,D_PSX06  ,Corrupted Core          ,         ,
 PSX07  ,D_PSX07  ,Mind Massacre           ,         ,
 PSX08  ,D_PSX08  ,Mutation                ,         ,
-PSX09  ,D_PSX09  ,Breath of Horror        ,         ,
-PSX10  ,D_PSX10  ,A Calm Panic Rises      ,         ,
+PSX09  ,D_PSX09  ,Breath of Horror        ,         ,MAP28
+PSX10  ,D_PSX10  ,A Calm Panic Rises      ,         ,MAP01
 PSX11  ,D_PSX11  ,A Slow Demonic Pulse    ,         ,
 PSX12  ,D_PSX12  ,Corrupted               ,MAP41    ,
-PSX13  ,D_PSX13  ,Steadfest Exterminatino ,         ,
-PSX14  ,D_PSX14  ,Beyond Fear             ,         ,
-PSX15  ,D_PSX15  ,In The Grip Of Madness  ,         ,
+PSX13  ,D_PSX13  ,Steadfest Exterminatino ,         ,MAP02
+PSX14  ,D_PSX14  ,Beyond Fear             ,         ,MAP42
+PSX15  ,D_PSX15  ,In The Grip Of Madness  ,         ,MAP39
 PSX16  ,D_PSX16  ,Lurkers                 ,         ,
 PSX17  ,D_PSX17  ,Creeping Brutality      ,         ,
 PSX18  ,D_PSX18  ,Lamentation             ,         ,
-PSX19  ,D_PSX19  ,Twisted Beyond Reason   ,         ,
-PSX20  ,D_PSX20  ,Hopeless Despair        ,         ,
+PSX19  ,D_PSX19  ,Twisted Beyond Reason   ,         ,MAP08
+PSX20  ,D_PSX20  ,Hopeless Despair        ,         ,MAP46
 PSX21  ,D_PSX21  ,Bells of Agony          ,MAP44    ,
 PSX22  ,D_PSX22  ,Vexation                ,MAP03    ,
 PSX23  ,D_PSX23  ,Infectious              ,MAP45    ,
