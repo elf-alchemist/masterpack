@@ -14,7 +14,7 @@ With all this in mind, why should anyone play the works of these masters in thei
 
 The Masterpack works by taking everything made by the authors past, present and future to the original Master Levels release and bringing it together in a single WAD file for your enjoyment. All 45 relevant (plus 1 bonus) maps are now fully playable as 5 separate, organized episodes. And with this, you can now properly enjoy the works of Doom's early great authors, some of early Doom's most timeless work.
 
-Here are the included episodes (and for a detailed list check out this [table](./misc/full_maps.csv)):
+Here are the included episodes, for a detailed list of maps check out this [table](./misc/full_maps.csv):
 ```txt
   Inferno     -  9 maps - John "Dr. Sleep" Anderson, Rest In Peace
   Titan       -  6 maps - James "Jim" Flynn, Rest In Peace
@@ -48,8 +48,6 @@ To get started, extract the contents of the Masterpack zip file, onto any folder
 After extracting, you will see:
 - The executable, `masterpack.exe`
 - The folder `source/`, with the empty file `delete_me.txt`
-- the folser `patches/`, containing optional patches to play on top of Masterpack, optional
-	- `masterpack_ml25amp.wad`, contains the MIDI music from the Master Levels MIDI Pack by Peter Lawrence
 
 In order to use this utility you will need the following, from your Steam installation of Ultimate Doom and Doom II (keeping in mind, these are the original DOS version of the IWADs and PWADs, the Unity ones will not work):
 
@@ -87,11 +85,11 @@ If you don't know how to find these, check out [this](./steam/README.md) step-by
 Once you have all the WAD files, drop them in the `source/` directory and run the script as the following:
 
 ```powershell
-# Windows Powershell
-PS C:\Users\User ./masterpack.exe
+# Windows, Powershell
+PS C:\Users\User .\masterpack.exe
 ```
 ```bash
-# Linux Bash
+# Or also on Linux, Bash
 $ ./masterpack.elf
 ```
 
@@ -105,22 +103,58 @@ To play this, run it with a modern Doom source port, with xMAPINFO support, such
 
 By merely dragging and dropping the `masterpack.wad` file on the source port EXE, or by running the following on the command line.
 
-```bash
-# With DSDA
-$ dsda-doom -file masterpack.wad -complevel 1.9
+```powershell
+# DSDA on Winodws
+PS C:\Users\User .\dsda-doom.exe -file masterpack.wad
 
 # Or Woof!
-$ woof -file masterpack.wad -complevel vanilla
+PS C:\Users\User .\woof.exe -file masterpack.wad
 
-# Or Odamex
-$ odamex -file masterpack.wad
+# Or ZDoom-family ports
+PS C:\Users\User .\gzdoom.exe -file masterpack.wad
+```
 
-# Or even ZDoom-family ports
+And on Linux as well, where the options are absolutely the same for all source ports.
+```bash
+$ dsda-doom -file masterpack.wad
+$ woof -file masterpack.wad
 $ zdoom -file masterpack.wad
-$ gzdoom -file masterpack.wad
-$ lzdoom -file masterpack.wad
-$ qzdoom -file masterpack.wad
-$ zandronum -file masterpack.wad
+```
+
+# Add-ons
+
+This pack includes also a handful of "add-ons" for customizing the Masterpack play experience, currently the following are included:
+
+- `masterpack-ml25amp.wad`
+	- An alternative track listing that in the "Master Levels 25th Anniversary MIDI Pack" by Peter Lawrence
+	- Note that these tracks only add in new music for the original 21 levels, and is not repeated for any other map
+- `masterpack-psx-tc.wad`
+	- Currently in alpha
+	- A total conversion mod, adds in graphical and sound assets from the awesome [VanillaPSX](https://www.doomworld.com/vb/thread/144075) by [DRON12261](https://github.com/dron12261games)
+	- Soundtrack uses the [PSX Doom](https://aubreyhodges.bandcamp.com/album/doom-playstation-official-soundtrack-20th-anniversary-extended-edition) and [PSX Final Doom](https://aubreyhodges.bandcamp.com/album/final-doom-playstation-official-soundtrack-20th-anniversary-extended-edition) OSTs, with the blessing of Aubrey Hodges, please check out his amazing work on his [Bandcamp](https://aubreyhodges.bandcamp.com/)
+- `masterpack-freedoom-tc.wad`
+	- Currently in alpha
+	- A TC that adds in freedoom assets on top of the base map set, rendering them a completely new look and feel
+	- Taken from version 0.13.0 of the incredible free asset project [Freedoom](https://github.com/freedoom/freedoom)
+
+To start, extract the contents `masterpack-addons-alpha.zip` onto the same folder as `masterpack.wad`.
+
+To play, you can run them from the command-line like the following, or make a `masterpack-psx.ps1` batch file.
+
+```powershell
+PS C:\Users\User .\dsda-doom.exe -file masterpack.wad masterpack-psx-tc-alpha.wad
+```
+```ps1
+.\dsda-doom.exe -file masterpack.wad masterpack-psx-tc-alpha.wad
+```
+
+Or on Linux, with a `masterpack-psx.sh` bash script:
+```bash
+$ dsda-doom.exe -file masterpack.wad masterpack-psx-tc-alpha.wad
+```
+```bash
+#!/usr/bin/env bash
+dsda-doom.exe -file masterpack.wad masterpack-psx-tc-alpha.wad
 ```
 
 # Legalese
@@ -143,5 +177,5 @@ Copyright © 2020 Jean-Paul LeBreton
 Omgifol  
 Copyright © 2005 Fredrik Johansson, 2017 Devin Acker  
 
-Doom, Doom II, Master Levels, Ultimate Doom, Final Doom
-Copyright © 1993, 1994, 1995, 1996 id Software
+Doom, Doom II, Master Levels, Ultimate Doom, Final Doom  
+Copyright © 1993, 1994, 1995, 1996 id Software  

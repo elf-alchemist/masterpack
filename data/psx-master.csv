@@ -1,0 +1,47 @@
+Map Slot ,Map Label    ,Map Name                     ,Song Name             ,Song Lump ,Lump Selection
+MAP01    ,Canto 1      ,Dante's Gate                 ,                      ,D_PSX__   ,Masterpack
+MAP02    ,Canto 2      ,Crossing Acheron             ,                      ,D_PSX__   ,Masterpack
+MAP03    ,Canto 3      ,Virgil's Lead                ,Vexation              ,D_PSX22   ,PSX Doom
+MAP04    ,Canto 4      ,Minos' Judgement             ,Demon Drone           ,D_PSX28   ,PSX Doom
+MAP05    ,Canto 5      ,Nessus                       ,Tendrils Of Hate      ,D_PSX29   ,PSX Dooms
+MAP06    ,Canto 6      ,Geryon                       ,Unhallowed            ,D_PSX27   ,PSX Doom
+MAP07    ,Canto 7      ,Vesperas                     ,Sanity's Edge         ,D_PSX03   ,PSX Doom
+MAP08    ,Canto 8      ,Chiron                       ,                      ,D_PSX__   ,Masterpack
+MAP09    ,Canto 9      ,Waters of Lethe              ,                      ,D_PSX__   ,Masterpack
+MAP10    ,Titan 1      ,Mines of Titan               ,                      ,D_PSX__   ,Masterpack
+MAP11    ,Titan 2      ,Titan Anomaly                ,                      ,D_PSX__   ,Masterpack
+MAP12    ,Titan 3      ,Farside of Titan             ,                      ,D_PSX__   ,Masterpack
+MAP13    ,Titan 4      ,Titan Manor                  ,                      ,D_PSX__   ,Masterpack
+MAP14    ,Titan 5      ,Trapped on Titan             ,                      ,D_PSX__   ,Masterpack
+MAP15    ,Titan 6      ,Trouble on Titan             ,                      ,D_PSX__   ,Masterpack
+MAP16    ,Cabal 1      ,Bloodflood                   ,                      ,D_PSX__   ,Masterpack
+MAP17    ,Cabal 2      ,Derelict Station             ,                      ,D_PSX__   ,Masterpack
+MAP18    ,Cabal 3      ,The Watchtower               ,                      ,D_PSX__   ,Masterpack
+MAP19    ,Cabal 4      ,The Bloodsea Keep            ,                      ,D_PSX__   ,Masterpack
+MAP20    ,Cabal 5      ,Temple of Death              ,                      ,D_PSX__   ,Masterpack
+MAP21    ,Cabal 6      ,We Who are About to Die      ,                      ,D_PSX__   ,Masterpack
+MAP22    ,Cabal 7      ,Black Tower                  ,                      ,D_PSX__   ,Masterpack
+MAP23    ,Cabal 8      ,Mephisto's Mausoleum         ,                      ,D_PSX__   ,Masterpack
+MAP24    ,Cabal 9      ,The Image of Evil            ,                      ,D_PSX__   ,Masterpack
+MAP25    ,Cabal 10     ,The Express Elevator to Hell ,                      ,D_PSX__   ,Masterpack
+MAP26    ,Cabal 11     ,Eye of the Storm             ,                      ,D_PSX__   ,Masterpack
+MAP27    ,Cabal 12     ,Bad Dream                    ,                      ,D_PSX__   ,Masterpack
+MAP28    ,Klie 1       ,The CPU                      ,                      ,D_PSX__   ,Masterpack
+MAP29    ,Klie 2       ,Subspace                     ,Retribution Dawns     ,D_PSX01   ,PSX Doom
+MAP30    ,Klie 3       ,The Combine                  ,Larva Circuits        ,D_PSX24   ,PSX Doom
+MAP31    ,Klie 4       ,Device One                   ,                      ,D_PSX__   ,Masterpack
+MAP32    ,Klie 5       ,The Fistula                  ,The Foulness Consumes ,D_PSX26   ,PSX Doom
+MAP33    ,Klie 6       ,Subterra                     ,The Broken Ones       ,D_PSX02   ,PSX Doom
+MAP34    ,Klie 7       ,The DMZ                      ,                      ,D_PSX__   ,Masterpack
+MAP35    ,Klie 8       ,The Catwalk                  ,Malignant             ,D_PSX25   ,PSX Doom
+MAP36    ,Klie 9       ,The Fury                     ,                      ,D_PSX__   ,Masterpack
+MAP37    ,Klie 10      ,The Garrison                 ,                      ,D_PSX__   ,Masterpack
+MAP38    ,Klie 11      ,The Enemy Inside             ,                      ,D_PSX__   ,Masterpack
+MAP39    ,Klie 12      ,The Hive                     ,                      ,D_PSX__   ,Masterpack
+MAP40    ,Lost Level 1 ,System Control               ,Hell's Churn          ,D_PSX04   ,PSX Doom
+MAP41    ,Lost Level 2 ,Processing Area              ,Corrupted             ,D_PSX12   ,PSX Doom
+MAP42    ,Lost Level 3 ,The Master's Dens            ,                      ,          ,Masterpack
+MAP43    ,Lost Level 4 ,Paradox                      ,Breath Of Corruption  ,D_PSX30   ,PSX Doom
+MAP44    ,Lost Level 5 ,Attack                       ,Bells Of Agony        ,D_PSX21   ,PSX Doom
+MAP45    ,Lost Level 6 ,Canyon                       ,Infectious            ,D_PSX23   ,PSX Doom
+MAP46    ,Lost Level 7 ,Boot Assault                 ,                      ,          ,Masterpack
