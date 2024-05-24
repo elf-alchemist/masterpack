@@ -19,6 +19,8 @@ log_file = None
 log_path = 'masterpack.log'
 buffer_size = 16384
 source_dir = 'source/'
+master_tar_path = 'master.tar'
+masterpack_vdiff_path = 'masterpack.vcdiff'
 
 checksum = {
     '54da78ae2a801f3adce57b11f2443b31946d510c9f2880c64d0cdcbcb0e33543': 'master.tar',
@@ -91,6 +93,17 @@ def validate_hash_digest(wad_hash: str) -> str | None:
     hash_result = checksum.get(wad_hash, None)
     return hash_result
 
+def validate_wads() -> bool:
+    wads_match = True
+    for wad in all_wads:
+        wad_path = os.path.join( source_dir + wad)
+        hash_digest = get_hash_digest(wad_path)
+        wad_name = validate_hash_digest(hash_digest)
+        if wad_name != wad:
+            log(f'  {wad} does not match checksum')
+            wads_match = False
+    return wads_match
+
 def create_wad_archive(tar_path: str, wad_files: list[str]) -> None:
     def reset_tarinfo(tar_info: tarfile.TarInfo):
         tar_info.uid = 0
@@ -103,7 +116,7 @@ def create_wad_archive(tar_path: str, wad_files: list[str]) -> None:
 
     with tarfile.open(tar_path, 'w') as tar:
         for wad_file in sorted(wad_files):
-            wad_path = source_dir + wad_file
+            wad_path = os.path.join(source_dir, wad_file)
 
             tar_info = tar.gettarinfo(wad_path)
             tar_info = reset_tarinfo(tar_info)
@@ -114,26 +127,26 @@ def create_wad_archive(tar_path: str, wad_files: list[str]) -> None:
 
     log(f'Created reproducible tar file: {tar_path}')
 
-def validate_wads() -> bool:
-    wads_match = True
-    for wad in all_wads:
-        wad_path = source_dir + wad
-        hash_digest = get_hash_digest(wad_path)
-        wad_name = validate_hash_digest(hash_digest)
-        if wad_name != wad:
-            log(f'  {wad} does not match checksum')
-            wads_match = False
-    return wads_match
+def make_wad():
+    with open(master_tar_path, 'rb') as buffer:
+        master_tar_file = buffer.read()
+
+    with open(masterpack_vdiff_path, 'rb') as buffer:
+        masterpack_vcdiff_file = buffer.read()
+
+    xdelta3.decode(master_tar_file, masterpack_vcdiff_file)
+
+    log('Successfully built WADs.')
 
 def main():
     if not validate_wads():
         log('Could not find all the needed wads for building proper')
         exit(1)
-    create_wad_archive('master.tar', all_wads)
 
-    hash_digest = get_hash_digest('master.tar')
+    create_wad_archive(master_tar_path, all_wads)
+    hash_digest = get_hash_digest(master_tar_path)
     files_exists = validate_hash_digest(hash_digest)
-    if 'master.tar' != files_exists:
+    if master_tar_path != files_exists:
         log('The file `master.tar` did not match the checksum')
         log('Exiting as a VCDIFF cannot happen anymore')
         exit(1)
