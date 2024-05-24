@@ -1,6 +1,8 @@
 import os
 import sys
+import shutil
 import tarfile
+import tempfile
 import hashlib
 import xdelta3
 
@@ -11,7 +13,7 @@ else:
 
 log_file = None
 log_path = 'masterpack.log'
-file_buffer = 16384
+buffer_size = 16384
 source_dir = 'source/'
 
 checksum = {
@@ -53,19 +55,19 @@ archive_wads = [
     'PARADOX.WAD', 'ATTACK.WAD', 'CANYON.WAD',
 ]
 
+def get_hash_digest(wad_path: str) -> str:
+    hash_sha256: hashlib._Hash = hashlib.sha256()
+    with open(wad_path, 'rb') as file_handler:
+        while True:
+            data = file_handler.read(buffer_size)
+            if not data:
+                break
+            hash_sha256.update(data)
+    return hash_sha256.hexdigest()
 
-def get_wad_hash(wad_path: str):
-    sha256hash = hashlib.sha256()
-
-    file_handler = open(wad_path, 'rb')
-
-    while True:
-        data = file_handler.read(file_buffer)
-        if not data:
-            break
-        sha256hash.update(data)
-
-    return sha256hash.hexdigest()
+def validate_hash_digest(wad_hash: str) -> str | None:
+    hash_result = checksum.get(wad_hash, None)
+    return hash_result
 
 def create_wad_archive(tar_path: str, wad_files: list[str]) -> None:
     def reset_tarinfo(tar_info: tarfile.TarInfo):
@@ -79,10 +81,19 @@ def create_wad_archive(tar_path: str, wad_files: list[str]) -> None:
 
     with tarfile.open(tar_path, 'w') as tar:
         for wad_file in sorted(wad_files):
-            tar_info = tar.gettarinfo(wad_file)
+            wad_path = source_dir + wad_file
+
+            tar_info = tar.gettarinfo(wad_path)
             tar_info = reset_tarinfo(tar_info)
-            with open(wad_file, 'rb') as file_handle:
+            tar_info.name = os.path.basename(wad_path)
+
+            with open(wad_path, 'rb') as file_handle:
                 tar.addfile(tar_info, file_handle)
+
     print(f"Created reproducible tar file: {tar_path}")
 
-create_wad_archive('master.tar', archive_wads)
+def main():
+    create_wad_archive('master.tar', archive_wads)
+
+if __name__ == '__main__':
+    main()
