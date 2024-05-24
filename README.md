@@ -88,10 +88,6 @@ Once you have all the WAD files, drop them in the `source/` directory and run th
 # Windows, Powershell
 PS C:\Users\User .\masterpack.exe
 ```
-```bash
-# Or also on Linux, Bash
-$ ./masterpack.elf
-```
 
 The above is identical to simply double-clicking on the respective `masterpack.exe` on a graphical interface.
 
@@ -114,13 +110,6 @@ PS C:\Users\User .\woof.exe -file masterpack.wad
 PS C:\Users\User .\gzdoom.exe -file masterpack.wad
 ```
 
-And on Linux as well, where the options are absolutely the same for all source ports.
-```bash
-$ dsda-doom -file masterpack.wad
-$ woof -file masterpack.wad
-$ zdoom -file masterpack.wad
-```
-
 # Add-ons
 
 This pack includes also a handful of "add-ons" for customizing the Masterpack play experience, currently the following are included:
@@ -139,22 +128,14 @@ This pack includes also a handful of "add-ons" for customizing the Masterpack pl
 
 To start, extract the contents `masterpack-addons-alpha.zip` onto the same folder as `masterpack.wad`.
 
-To play, you can run them from the command-line like the following, or make a `masterpack-psx.ps1` batch file.
-
+To play, you can run them from the command-line like the following.
 ```powershell
 PS C:\Users\User .\dsda-doom.exe -file masterpack.wad masterpack-psx-tc-alpha.wad
 ```
-```ps1
-.\dsda-doom.exe -file masterpack.wad masterpack-psx-tc-alpha.wad
-```
 
-Or on Linux, with a `masterpack-psx.sh` bash script:
-```bash
-$ dsda-doom.exe -file masterpack.wad masterpack-psx-tc-alpha.wad
-```
-```bash
-#!/usr/bin/env bash
-dsda-doom.exe -file masterpack.wad masterpack-psx-tc-alpha.wad
+Or make a `masterpack-psx.ps1` batch file:
+```ps1
+.\dsda-doom.exe -file masterpack.wad masterpsack-psx-tc-alpha.wad
 ```
 
 # Legalese

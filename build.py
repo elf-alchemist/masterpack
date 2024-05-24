@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MIT
 # SPDX-FileCopyrightText: Copyright 2024 Guilherme M. Miranda <alchemist.software@proton.me>
-#
-# Description:
-#     Simplest build script possible
 
 import os
 import platform
@@ -114,13 +111,9 @@ def linux_build():
 if platform.system() == '':
     print('Could not assertain the operating system. Exiting safely')
     exit(1)
-
-
-if platform.system() == 'Windows':
+elif platform.system() == 'Windows':
     print('Host is Windows.')
     windows_build()
-
-
-if platform.system() == 'Linux':
+elif platform.system() == 'Linux':
     print('Host is Linux.')
     linux_build()

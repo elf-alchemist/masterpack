@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: Copyright 2024 Guilherme M. Miranda <alchemist.software@proton.me>
+
 import os
 import sys
 import shutil
@@ -17,6 +21,8 @@ buffer_size = 16384
 source_dir = 'source/'
 
 checksum = {
+    '54da78ae2a801f3adce57b11f2443b31946d510c9f2880c64d0cdcbcb0e33543': 'master.tar',
+
     '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f': 'DOOM.WAD',
     'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353': 'TNT.WAD',
 
@@ -46,7 +52,7 @@ checksum = {
     'a2dd18d174d25a5d31046114bf73d87e9e13e49e9e6b509b2c9942e77d4c9ecf': 'CANYON.WAD',
 }
 
-archive_wads = [
+all_wads = [
     'DOOM.WAD', 'TNT.WAD',
     'VIRGIL.WAD', 'MINOS.WAD', 'NESSUS.WAD', 'GERYON.WAD', 'VESPERAS.WAD',
     'MANOR.WAD', 'TTRAP.WAD',
@@ -54,6 +60,22 @@ archive_wads = [
     'SUBSPACE.WAD', 'COMBINE.WAD', 'FISTULA.WAD', 'SUBTERRA.WAD', 'CATWALK.WAD', 'GARRISON.WAD',
     'PARADOX.WAD', 'ATTACK.WAD', 'CANYON.WAD',
 ]
+
+archive_wads = [
+    'VIRGIL.WAD', 'MINOS.WAD', 'NESSUS.WAD', 'GERYON.WAD', 'VESPERAS.WAD',
+    'MANOR.WAD', 'TTRAP.WAD',
+    'BLOODSEA.WAD', 'BLACKTWR.WAD', 'MEPHISTO.WAD', 'TEETH.WAD',
+    'SUBSPACE.WAD', 'COMBINE.WAD', 'FISTULA.WAD', 'SUBTERRA.WAD', 'CATWALK.WAD', 'GARRISON.WAD',
+    'PARADOX.WAD', 'ATTACK.WAD', 'CANYON.WAD',
+]
+
+
+def log(line: str) -> None:
+    global log_file
+    if not log_file:
+        log_file = open(log_path, 'w')
+    print(line)
+    log_file.write(line + '\n')
 
 def get_hash_digest(wad_path: str) -> str:
     hash_sha256: hashlib._Hash = hashlib.sha256()
@@ -90,10 +112,31 @@ def create_wad_archive(tar_path: str, wad_files: list[str]) -> None:
             with open(wad_path, 'rb') as file_handle:
                 tar.addfile(tar_info, file_handle)
 
-    print(f"Created reproducible tar file: {tar_path}")
+    log(f'Created reproducible tar file: {tar_path}')
+
+def validate_wads() -> bool:
+    wads_match = True
+    for wad in all_wads:
+        wad_path = source_dir + wad
+        hash_digest = get_hash_digest(wad_path)
+        wad_name = validate_hash_digest(hash_digest)
+        if wad_name != wad:
+            log(f'  {wad} does not match checksum')
+            wads_match = False
+    return wads_match
 
 def main():
-    create_wad_archive('master.tar', archive_wads)
+    if not validate_wads():
+        log('Could not find all the needed wads for building proper')
+        exit(1)
+    create_wad_archive('master.tar', all_wads)
+
+    hash_digest = get_hash_digest('master.tar')
+    files_exists = validate_hash_digest(hash_digest)
+    if 'master.tar' != files_exists:
+        log('The file `master.tar` did not match the checksum')
+        log('Exiting as a VCDIFF cannot happen anymore')
+        exit(1)
 
 if __name__ == '__main__':
     main()
