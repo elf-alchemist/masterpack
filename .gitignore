@@ -23,8 +23,7 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
-
+Icon
 
 # Thumbnails
 ._*
@@ -284,5 +283,6 @@ CANYON.WAD
 *.bak
 
 # Masterpack build
+master.tar
 masterpack.wad
 masterpack*.wad
