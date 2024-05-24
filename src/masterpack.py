@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MIT
 # SPDX-FileCopyrightText: Copyright 2024 Guilherme M. Miranda <alchemist.software@proton.me>
-#
-# Description:
-#     Masterpack build script. Bring together all Master Levels for Doom II in one single package.
 
 import sys
 from os import listdir, path
@@ -17,9 +14,9 @@ from omg.wad import WAD
 from omg.mapedit import MapEditor
 
 if getattr(sys, 'frozen', False):
-    base_path = sys._MEIPASS      # executable
+    base_path = sys._MEIPASS #type:ignore
 else:
-    base_path = path.abspath('.') # script
+    base_path = path.abspath('.')
 
 DATA_ZIP = path.join(base_path, 'data.zip')
 
@@ -377,22 +374,22 @@ def base_build(dir: str):
     midi2 = WAD(dir + 'midtwid2.wad')
 
     log('  Extracting DEMOs')
-    demo1lmp = tnt.data['DEMO1']
+    demo1lmp = tnt.data['DEMO1'] #type:ignore
     demo1data = bytearray(demo1lmp.data)
-    demo1data[3] = 0x28
-    base.data['DEMO1'] = Lump(bytes(demo1data))
+    demo1data[3] = 0x28 # change map01 to map40
+    base.data['DEMO1'] = Lump(bytes(demo1data)) #type:ignore
 
     demo2lmp = Lump(from_file=dir + 'DANTE25.LMP')
     demo2data = bytearray(demo2lmp.data)
-    demo2data[3] = 0x01
-    base.data['DEMO2'] = Lump(bytes(demo2data))
+    demo2data[3] = 0x01 # change map02 to map01
+    base.data['DEMO2'] = Lump(bytes(demo2data)) #type:ignore
 
     log('  Extracting patches')
     # gotta extract the Klietech sky manually
     # since it is not located between P_* markers
     combine = WAD(DIR_SOURCE + 'COMBINE.WAD')
-    sky = combine.data['RSKY1']
-    base.patches['MSKY3'] = sky
+    sky = combine.data['RSKY1'] #type:ignore
+    base.patches['MSKY3'] = sky #type:ignore
     log('    Pulling MSKY3')
 
     for triple in PATCH_TRIPLETS:
@@ -400,10 +397,10 @@ def base_build(dir: str):
         wad = WAD(dir + wad_name)
 
         original_name = triple[2]
-        slot = wad.patches[original_name]
+        slot = wad.patches[original_name] #type:ignore
 
         name = triple[0]
-        base.patches[name] = slot
+        base.patches[name] = slot #type:ignore
 
         log(f'    Pulling {name}')
 
@@ -413,45 +410,45 @@ def base_build(dir: str):
         wad = WAD(dir + wad_name)
 
         original_slot = triple[2]
-        map = wad.maps[original_slot]
+        map = wad.maps[original_slot] #type:ignore
 
         slot = triple[0]
-        base.maps[slot] = map
+        base.maps[slot] = map #type:ignore
         log(f'    Pulling {slot}')
 
     log('  Fixing maps')
     for triplet in SIDEDEF_SWITCH_TRIPLETS:
         slot = triplet[0]
-        map_edit = MapEditor(base.maps[slot])
+        map_edit = MapEditor(base.maps[slot]) #type:ignore
 
         initial_tex = triplet[1]
         desired_tex = triplet[2]
 
         massive_simple_sidedef_switch(map_edit, initial_tex, desired_tex)
-        base.maps[slot] = map_edit.to_lumps()
+        base.maps[slot] = map_edit.to_lumps() #type:ignore
         log(f'    Fixing {slot}')
 
     log('  Organizing lumps')
-    masterpack.data += base.data
-    masterpack.txdefs += base.txdefs
-    masterpack.sprites += base.sprites
-    masterpack.graphics += base.graphics
+    masterpack.data += base.data #type:ignore
+    masterpack.txdefs += base.txdefs #type:ignore
+    masterpack.sprites += base.sprites #type:ignore
+    masterpack.graphics += base.graphics #type:ignore
 
     log('    Sorting MIDIs')
     for midi in DOOM1_MIDI:
-        masterpack.music[midi] = midi1.music[midi]
+        masterpack.music[midi] = midi1.music[midi] #type:ignore
 
     log('    Sorting MIDIs')
     for midi in DOOM2_MIDI:
-        masterpack.music[midi] = midi2.music[midi]
+        masterpack.music[midi] = midi2.music[midi] #type:ignore
 
     log('    Sorting maps')
     for slot in ALL_MAPS:
-        masterpack.maps[slot] = base.maps[slot]
+        masterpack.maps[slot] = base.maps[slot] #type:ignore
 
     log('    Sorting patches')
     for slot in ALL_PATCHES:
-        masterpack.patches[slot] = base.patches[slot]
+        masterpack.patches[slot] = base.patches[slot] #type:ignore
 
     masterpack.to_file(MASTERPACK)
     log('  Creating masterpack.wad')
@@ -491,7 +488,3 @@ def main():
     base_build(temp + '/')
 
     log('Build successful')
-
-
-if __name__ == '__main__':
-    main()
