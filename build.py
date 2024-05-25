@@ -19,32 +19,35 @@ pkg_linux = 'pkgs/' + linux
 pkg_addons = 'pkgs/' + addons
 
 
-windows_cmd = 'pyinstaller src/masterpack.py ' \
+windows_cmd = 'pyinstaller src/master.py ' \
     + ' --log-level WARN' \
     + ' --paths venv/lib64/python3.11/site-packages/' \
     + ' --onefile ' \
-    + ' --add-data "src/data.zip;."' \
+    + ' --add-data "src/vcdiff.zip;."' \
     + ' --icon masterpack.ico' \
     + ' --noupx'
 
 linux_to_windows_cmd = 'wine' \
-    + ' pyinstaller src/masterpack.py' \
+    + ' pyinstaller src/master.py' \
     + ' --log-level WARN' \
     + ' --paths venv/lib64/python3.11/site-packages/' \
     + ' --onefile ' \
-    + ' --add-data "src/data.zip;."' \
+    + ' --add-data "src/vcdiff.zip;."' \
     + ' --icon masterpack.ico' \
     + ' --noupx'
 
-linux_cmd = 'pyinstaller src/masterpack.py' \
+linux_cmd = 'pyinstaller src/master.py' \
     + ' --log-level WARN' \
     + ' --paths venv/lib64/python3.11/site-packages/' \
     + ' --onefile' \
-    + ' --add-data=src/data.zip:.' \
+    + ' --add-data=src/vcdiff.zip:.' \
     + ' --noupx'
 
 
 def create_zip_package(name: str, files: list[tuple[str, str | None]]) -> None:
+    file_path = os.path.join('pkgs/', name)
+    if os.path.isfile(file_path):
+        return None
     with zipfile.ZipFile(name, 'w') as zipf:
         for src_file, arc_name in files:
             zipf.write(src_file, arc_name)
@@ -57,7 +60,7 @@ def windows_build():
         windows,
         files=[
             ('source/delete_me.txt', None),
-            ('dist/masterpack.exe', 'masterpack.exe'),
+            ('dist/master.exe', 'masterpack.exe'),
         ],
     )
     shutil.move(windows, pkg_windows)
@@ -81,7 +84,7 @@ def linux_build():
         windows,
         files=[
             ('source/delete_me.txt', None),
-            ('dist/masterpack.exe', 'masterpack.exe'),
+            ('dist/master.exe', 'masterpack.exe'),
         ],
     )
     shutil.move(windows, pkg_windows)
@@ -91,7 +94,7 @@ def linux_build():
         linux,
         files=[
             ('source/delete_me.txt', None),
-            ('dist/masterpack', 'masterpack.elf'),
+            ('dist/master', 'masterpack.elf'),
         ],
     )
     shutil.move(linux, pkg_linux)

@@ -24,6 +24,7 @@ masterpack_vdiff_path = 'masterpack.vcdiff'
 
 checksum = {
     '54da78ae2a801f3adce57b11f2443b31946d510c9f2880c64d0cdcbcb0e33543': 'master.tar',
+    '60d86cc32e8fbc43419eac9fbd2d1fb634ee377b6019ca17ede1e2411d7913c4': 'master.wad',
 
     '6fdf361847b46228cfebd9f3af09cd844282ac75f3edbb61ca4cb27103ce2e7f': 'DOOM.WAD',
     'c0a9c29d023af2737953663d0e03177d9b7b7b64146c158dcc2a07f9ec18f353': 'TNT.WAD',
