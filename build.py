@@ -63,7 +63,8 @@ def windows_build():
             ('dist/master.exe', 'masterpack.exe'),
         ],
     )
-    shutil.move(windows, pkg_windows)
+    if os.path.isfile(windows):
+        shutil.move(windows, pkg_windows)
     print('Bundling addons...')
     create_zip_package(
         addons,
@@ -73,7 +74,8 @@ def windows_build():
             ('addons/masterpack-psx-tc.wad', 'masterpack-psx-tc-alpha.wad'),
         ]
     )
-    shutil.move(addons, pkg_addons)
+    if os.path.isfile(addons):
+        shutil.move(addons, pkg_addons)
     print('Package built')
 
 
@@ -87,7 +89,8 @@ def linux_build():
             ('dist/master.exe', 'masterpack.exe'),
         ],
     )
-    shutil.move(windows, pkg_windows)
+    if os.path.isfile(windows):
+        shutil.move(windows, pkg_windows)
     print('Building for Linux...')
     os.system(linux_cmd)
     create_zip_package(
@@ -97,7 +100,8 @@ def linux_build():
             ('dist/master', 'masterpack.elf'),
         ],
     )
-    shutil.move(linux, pkg_linux)
+    if os.path.isfile(linux):
+        shutil.move(linux, pkg_linux)
     print('Bundling addons...')
     create_zip_package(
         addons,
@@ -107,7 +111,8 @@ def linux_build():
             ('addons/masterpack-psx-tc.wad', 'masterpack-psx-tc-alpha.wad'),
         ]
     )
-    shutil.move(addons, pkg_addons)
+    if os.path.isfile(addons):
+        shutil.move(addons, pkg_addons)
     print('Packages built')
 
 
