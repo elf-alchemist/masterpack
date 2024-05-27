@@ -8,6 +8,7 @@ import shutil
 import tarfile
 import tempfile
 import hashlib
+import zipfile
 import xdelta3
 
 if getattr(sys, 'frozen', False):
@@ -19,8 +20,10 @@ log_file = None
 log_path = 'masterpack.log'
 buffer_size = 16384
 source_dir = 'source/'
-master_tar_path = 'master.tar'
-masterpack_vdiff_path = 'masterpack.vcdiff'
+
+vcdiff_zip = 'vcdiff.zip'
+master_tar = 'master.tar'
+masterpack_vdiff = 'masterpack.vcdiff'
 
 checksum = {
     '54da78ae2a801f3adce57b11f2443b31946d510c9f2880c64d0cdcbcb0e33543': 'master.tar',
@@ -90,7 +93,7 @@ def get_hash_digest(wad_path: str) -> str:
             hash_sha256.update(data)
     return hash_sha256.hexdigest()
 
-def validate_hash_digest(wad_hash: str) -> str | None:
+def validate_hash_digest(wad_hash: str) :
     hash_result = checksum.get(wad_hash, None)
     return hash_result
 
@@ -128,29 +131,35 @@ def create_wad_archive(tar_path: str, wad_files: list[str]) -> None:
 
     log(f'Created reproducible tar file: {tar_path}')
 
-def make_wad():
-    with open(master_tar_path, 'rb') as buffer:
-        master_tar_file = buffer.read()
-
-    with open(masterpack_vdiff_path, 'rb') as buffer:
-        masterpack_vcdiff_file = buffer.read()
-
-    xdelta3.decode(master_tar_file, masterpack_vcdiff_file)
-
-    log('Successfully built WADs.')
-
 def main():
     if not validate_wads():
         log('Could not find all the needed wads for building proper')
         exit(1)
 
+    temp = tempfile.mkdtemp()
+    master_tar_path = os.path.join(temp, master_tar)
+    masterpack_vdiff_path = os.path.join(temp, masterpack_vdiff)
+    vcdiff_zip_path = os.path.join(base_path, vcdiff_zip)
+
     create_wad_archive(master_tar_path, all_wads)
     hash_digest = get_hash_digest(master_tar_path)
     files_exists = validate_hash_digest(hash_digest)
-    if master_tar_path != files_exists:
+    if master_tar != files_exists:
         log('The file `master.tar` did not match the checksum')
         log('Exiting as a VCDIFF cannot happen anymore')
         exit(1)
+
+    with zipfile.ZipFile(vcdiff_zip_path, 'r') as zipf:
+        zipf.extractall(temp)
+
+    with open(master_tar_path, 'rb') as buffer:
+        master_tar_file = buffer.read()
+    with open(masterpack_vdiff_path, 'rb') as buffer:
+        masterpack_vcdiff_file = buffer.read()
+    xdelta3.decode(master_tar_file, masterpack_vcdiff_file)
+
+    log('Successfully built WADs.')
+
 
 if __name__ == '__main__':
     main()
