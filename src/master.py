@@ -58,7 +58,7 @@ checksum = {
     'a2dd18d174d25a5d31046114bf73d87e9e13e49e9e6b509b2c9942e77d4c9ecf': 'CANYON.WAD',
 }
 
-all_wads = [
+archive_wads = [
     'DOOM.WAD', 'TNT.WAD',
     'VIRGIL.WAD', 'MINOS.WAD', 'NESSUS.WAD', 'GERYON.WAD', 'VESPERAS.WAD',
     'MANOR.WAD', 'TTRAP.WAD',
@@ -66,15 +66,6 @@ all_wads = [
     'SUBSPACE.WAD', 'COMBINE.WAD', 'FISTULA.WAD', 'SUBTERRA.WAD', 'CATWALK.WAD', 'GARRISON.WAD',
     'PARADOX.WAD', 'ATTACK.WAD', 'CANYON.WAD',
 ]
-
-archive_wads = [
-    'VIRGIL.WAD', 'MINOS.WAD', 'NESSUS.WAD', 'GERYON.WAD', 'VESPERAS.WAD',
-    'MANOR.WAD', 'TTRAP.WAD',
-    'BLOODSEA.WAD', 'BLACKTWR.WAD', 'MEPHISTO.WAD', 'TEETH.WAD',
-    'SUBSPACE.WAD', 'COMBINE.WAD', 'FISTULA.WAD', 'SUBTERRA.WAD', 'CATWALK.WAD', 'GARRISON.WAD',
-    'PARADOX.WAD', 'ATTACK.WAD', 'CANYON.WAD',
-]
-
 
 def log(line: str) -> None:
     global log_file
@@ -99,7 +90,7 @@ def validate_hash_digest(wad_hash: str) :
 
 def validate_wads() -> bool:
     wads_match = True
-    for wad in all_wads:
+    for wad in archive_wads:
         wad_path = os.path.join( source_dir + wad)
         hash_digest = get_hash_digest(wad_path)
         wad_name = validate_hash_digest(hash_digest)
@@ -141,7 +132,7 @@ def main():
     masterpack_vdiff_path = os.path.join(temp, masterpack_vdiff)
     vcdiff_zip_path = os.path.join(base_path, vcdiff_zip)
 
-    create_wad_archive(master_tar_path, all_wads)
+    create_wad_archive(master_tar_path, archive_wads)
     hash_digest = get_hash_digest(master_tar_path)
     files_exists = validate_hash_digest(hash_digest)
     if master_tar != files_exists:
